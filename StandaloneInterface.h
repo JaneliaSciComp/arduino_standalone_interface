@@ -7,25 +7,25 @@
 // ----------------------------------------------------------------------------
 #ifndef STANDALONE_INTERFACE_H
 #define STANDALONE_INTERFACE_H
-#include "NewhavenDisplay.h"
-#include "Encoder.h"
+#include "utility/Server.h"
 
 
 class StandaloneInterface
 {
 public:
-  StandaloneInterface(HardwareSerial &serial,
-                      int enc_a_pin,
-                      int enc_b_pin,
-                      int enc_btn_pin,
-                      int btn_pin);
+  StandaloneInterface(HardwareSerial &display_serial,
+                      const int enc_a_pin,
+                      const int enc_b_pin,
+                      const int enc_btn_pin,
+                      const int enc_btn_int,
+                      const int btn_pin,
+                      const int btn_int,
+                      const int update_period);
+  void update();
+  void enable();
+  void disable();
+  InteractiveVariable& createInteractiveVariable();
 private:
-  NewhavenDisplay display_;
-  Encoder encoder_;
-  int enc_btn_pin_;
-  int btn_pin_;
+  Server server_;
 };
-
-extern StandaloneInterface::StandaloneInterface standalone_interface;
-
 #endif

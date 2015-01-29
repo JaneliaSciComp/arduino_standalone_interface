@@ -9,25 +9,45 @@
 
 
 StandaloneInterface::StandaloneInterface(HardwareSerial &serial,
-                                         int enc_a_pin,
-                                         int enc_b_pin,
-                                         int enc_btn_pin,
-                                         int btn_pin)
+                                         const int enc_a_pin,
+                                         const int enc_b_pin,
+                                         const int enc_btn_pin,
+                                         const int enc_btn_int,
+                                         const int btn_pin,
+                                         const int btn_int,
+                                         const int update_period) :
+  server_(serial,
+          enc_a_pin,
+          enc_b_pin,
+          enc_btn_pin,
+          enc_btn_int,
+          btn_pin,
+          btn_int,
+          update_period)
 {
-  display_ = NewhavenDisplay(serial);
-  encoder_ = Encoder(enc_b_pin,enc_a_pin);
-  enc_btn_pin_ = enc_btn_pin;
-  btn_pin_ = btn_pin;
 }
 
-void StandaloneInterface::setServerSerial(HardwareSerial &serial)
+void StandaloneInterface::update()
 {
-  server_.setSerial(serial);
+  server_.update();
 }
 
-void StandaloneInterface::setName(const _FLASH_STRING &interface_name)
+void StandaloneInterface::enable()
 {
-  server_.setName(interface_name);
+  server_.enable();
 }
 
-StandaloneInterface::StandaloneInterface standalone_interface(Serial);
+void StandaloneInterface::disable()
+{
+  server_.disable();
+}
+
+void StandaloneInterface::disable()
+{
+  server_.disable();
+}
+
+InteractiveVariable& StandaloneInterface::createInteractiveVariable()
+{
+  return server_.createInteractiveVariable();
+}
