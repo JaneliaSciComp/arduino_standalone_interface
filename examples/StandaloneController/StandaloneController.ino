@@ -63,6 +63,9 @@ void loop()
   if ((time_now - time_last_serial_update) > SERIAL_UPDATE_PERIOD)
   {
     time_last_serial_update = time_now;
-    Serial << counter1.getValue() << endl;
+    Serial << "counter1: " << counter1.getValue() << endl;
+    Serial << "counter2: " << counter2.getValue() << endl;
+    counter1.setValue(counter1.getValue()+1);
+    counter2.setValue(counter2.getValue()-1);
   }
 }
