@@ -1,6 +1,7 @@
 #include "Streaming.h"
 #include "NewhavenDisplay.h"
 #include "Encoder.h"
+#include "StandardCplusplus.h"
 #include "StandaloneInterface.h"
 
 // See README.md for more information
@@ -31,9 +32,9 @@ StandaloneInterface standalone_interface(DISPLAY_SERIAL,
                                          BTN_INT,
                                          UPDATE_PERIOD);
 
-InteractiveVariable counter = standalone_interface.createInteractiveVariable();
-counter.setDisplayPosition(COUNTER_DISPLAY_POSITION);
-counter.setRange(COUNTER_MIN,COUNTER_MAX);
+InteractiveVariable& counter = standalone_interface.createInteractiveVariable();
+// counter.setDisplayPosition(COUNTER_DISPLAY_POSITION);
+// counter.setRange(COUNTER_MIN,COUNTER_MAX);
 
 unsigned long time_last_serial_update = 0;
 
@@ -50,7 +51,6 @@ void loop()
   if ((time_now - time_last_serial_update) > SERIAL_UPDATE_PERIOD)
   {
     time_last_serial_update = time_now;
-    Serial << counter.value << endl;
-    counter.value += 1;
+    Serial << counter.getValue() << endl;
   }
 }

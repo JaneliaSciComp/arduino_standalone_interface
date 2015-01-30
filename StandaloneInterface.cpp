@@ -42,11 +42,6 @@ void StandaloneInterface::disable()
   server_.disable();
 }
 
-void StandaloneInterface::disable()
-{
-  server_.disable();
-}
-
 InteractiveVariable& StandaloneInterface::createInteractiveVariable()
 {
   return server_.createInteractiveVariable();

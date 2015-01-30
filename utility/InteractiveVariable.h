@@ -23,10 +23,12 @@ public:
   void setRange(const uint8_t min, const uint8_t max);
   uint8_t getMin();
   uint8_t getMax();
-  uint8_t value;
+  void setValue(uint8_t value);
+  uint8_t getValue();
 private:
   uint8_t display_position_;
   uint8_t min_;
   uint8_t max_;
+  uint8_t value_;
 };
 #endif

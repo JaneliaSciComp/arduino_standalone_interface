@@ -38,9 +38,12 @@ void Server::update()
     if ((time_now - time_last_update_) > update_period_)
     {
       time_last_update_ = time_now;
-      if (interactive_variable_index_ > 0)
+      if (interactive_variable_index_ >= 0)
       {
         InteractiveVariable &int_var = interactive_variable_vector_[interactive_variable_index_];
+        int_var.setValue(encoder_.read());
+        display_.setCursor(int_var.getDisplayPosition());
+        display_.printPadRight(int_var.getValue(),DISPLAY_PAD_LENGTH);
       }
       // display_.setCursor(0);
       // display_.print("test");
@@ -64,10 +67,15 @@ void Server::disable()
 
 InteractiveVariable& Server::createInteractiveVariable()
 {
-  interactive_variable_vector_.push_back(InteractiveVariable());
-  if (interactive_variable_index_ < 0)
-  {
-    interactive_variable_index_ = 0;
-  }
+  InteractiveVariable int_var;
+  interactive_variable_vector_.push_back(int_var);
+  // InteractiveVariable &int_var = interactive_variable_vector_.back();
+  // if (interactive_variable_index_ < 0)
+  // {
+  //   interactive_variable_index_ = 0;
+  //   encoder_.write(int_var.getValue())
+  // }
+  // return int_var;
+  interactive_variable_index_ = 0;
   return interactive_variable_vector_.back();
 }

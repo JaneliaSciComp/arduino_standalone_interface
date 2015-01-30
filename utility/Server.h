@@ -16,6 +16,7 @@
 #include "NewhavenDisplay.h"
 #include "Encoder.h"
 #include "StandardCplusplus.h"
+#include "vector"
 #include "InteractiveVariable.h"
 
 
@@ -36,6 +37,7 @@ public:
   InteractiveVariable& createInteractiveVariable();
 private:
   NewhavenDisplay display_;
+  static const int DISPLAY_PAD_LENGTH = 3;
   Encoder encoder_;
   const int enc_btn_pin_;
   const int enc_btn_int_;
