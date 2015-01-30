@@ -8,6 +8,8 @@
 #include "StandaloneInterface.h"
 
 
+namespace Standalone
+{
 StandaloneInterface::StandaloneInterface(HardwareSerial &serial,
                                          const int enc_a_pin,
                                          const int enc_b_pin,
@@ -45,4 +47,5 @@ void StandaloneInterface::disable()
 InteractiveVariable& StandaloneInterface::createInteractiveVariable()
 {
   return server_.createInteractiveVariable();
+}
 }

@@ -6,6 +6,8 @@
 
 // See README.md for more information
 
+using namespace Standalone;
+
 HardwareSerial DISPLAY_SERIAL = Serial3;
 const int ENC_A_PIN = 2;
 const int ENC_B_PIN = 3;
@@ -15,9 +17,13 @@ const int BTN_PIN = 21;
 const int BTN_INT = 2;
 const int UPDATE_PERIOD = 300;
 
-const int COUNTER_DISPLAY_POSITION = 40;
-const int COUNTER_MIN = 7;
-const int COUNTER_MAX = 38;
+const uint8_t COUNTER1_DISPLAY_POSITION = 9;
+const uint8_t COUNTER1_MIN = 7;
+const uint8_t COUNTER1_MAX = 38;
+
+const uint8_t COUNTER2_DISPLAY_POSITION = 29;
+const uint8_t COUNTER2_MIN = 7;
+const uint8_t COUNTER2_MAX = 38;
 
 const int BAUDRATE = 9600;
 
@@ -32,14 +38,20 @@ StandaloneInterface standalone_interface(DISPLAY_SERIAL,
                                          BTN_INT,
                                          UPDATE_PERIOD);
 
-InteractiveVariable& counter = standalone_interface.createInteractiveVariable();
-// counter.setDisplayPosition(COUNTER_DISPLAY_POSITION);
-// counter.setRange(COUNTER_MIN,COUNTER_MAX);
-
+InteractiveVariable& counter1 = standalone_interface.createInteractiveVariable();
+InteractiveVariable& counter2 = standalone_interface.createInteractiveVariable();
 unsigned long time_last_serial_update = 0;
 
 void setup()
 {
+  counter1.setDisplayPosition(COUNTER1_DISPLAY_POSITION);
+  counter1.setRange(COUNTER1_MIN,COUNTER1_MAX);
+  counter1.setRightJustify();
+
+  counter2.setDisplayPosition(COUNTER2_DISPLAY_POSITION);
+  counter2.setRange(COUNTER2_MIN,COUNTER2_MAX);
+  counter2.setLeftJustify();
+
   Serial.begin(BAUDRATE);
   standalone_interface.enable();
 }
@@ -51,6 +63,6 @@ void loop()
   if ((time_now - time_last_serial_update) > SERIAL_UPDATE_PERIOD)
   {
     time_last_serial_update = time_now;
-    Serial << counter.getValue() << endl;
+    Serial << counter1.getValue() << endl;
   }
 }

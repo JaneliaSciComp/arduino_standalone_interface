@@ -10,6 +10,8 @@
 #include "utility/Server.h"
 
 
+namespace Standalone
+{
 class StandaloneInterface
 {
 public:
@@ -28,4 +30,5 @@ public:
 private:
   Server server_;
 };
+}
 #endif

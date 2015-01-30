@@ -20,6 +20,9 @@
 #include "InteractiveVariable.h"
 
 
+namespace Standalone
+{
+
 class Server
 {
 public:
@@ -37,16 +40,19 @@ public:
   InteractiveVariable& createInteractiveVariable();
 private:
   NewhavenDisplay display_;
-  static const int DISPLAY_PAD_LENGTH = 3;
   Encoder encoder_;
   const int enc_btn_pin_;
   const int enc_btn_int_;
   const int btn_pin_;
   const int btn_int_;
   const int update_period_;
-  bool enabled_;
+  boolean enabled_;
   unsigned long time_last_update_;
   std::vector<InteractiveVariable> interactive_variable_vector_;
-  int interactive_variable_index_;
+  static int interactive_variable_count_;
+  static volatile int interactive_variable_index_;
+  static volatile boolean interactive_variable_index_changed_;
+  static void encBtnIsr();
 };
+}
 #endif
