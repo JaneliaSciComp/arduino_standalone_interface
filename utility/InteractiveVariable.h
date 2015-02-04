@@ -12,11 +12,11 @@
 #else
 #include "WProgram.h"
 #endif
-#include "Variable.h"
+#include "DisplayVariable.h"
 
 namespace Standalone
 {
-class InteractiveVariable : public Variable
+class InteractiveVariable : public DisplayVariable
 {
 public:
   InteractiveVariable();

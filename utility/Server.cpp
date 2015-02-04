@@ -75,16 +75,7 @@ void Server::update()
        int_var_it != interactive_variable_vector_.end();
        ++int_var_it)
   {
-    display_.setCursor(int_var_it->getDisplayPosition());
-    uint8_t display_width = int_var_it->getDisplayWidth();
-    if (int_var_it->checkLeftJustify())
-    {
-      display_.printPadRight(int_var_it->getValue(),display_width);
-    }
-    else
-    {
-      display_.printPadLeft(int_var_it->getValue(),display_width);
-    }
+    int_var_it->updateOnDisplay(display_);
   }
   if (Server::interactive_variable_index_ >= 0)
   {

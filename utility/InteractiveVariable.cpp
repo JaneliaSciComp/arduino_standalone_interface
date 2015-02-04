@@ -51,13 +51,13 @@ uint8_t InteractiveVariable::getMax()
 
 void InteractiveVariable::setValue(uint8_t value)
 {
-  Variable::setValue(wrapValue(value));
+  DisplayVariable::setValue(wrapValue(value));
   value_dirty_ = true;
 }
 
 void InteractiveVariable::updateWithEncoderValue(uint8_t value)
 {
-  Variable::setValue(wrapValue(value));
+  DisplayVariable::setValue(wrapValue(value));
 }
 
 boolean InteractiveVariable::checkValueDirty()
