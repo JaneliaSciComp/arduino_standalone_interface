@@ -15,6 +15,8 @@ const int baudrate = 9600;
 const int model_number = 1003;
 const int firmware_number = 1;
 
+HardwareSerial display_serial = Serial3;
+
 const int enc_a_pin = 2;
 const int enc_b_pin = 3;
 const int enc_btn_pin = 19;

@@ -10,7 +10,7 @@
 namespace Standalone
 {
 StandaloneController::StandaloneController() :
-  standalone_interface_(StandaloneInterface(Serial3,
+  standalone_interface_(StandaloneInterface(constants::display_serial,
                                             constants::enc_a_pin,
                                             constants::enc_b_pin,
                                             constants::enc_btn_pin,

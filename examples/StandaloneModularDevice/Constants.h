@@ -16,6 +16,8 @@ extern const int baudrate;
 extern const int model_number;
 extern const int firmware_number;
 
+extern HardwareSerial display_serial;
+
 extern const int enc_a_pin;
 extern const int enc_b_pin;
 extern const int enc_btn_pin;
