@@ -12,11 +12,11 @@
 #else
 #include "WProgram.h"
 #endif
+#include "NewhavenDisplay.h"
 
 
 namespace Standalone
 {
-class NewhavenDisplay;
 
 class DisplayElement
 {
@@ -29,7 +29,7 @@ public:
   void setLeftJustify();
   void setRightJustify();
   boolean checkLeftJustify();
-  String getDisplayString();
+  virtual String getDisplayString() {};
   void updateOnDisplay(NewhavenDisplay &display);
 private:
   uint8_t display_position_;

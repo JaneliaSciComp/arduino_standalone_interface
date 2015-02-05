@@ -52,22 +52,17 @@ boolean DisplayElement::checkLeftJustify()
   return left_justify_;
 }
 
-String DisplayElement::getDisplayString()
-{
-  return String("");
-}
-
 void DisplayElement::updateOnDisplay(NewhavenDisplay &display)
 {
   display.setCursor(getDisplayPosition());
   uint8_t display_width = getDisplayWidth();
   if (checkLeftJustify())
   {
-    display_.printPadRight(getDisplayString(),display_width);
+    display.printPadRight(getDisplayString(),display_width);
   }
   else
   {
-    display_.printPadLeft(getDisplayString(),display_width);
+    display.printPadLeft(getDisplayString(),display_width);
   }
 }
 }

@@ -38,6 +38,7 @@ Server::Server(HardwareSerial &serial,
   digitalWrite(enc_btn_pin_,HIGH);
   attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
 
+  display_labels_dirty_ = true;
 }
 
 void Server::update()
@@ -70,13 +71,32 @@ void Server::update()
       Server::interactive_variable_index_changed_ = false;
     }
   }
-  // Update all interactive variable displays
+  // Update all display_labels on display if necessary
+  if (display_labels_dirty_)
+  {
+    display_labels_dirty_ = false;
+    for (std::vector<DisplayLabel>::iterator display_label_it = display_label_vector_.begin();
+         display_label_it != display_label_vector_.end();
+         ++display_label_it)
+    {
+      display_label_it->updateOnDisplay(display_);
+    }
+  }
+  // Update all display_variables on display
+  for (std::vector<DisplayVariable>::iterator display_var_it = display_variable_vector_.begin();
+       display_var_it != display_variable_vector_.end();
+       ++display_var_it)
+  {
+    display_var_it->updateOnDisplay(display_);
+  }
+  // Update all interactive_variables on display
   for (std::vector<InteractiveVariable>::iterator int_var_it = interactive_variable_vector_.begin();
        int_var_it != interactive_variable_vector_.end();
        ++int_var_it)
   {
     int_var_it->updateOnDisplay(display_);
   }
+  // Place the cursor back on the current interactive variable
   if (Server::interactive_variable_index_ >= 0)
   {
     InteractiveVariable &int_var = interactive_variable_vector_[Server::interactive_variable_index_];
@@ -92,6 +112,20 @@ void Server::enable()
 void Server::disable()
 {
   enabled_ = false;
+}
+
+DisplayLabel& Server::createDisplayLabel(const _FLASH_STRING &label)
+{
+  DisplayLabel display_label(label);
+  display_label_vector_.push_back(display_label);
+  return display_label_vector_.back();
+}
+
+DisplayVariable& Server::createDisplayVariable()
+{
+  DisplayVariable display_var;
+  display_variable_vector_.push_back(display_var);
+  return display_variable_vector_.back();
 }
 
 InteractiveVariable& Server::createInteractiveVariable()

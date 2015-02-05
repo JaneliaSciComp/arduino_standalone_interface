@@ -17,6 +17,9 @@
 #include "Encoder.h"
 #include "StandardCplusplus.h"
 #include "vector"
+#include "Flash.h"
+#include "DisplayLabel.h"
+#include "DisplayVariable.h"
 #include "InteractiveVariable.h"
 
 
@@ -37,6 +40,8 @@ public:
   void update();
   void enable();
   void disable();
+  DisplayLabel& createDisplayLabel(const _FLASH_STRING &label);
+  DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
 private:
   NewhavenDisplay display_;
@@ -48,7 +53,10 @@ private:
   const int update_period_;
   boolean enabled_;
   unsigned long time_last_update_;
+  std::vector<DisplayLabel> display_label_vector_;
+  std::vector<DisplayVariable> display_variable_vector_;
   std::vector<InteractiveVariable> interactive_variable_vector_;
+  boolean display_labels_dirty_;
   static int interactive_variable_count_;
   static volatile int interactive_variable_index_;
   static volatile boolean interactive_variable_index_changed_;

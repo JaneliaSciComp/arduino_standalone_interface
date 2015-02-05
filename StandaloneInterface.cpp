@@ -44,6 +44,16 @@ void StandaloneInterface::disable()
   server_.disable();
 }
 
+DisplayLabel& StandaloneInterface::createDisplayLabel(const _FLASH_STRING &label)
+{
+  return server_.createDisplayLabel(label);
+}
+
+DisplayVariable& StandaloneInterface::createDisplayVariable()
+{
+  return server_.createDisplayVariable();
+}
+
 InteractiveVariable& StandaloneInterface::createInteractiveVariable()
 {
   return server_.createInteractiveVariable();
