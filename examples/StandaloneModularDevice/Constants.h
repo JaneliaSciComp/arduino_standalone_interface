@@ -24,14 +24,20 @@ extern const int btn_pin;
 extern const int btn_int;
 extern const int standalone_update_period;
 
-extern const uint8_t counter1_display_position;
-extern const uint8_t counter1_min;
-extern const uint8_t counter1_max;
+extern const uint8_t display_label1_display_position;
 
-extern const uint8_t counter2_display_position;
-extern const uint8_t counter2_min;
-extern const uint8_t counter2_max;
+extern const uint8_t display_var1_display_position;
+extern const uint8_t display_var1_default_value;
+
+extern const uint8_t interactive_var1_display_position;
+extern const uint8_t interactive_var1_min;
+extern const uint8_t interactive_var1_max;
+
+extern const uint8_t interactive_var2_display_position;
+extern const uint8_t interactive_var2_min;
+extern const uint8_t interactive_var2_max;
 
 extern _FLASH_STRING device_name;
+extern _FLASH_STRING display_label1_string;
 }
 #endif

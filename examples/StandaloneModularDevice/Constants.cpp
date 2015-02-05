@@ -23,13 +23,19 @@ const int btn_pin = 21;
 const int btn_int = 2;
 const int standalone_update_period = 300;
 
-const uint8_t counter1_display_position = 9;
-const uint8_t counter1_min = 7;
-const uint8_t counter1_max = 38;
+const uint8_t display_label1_display_position = 0;
 
-const uint8_t counter2_display_position = 29;
-const uint8_t counter2_min = 7;
-const uint8_t counter2_max = 38;
+const uint8_t display_var1_display_position = 9;
+const uint8_t display_var1_default_value = 11;
+
+const uint8_t interactive_var1_display_position = 29;
+const uint8_t interactive_var1_min = 7;
+const uint8_t interactive_var1_max = 38;
+
+const uint8_t interactive_var2_display_position = 49;
+const uint8_t interactive_var2_min = 7;
+const uint8_t interactive_var2_max = 38;
 
 FLASH_STRING(device_name,"standalone_modular_device");
+FLASH_STRING(display_label1_string,"tester");
 }

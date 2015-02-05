@@ -5,8 +5,8 @@
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#ifndef _SERVER_H_
-#define _SERVER_H_
+#ifndef _STANDALONE_SERVER_H_
+#define _STANDALONE_SERVER_H_
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else
@@ -40,7 +40,7 @@ public:
   void update();
   void enable();
   void disable();
-  DisplayLabel& createDisplayLabel(const _FLASH_STRING &label);
+  DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
 private:

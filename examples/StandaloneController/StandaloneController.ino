@@ -46,7 +46,7 @@ StandaloneInterface standalone_interface(DISPLAY_SERIAL,
                                          BTN_INT,
                                          UPDATE_PERIOD);
 
-DisplayLabel& display_label1 = standalone_interface.createDisplayLabel(DISPLAY_LABEL1_STRING);
+DisplayLabel& display_label1 = standalone_interface.createDisplayLabel();
 DisplayVariable& display_var1 = standalone_interface.createDisplayVariable();
 InteractiveVariable& interactive_var1 = standalone_interface.createInteractiveVariable();
 InteractiveVariable& interactive_var2 = standalone_interface.createInteractiveVariable();
@@ -55,6 +55,7 @@ unsigned long time_last_serial_update = 0;
 void setup()
 {
   display_label1.setDisplayPosition(DISPLAY_LABEL1_DISPLAY_POSITION);
+  display_label1.setFlashString(DISPLAY_LABEL1_STRING);
 
   display_var1.setDisplayPosition(DISPLAY_VAR1_DISPLAY_POSITION);
   display_var1.setValue(DISPLAY_VAR1_DEFAULT_VALUE);

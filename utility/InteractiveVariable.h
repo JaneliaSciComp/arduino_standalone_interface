@@ -5,8 +5,8 @@
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#ifndef _INTERACTIVE_VARIABLE_H_
-#define _INTERACTIVE_VARIABLE_H_
+#ifndef _STANDALONE_INTERACTIVE_VARIABLE_H_
+#define _STANDALONE_INTERACTIVE_VARIABLE_H_
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else

@@ -26,7 +26,7 @@ public:
   void update();
   void enable();
   void disable();
-  DisplayLabel& createDisplayLabel(const _FLASH_STRING &label);
+  DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
 private:

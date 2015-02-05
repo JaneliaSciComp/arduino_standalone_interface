@@ -10,16 +10,29 @@
 
 namespace Standalone
 {
-DisplayLabel::DisplayLabel(const _FLASH_STRING &label)
+DisplayLabel::DisplayLabel()
 {
-  label_ptr_ = &label;
-  setDisplayWidth(label.length());
+  label_ptr_ = NULL;
+  setDisplayWidth(0);
 }
 
 String DisplayLabel::getDisplayString()
 {
-  char label_char_array[getDisplayWidth()+1];
-  label_ptr_->copy(label_char_array);
-  return String(label_char_array);
+  if (label_ptr_)
+  {
+    char label_char_array[getDisplayWidth()+1];
+    label_ptr_->copy(label_char_array);
+    return String(label_char_array);
+  }
+  else
+  {
+    return String("");
+  }
+}
+
+void DisplayLabel::setFlashString(const _FLASH_STRING &label)
+{
+  label_ptr_ = &label;
+  setDisplayWidth(label.length());
 }
 }

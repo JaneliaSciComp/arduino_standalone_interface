@@ -5,8 +5,8 @@
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#ifndef _DISPLAY_ELEMENT_H_
-#define _DISPLAY_ELEMENT_H_
+#ifndef _STANDALONE_DISPLAY_ELEMENT_H_
+#define _STANDALONE_DISPLAY_ELEMENT_H_
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else

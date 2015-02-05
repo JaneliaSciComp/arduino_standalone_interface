@@ -114,9 +114,9 @@ void Server::disable()
   enabled_ = false;
 }
 
-DisplayLabel& Server::createDisplayLabel(const _FLASH_STRING &label)
+DisplayLabel& Server::createDisplayLabel()
 {
-  DisplayLabel display_label(label);
+  DisplayLabel display_label;
   display_label_vector_.push_back(display_label);
   return display_label_vector_.back();
 }
