@@ -27,6 +27,12 @@ StandaloneController::StandaloneController() :
 
 void StandaloneController::init()
 {
+  // Device Info
+  modular_device.setName(constants::device_name);
+  modular_device.setModelNumber(constants::model_number);
+  modular_device.setFirmwareNumber(constants::firmware_number);
+
+  // Standalone Interface
   display_label1_ptr_->setDisplayPosition(constants::display_label1_display_position);
   display_label1_ptr_->setFlashString(constants::display_label1_string);
 

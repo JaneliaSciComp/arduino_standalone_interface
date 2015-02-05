@@ -7,6 +7,7 @@
 #ifndef STANDALONE_CONTROLLER_H
 #define STANDALONE_CONTROLLER_H
 #include "Constants.h"
+#include "ModularDevice.h"
 #include "StandaloneInterface.h"
 
 
