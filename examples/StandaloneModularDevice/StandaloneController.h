@@ -11,8 +11,6 @@
 #include "StandaloneInterface.h"
 
 
-namespace Standalone
-{
 class StandaloneController
 {
 public:
@@ -21,13 +19,13 @@ public:
   void update();
 
 private:
-  StandaloneInterface standalone_interface_;
-  DisplayLabel *display_label1_ptr_;
-  DisplayVariable *display_var1_ptr_;
-  InteractiveVariable *interactive_var1_ptr_;
-  InteractiveVariable *interactive_var2_ptr_;
+  Standalone::StandaloneInterface standalone_interface_;
+  Standalone::DisplayLabel *display_label1_ptr_;
+  Standalone::DisplayVariable *display_var1_ptr_;
+  Standalone::InteractiveVariable *interactive_var1_ptr_;
+  Standalone::InteractiveVariable *interactive_var2_ptr_;
 };
-}
-extern Standalone::StandaloneController standalone_controller;
+
+extern StandaloneController standalone_controller;
 
 #endif

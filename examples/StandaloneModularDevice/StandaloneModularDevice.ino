@@ -16,12 +16,12 @@
 
 void setup()
 {
-  modular_device.startServer(constants::baudrate);
   standalone_controller.init();
+  modular_device.startServer(constants::baudrate);
 }
 
 void loop()
 {
-  modular_device.handleServerRequests();
   standalone_controller.update();
+  modular_device.handleServerRequests();
 }

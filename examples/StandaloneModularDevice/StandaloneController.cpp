@@ -7,17 +7,15 @@
 #include "StandaloneController.h"
 
 
-namespace Standalone
-{
 StandaloneController::StandaloneController() :
-  standalone_interface_(StandaloneInterface(constants::display_serial,
-                                            constants::enc_a_pin,
-                                            constants::enc_b_pin,
-                                            constants::enc_btn_pin,
-                                            constants::enc_btn_int,
-                                            constants::btn_pin,
-                                            constants::btn_int,
-                                            constants::standalone_update_period))
+  standalone_interface_(Standalone::StandaloneInterface(constants::display_serial,
+                                                        constants::enc_a_pin,
+                                                        constants::enc_b_pin,
+                                                        constants::enc_btn_pin,
+                                                        constants::enc_btn_int,
+                                                        constants::btn_pin,
+                                                        constants::btn_int,
+                                                        constants::standalone_update_period))
 {
   display_label1_ptr_ = &(standalone_interface_.createDisplayLabel());
   display_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
@@ -54,6 +52,5 @@ void StandaloneController::update()
 {
   standalone_interface_.update();
 }
-}
 
-Standalone::StandaloneController standalone_controller;
+StandaloneController standalone_controller;
