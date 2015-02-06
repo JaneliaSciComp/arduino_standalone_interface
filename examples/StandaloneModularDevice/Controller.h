@@ -18,10 +18,13 @@ public:
   Controller();
   void setup();
   void update();
-
+  void setDisplayVariable1(uint8_t value);
+  void setInteractiveVariable1(uint8_t value);
+  uint8_t getInteractiveVariable1();
+  void setInteractiveVariable2(uint8_t value);
+  uint8_t getInteractiveVariable2();
 private:
   Standalone::StandaloneInterface standalone_interface_;
-  Standalone::DisplayLabel *display_label1_ptr_;
   Standalone::DisplayVariable *display_var1_ptr_;
   Standalone::InteractiveVariable *interactive_var1_ptr_;
   Standalone::InteractiveVariable *interactive_var2_ptr_;
