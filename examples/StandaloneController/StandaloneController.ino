@@ -5,8 +5,6 @@
 #include "Flash.h"
 #include "StandaloneInterface.h"
 
-// See README.md for more information
-
 using namespace Standalone;
 
 HardwareSerial DISPLAY_SERIAL = Serial3;
