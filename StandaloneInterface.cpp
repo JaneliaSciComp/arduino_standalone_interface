@@ -29,9 +29,9 @@ StandaloneInterface::StandaloneInterface(HardwareSerial &serial,
 {
 }
 
-void StandaloneInterface::update()
+void StandaloneInterface::setup()
 {
-  server_.update();
+  server_.setup();
 }
 
 void StandaloneInterface::enable()
@@ -42,6 +42,11 @@ void StandaloneInterface::enable()
 void StandaloneInterface::disable()
 {
   server_.disable();
+}
+
+void StandaloneInterface::update()
+{
+  server_.update();
 }
 
 DisplayLabel& StandaloneInterface::createDisplayLabel()

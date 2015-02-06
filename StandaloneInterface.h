@@ -23,9 +23,10 @@ public:
                       const int btn_pin,
                       const int btn_int,
                       const int update_period);
-  void update();
+  void setup();
   void enable();
   void disable();
+  void update();
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();

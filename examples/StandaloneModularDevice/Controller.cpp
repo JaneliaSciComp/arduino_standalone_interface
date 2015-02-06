@@ -1,13 +1,13 @@
 // ----------------------------------------------------------------------------
-// StandaloneController.cpp
+// Controller.cpp
 //
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#include "StandaloneController.h"
+#include "Controller.h"
 
 
-StandaloneController::StandaloneController() :
+Controller::Controller() :
   standalone_interface_(Standalone::StandaloneInterface(constants::display_serial,
                                                         constants::enc_a_pin,
                                                         constants::enc_b_pin,
@@ -17,20 +17,33 @@ StandaloneController::StandaloneController() :
                                                         constants::btn_int,
                                                         constants::standalone_update_period))
 {
-  display_label1_ptr_ = &(standalone_interface_.createDisplayLabel());
-  display_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
-  interactive_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
-  interactive_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
 }
 
-void StandaloneController::init()
+void Controller::setup()
 {
+  // Pin Setup
+
   // Device Info
   modular_device.setName(constants::device_name);
   modular_device.setModelNumber(constants::model_number);
   modular_device.setFirmwareNumber(constants::firmware_number);
 
+  // Saved Variables
+
+  // Parameters
+
+  // Methods
+
+  // Start ModularDevice Server
+  modular_device.startServer(constants::baudrate);
+
   // Standalone Interface
+  standalone_interface_.setup();
+  display_label1_ptr_ = &(standalone_interface_.createDisplayLabel());
+  display_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
+  interactive_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
+  interactive_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
+
   display_label1_ptr_->setDisplayPosition(constants::display_label1_display_position);
   display_label1_ptr_->setFlashString(constants::display_label1_string);
 
@@ -48,9 +61,10 @@ void StandaloneController::init()
   standalone_interface_.enable();
 }
 
-void StandaloneController::update()
+void Controller::update()
 {
+  modular_device.handleServerRequests();
   standalone_interface_.update();
 }
 
-StandaloneController standalone_controller;
+Controller controller;

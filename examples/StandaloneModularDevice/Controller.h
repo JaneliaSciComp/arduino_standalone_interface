@@ -1,21 +1,22 @@
 // ----------------------------------------------------------------------------
-// StandaloneController.h
+// Controller.h
 //
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#ifndef STANDALONE_CONTROLLER_H
-#define STANDALONE_CONTROLLER_H
-#include "Constants.h"
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 #include "ModularDevice.h"
 #include "StandaloneInterface.h"
+#include "Constants.h"
+#include "Callbacks.h"
 
 
-class StandaloneController
+class Controller
 {
 public:
-  StandaloneController();
-  void init();
+  Controller();
+  void setup();
   void update();
 
 private:
@@ -26,6 +27,6 @@ private:
   Standalone::InteractiveVariable *interactive_var2_ptr_;
 };
 
-extern StandaloneController standalone_controller;
+extern Controller controller;
 
 #endif

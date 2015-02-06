@@ -10,18 +10,17 @@
 #include "StandaloneInterface.h"
 #include "Constants.h"
 #include "Callbacks.h"
-#include "StandaloneController.h"
+#include "Controller.h"
+
 
 // See README.md for more information
 
 void setup()
 {
-  standalone_controller.init();
-  modular_device.startServer(constants::baudrate);
+  controller.setup();
 }
 
 void loop()
 {
-  standalone_controller.update();
-  modular_device.handleServerRequests();
+  controller.update();
 }

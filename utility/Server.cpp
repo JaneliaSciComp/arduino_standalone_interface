@@ -30,6 +30,10 @@ Server::Server(HardwareSerial &serial,
   btn_int_(btn_int),
   update_period_(update_period)
 {
+}
+
+void Server::setup()
+{
   display_.init();
   disable();
   time_last_update_ = millis();
@@ -39,6 +43,16 @@ Server::Server(HardwareSerial &serial,
   attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
 
   display_labels_dirty_ = true;
+}
+
+void Server::enable()
+{
+  enabled_ = true;
+}
+
+void Server::disable()
+{
+  enabled_ = false;
 }
 
 void Server::update()
@@ -102,16 +116,6 @@ void Server::update()
     InteractiveVariable &int_var = interactive_variable_vector_[Server::interactive_variable_index_];
     display_.setCursor(int_var.getDisplayPosition());
   }
-}
-
-void Server::enable()
-{
-  enabled_ = true;
-}
-
-void Server::disable()
-{
-  enabled_ = false;
 }
 
 DisplayLabel& Server::createDisplayLabel()
