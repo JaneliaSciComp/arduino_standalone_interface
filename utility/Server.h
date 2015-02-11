@@ -38,7 +38,7 @@ public:
          const int btn_int,
          const int led_pwr_pin,
          const int update_period);
-  void setup();
+  void setup(int frame_count);
   void enable();
   void disable();
   void update();
@@ -54,16 +54,21 @@ private:
   const int btn_int_;
   const int led_pwr_pin_;
   const int update_period_;
+  boolean setup_;
   boolean enabled_;
   boolean led_off_;
   unsigned long time_last_update_;
+  uint8_t frame_count_;
+  InteractiveVariable *frame_var_ptr_;
   std::vector<DisplayLabel> display_label_vector_;
   std::vector<DisplayVariable> display_variable_vector_;
   std::vector<InteractiveVariable> interactive_variable_vector_;
+  int interactive_variable_count_;
+  int interactive_variable_index_;
   boolean display_labels_dirty_;
-  static int interactive_variable_count_;
-  static volatile int interactive_variable_index_;
-  static volatile boolean interactive_variable_index_changed_;
+  static const int FRAME_VAR_DISPLAY_POSITION = 0;
+  static const int FRAME_VAR_DISPLAY_WIDTH = 1;
+  static volatile boolean enc_btn_pressed_;
   static void encBtnIsr();
   void ledOn();
   void ledOff();

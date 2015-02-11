@@ -31,8 +31,10 @@ public:
   void setRightJustify();
   boolean checkLeftJustify();
   virtual String getDisplayString() {};
-  void updateOnDisplay(NewhavenDisplay &display);
+  void updateOnDisplay(NewhavenDisplay &display, int frame);
   void addToFrame(int frame);
+  void addToAllFrames();
+  void removeFromFrame(int frame);
   boolean inFrame(int frame);
 private:
   typedef uint8_t frames_t;

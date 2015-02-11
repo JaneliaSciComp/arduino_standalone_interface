@@ -27,6 +27,8 @@ extern const int btn_int;
 extern const int led_pwr_pin;
 extern const int standalone_update_period;
 
+extern const uint8_t frame_count;
+
 extern const uint8_t display_label1_display_position;
 extern const uint8_t display_label2_display_position;
 extern const uint8_t display_label3_display_position;

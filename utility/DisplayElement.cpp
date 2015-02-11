@@ -53,17 +53,20 @@ boolean DisplayElement::checkLeftJustify()
   return left_justify_;
 }
 
-void DisplayElement::updateOnDisplay(NewhavenDisplay &display)
+void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
 {
-  display.setCursor(getDisplayPosition());
-  uint8_t display_width = getDisplayWidth();
-  if (checkLeftJustify())
+  if (inFrame(frame))
   {
-    display.printPadRight(getDisplayString(),display_width);
-  }
-  else
-  {
-    display.printPadLeft(getDisplayString(),display_width);
+    display.setCursor(getDisplayPosition());
+    uint8_t display_width = getDisplayWidth();
+    if (checkLeftJustify())
+    {
+      display.printPadRight(getDisplayString(),display_width);
+    }
+    else
+    {
+      display.printPadLeft(getDisplayString(),display_width);
+    }
   }
 }
 
@@ -71,6 +74,18 @@ void DisplayElement::addToFrame(int frame)
 {
   frames_t bit = 1;
   frames_ |= (1 << frame);
+}
+
+void DisplayElement::addToAllFrames()
+{
+  frames_t frames = 0;
+  frames_ = frames - 1;
+}
+
+void DisplayElement::removeFromFrame(int frame)
+{
+  frames_t bit = 1;
+  frames_ &= ~(1 << frame);
 }
 
 boolean DisplayElement::inFrame(int frame)

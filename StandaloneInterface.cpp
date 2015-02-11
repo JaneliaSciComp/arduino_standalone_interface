@@ -31,9 +31,9 @@ StandaloneInterface::StandaloneInterface(HardwareSerial &serial,
 {
 }
 
-void StandaloneInterface::setup()
+void StandaloneInterface::setup(int frame_count)
 {
-  server_.setup();
+  server_.setup(frame_count);
 }
 
 void StandaloneInterface::enable()

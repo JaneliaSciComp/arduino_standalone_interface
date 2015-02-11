@@ -24,7 +24,7 @@ public:
                       const int btn_int,
                       const int led_pwr_pin,
                       const int update_period);
-  void setup();
+  void setup(int frame_count);
   void enable();
   void disable();
   void update();

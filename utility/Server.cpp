@@ -10,9 +10,7 @@
 
 namespace Standalone
 {
-int Server::interactive_variable_count_ = 0;
-volatile int Server::interactive_variable_index_ = -1;
-volatile boolean Server::interactive_variable_index_changed_ = false;
+volatile boolean Server::enc_btn_pressed_ = false;
 
 Server::Server(HardwareSerial &serial,
                const int enc_a_pin,
@@ -32,26 +30,45 @@ Server::Server(HardwareSerial &serial,
   led_pwr_pin_(led_pwr_pin),
   update_period_(update_period)
 {
+  setup_ = false;
+  interactive_variable_count_ = 0;
+  interactive_variable_index_ = -1;
 }
 
-void Server::setup()
+void Server::setup(int frame_count)
 {
-  display_.setup();
-  disable();
-  time_last_update_ = millis();
+  if (!setup_)
+  {
+    setup_ = true;
+    display_.setup();
+    disable();
+    time_last_update_ = millis();
 
-  pinMode(enc_btn_pin_,INPUT);
-  digitalWrite(enc_btn_pin_,HIGH);
-  attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
+    pinMode(enc_btn_pin_,INPUT);
+    digitalWrite(enc_btn_pin_,HIGH);
+    attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
 
-  pinMode(led_pwr_pin_,INPUT);
+    pinMode(led_pwr_pin_,INPUT);
 
+    frame_var_ptr_ = &(createInteractiveVariable());
+    frame_var_ptr_->setDisplayPosition(FRAME_VAR_DISPLAY_POSITION);
+    frame_var_ptr_->setDisplayWidth(FRAME_VAR_DISPLAY_WIDTH);
+    frame_var_ptr_->addToAllFrames();
+  }
+  if (frame_count > DisplayElement::FRAMES_COUNT_MAX)
+  {
+    frame_count = DisplayElement::FRAMES_COUNT_MAX;
+  }
+  frame_count_ = frame_count;
+  frame_var_ptr_->setRange(0,frame_count-1);
   display_labels_dirty_ = true;
 }
 
 void Server::enable()
 {
   enabled_ = true;
+  display_.displayOn();
+  display_.blinkingCursorOn();
 }
 
 void Server::disable()
@@ -84,22 +101,54 @@ void Server::update()
   }
 
   time_last_update_ = time_now;
+  int frame_current = frame_var_ptr_->getValue();
+
   // Update current interactive variable values
-  if (Server::interactive_variable_index_ >= 0)
+  if (interactive_variable_index_ >= 0)
   {
-    InteractiveVariable &int_var = interactive_variable_vector_[Server::interactive_variable_index_];
-    if (!int_var.checkValueDirty() && !Server::interactive_variable_index_changed_)
+    InteractiveVariable *int_var_ptr = &(interactive_variable_vector_[interactive_variable_index_]);
+    boolean interactive_variable_index_changed = false;
+    if (Server::enc_btn_pressed_)
     {
-      int_var.updateWithEncoderValue(encoder_.read());
+      Server::enc_btn_pressed_ = false;
+      int int_var_prev = interactive_variable_index_;
+      do
+      {
+        interactive_variable_index_++;
+        if (interactive_variable_index_ >= interactive_variable_count_)
+        {
+          interactive_variable_index_ = 0;
+        }
+        int_var_ptr = &(interactive_variable_vector_[interactive_variable_index_]);
+      }
+      while (!int_var_ptr->inFrame(frame_current));
+      if (int_var_prev != interactive_variable_index_)
+      {
+        interactive_variable_index_changed = true;
+      }
+    }
+
+    if (!int_var_ptr->checkValueDirty() && !interactive_variable_index_changed)
+    {
+      int_var_ptr->updateWithEncoderValue(encoder_.read());
     }
     // updateWithEncoderValue may have dirtied value
-    if (int_var.checkValueDirty() || Server::interactive_variable_index_changed_)
+    if (int_var_ptr->checkValueDirty() || interactive_variable_index_changed)
     {
-      encoder_.write(int_var.getValue());
-      int_var.clearValueDirty();
-      Server::interactive_variable_index_changed_ = false;
+      encoder_.write(int_var_ptr->getValue());
+      int_var_ptr->clearValueDirty();
+      interactive_variable_index_changed = false;
     }
   }
+
+  int frame_prev = frame_current;
+  frame_current = frame_var_ptr_->getValue();
+  if (frame_current != frame_prev)
+  {
+    display_.clearScreen();
+    display_labels_dirty_ = true;
+  }
+
   // Update all display_labels on display if necessary
   if (display_labels_dirty_)
   {
@@ -108,7 +157,7 @@ void Server::update()
          display_label_it != display_label_vector_.end();
          ++display_label_it)
     {
-      display_label_it->updateOnDisplay(display_);
+      display_label_it->updateOnDisplay(display_,frame_current);
     }
   }
   // Update all display_variables on display
@@ -116,19 +165,19 @@ void Server::update()
        display_var_it != display_variable_vector_.end();
        ++display_var_it)
   {
-    display_var_it->updateOnDisplay(display_);
+    display_var_it->updateOnDisplay(display_,frame_current);
   }
   // Update all interactive_variables on display
   for (std::vector<InteractiveVariable>::iterator int_var_it = interactive_variable_vector_.begin();
        int_var_it != interactive_variable_vector_.end();
        ++int_var_it)
   {
-    int_var_it->updateOnDisplay(display_);
+    int_var_it->updateOnDisplay(display_,frame_current);
   }
   // Place the cursor back on the current interactive variable
-  if (Server::interactive_variable_index_ >= 0)
+  if (interactive_variable_index_ >= 0)
   {
-    InteractiveVariable &int_var = interactive_variable_vector_[Server::interactive_variable_index_];
+    InteractiveVariable &int_var = interactive_variable_vector_[interactive_variable_index_];
     display_.setCursor(int_var.getDisplayPosition());
   }
 }
@@ -149,37 +198,27 @@ DisplayVariable& Server::createDisplayVariable()
 
 InteractiveVariable& Server::createInteractiveVariable()
 {
+  if (!setup_)
+  {
+    setup(DisplayElement::FRAMES_COUNT_MAX);
+  }
   InteractiveVariable int_var;
   interactive_variable_vector_.push_back(int_var);
-  if (Server::interactive_variable_index_ < 0)
+  if (interactive_variable_index_ < 0)
   {
-    Server::interactive_variable_index_ = 0;
-    display_.blinkingCursorOn();
+    interactive_variable_index_ = 0;
   }
-  Server::interactive_variable_count_++;
+  interactive_variable_count_++;
   return interactive_variable_vector_.back();
 }
 
 void Server::encBtnIsr()
 {
-  if (Server::interactive_variable_index_ >= 0)
-  {
-    int int_var_prev = Server::interactive_variable_index_;
-    Server::interactive_variable_index_++;
-    if (Server::interactive_variable_index_ >= Server::interactive_variable_count_)
-    {
-      Server::interactive_variable_index_ = 0;
-    }
-    if (int_var_prev != Server::interactive_variable_index_)
-    {
-      Server::interactive_variable_index_changed_ = true;
-    }
-  }
+  Server::enc_btn_pressed_ = true;
 }
 
 void Server::ledOn()
 {
-  display_.displayOn();
   display_.setBrightnessDefault();
   led_off_ = false;
 }

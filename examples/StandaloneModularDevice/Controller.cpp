@@ -64,36 +64,42 @@ void Controller::setup()
   modular_device.startServer(constants::baudrate);
 
   // Standalone Interface
-  standalone_interface_.setup();
+  standalone_interface_.setup(constants::frame_count);
 
   // Display Labels
   Standalone::DisplayLabel& display_label1 = standalone_interface_.createDisplayLabel();
   display_label1.setDisplayPosition(constants::display_label1_display_position);
   display_label1.setFlashString(constants::display_label1_string);
+  display_label1.addToAllFrames();
 
   Standalone::DisplayLabel& display_label2 = standalone_interface_.createDisplayLabel();
   display_label2.setDisplayPosition(constants::display_label2_display_position);
   display_label2.setFlashString(constants::display_label2_string);
+  display_label2.addToFrame(0);
 
   Standalone::DisplayLabel& display_label3 = standalone_interface_.createDisplayLabel();
   display_label3.setDisplayPosition(constants::display_label3_display_position);
   display_label3.setFlashString(constants::display_label3_string);
+  display_label3.addToFrame(1);
 
   // Display Variables
   display_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
   display_var1_ptr_->setDisplayPosition(constants::display_var1_display_position);
   display_var1_ptr_->setValue(constants::display_var1_default_value);
+  display_var1_ptr_->addToAllFrames();
 
   // Interactive Variables
   interactive_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
   interactive_var1_ptr_->setDisplayPosition(constants::interactive_var1_display_position);
   interactive_var1_ptr_->setRange(constants::interactive_var1_min,constants::interactive_var1_max);
   interactive_var1_ptr_->setRightJustify();
+  interactive_var1_ptr_->addToFrame(0);
 
   interactive_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
   interactive_var2_ptr_->setDisplayPosition(constants::interactive_var2_display_position);
   interactive_var2_ptr_->setRange(constants::interactive_var2_min,constants::interactive_var2_max);
   interactive_var2_ptr_->setLeftJustify();
+  interactive_var2_ptr_->addToFrame(1);
 
   // Enable Standalone Interface
   standalone_interface_.enable();
