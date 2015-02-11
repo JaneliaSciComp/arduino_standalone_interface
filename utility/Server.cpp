@@ -21,6 +21,7 @@ Server::Server(HardwareSerial &serial,
                const int enc_btn_int,
                const int btn_pin,
                const int btn_int,
+               const int led_pwr_pin,
                const int update_period) :
   display_(serial),
   encoder_(enc_b_pin,enc_a_pin),
@@ -28,19 +29,22 @@ Server::Server(HardwareSerial &serial,
   enc_btn_int_(enc_btn_int),
   btn_pin_(btn_pin),
   btn_int_(btn_int),
+  led_pwr_pin_(led_pwr_pin),
   update_period_(update_period)
 {
 }
 
 void Server::setup()
 {
-  display_.init();
+  display_.setup();
   disable();
   time_last_update_ = millis();
 
   pinMode(enc_btn_pin_,INPUT);
   digitalWrite(enc_btn_pin_,HIGH);
   attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
+
+  pinMode(led_pwr_pin_,INPUT);
 
   display_labels_dirty_ = true;
 }
@@ -53,6 +57,8 @@ void Server::enable()
 void Server::disable()
 {
   enabled_ = false;
+  ledOff();
+  display_.displayOff();
 }
 
 void Server::update()
@@ -60,6 +66,15 @@ void Server::update()
   if (!enabled_)
   {
     return;
+  }
+
+  if (led_off_ && (digitalRead(led_pwr_pin_) == HIGH))
+  {
+    ledOn();
+  }
+  else if (!led_off_ && (digitalRead(led_pwr_pin_) == LOW))
+  {
+    ledOff();
   }
 
   unsigned long time_now = millis();
@@ -145,7 +160,8 @@ InteractiveVariable& Server::createInteractiveVariable()
   return interactive_variable_vector_.back();
 }
 
-void Server::encBtnIsr() {
+void Server::encBtnIsr()
+{
   if (Server::interactive_variable_index_ >= 0)
   {
     int int_var_prev = Server::interactive_variable_index_;
@@ -159,5 +175,18 @@ void Server::encBtnIsr() {
       Server::interactive_variable_index_changed_ = true;
     }
   }
+}
+
+void Server::ledOn()
+{
+  display_.displayOn();
+  display_.setBrightnessDefault();
+  led_off_ = false;
+}
+
+void Server::ledOff()
+{
+  display_.setBrightness(0);
+  led_off_ = true;
 }
 }

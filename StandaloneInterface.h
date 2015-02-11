@@ -22,6 +22,7 @@ public:
                       const int enc_btn_int,
                       const int btn_pin,
                       const int btn_int,
+                      const int led_pwr_pin,
                       const int update_period);
   void setup();
   void enable();

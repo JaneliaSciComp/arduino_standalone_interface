@@ -36,6 +36,7 @@ public:
          const int enc_btn_int,
          const int btn_pin,
          const int btn_int,
+         const int led_pwr_pin,
          const int update_period);
   void setup();
   void enable();
@@ -51,8 +52,10 @@ private:
   const int enc_btn_int_;
   const int btn_pin_;
   const int btn_int_;
+  const int led_pwr_pin_;
   const int update_period_;
   boolean enabled_;
+  boolean led_off_;
   unsigned long time_last_update_;
   std::vector<DisplayLabel> display_label_vector_;
   std::vector<DisplayVariable> display_variable_vector_;
@@ -62,6 +65,8 @@ private:
   static volatile int interactive_variable_index_;
   static volatile boolean interactive_variable_index_changed_;
   static void encBtnIsr();
+  void ledOn();
+  void ledOff();
 };
 }
 #endif

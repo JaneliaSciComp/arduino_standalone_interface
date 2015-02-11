@@ -15,6 +15,7 @@ DisplayElement::DisplayElement()
   display_position_ = 0;
   setDisplayWidth();
   setLeftJustify();
+  frames_ = 0;
 }
 
 void DisplayElement::setDisplayPosition(const uint8_t display_position)
@@ -64,5 +65,17 @@ void DisplayElement::updateOnDisplay(NewhavenDisplay &display)
   {
     display.printPadLeft(getDisplayString(),display_width);
   }
+}
+
+void DisplayElement::addToFrame(int frame)
+{
+  frames_t bit = 1;
+  frames_ |= (1 << frame);
+}
+
+boolean DisplayElement::inFrame(int frame)
+{
+  frames_t bit = 1;
+  return frames_ & (1 << frame);
 }
 }

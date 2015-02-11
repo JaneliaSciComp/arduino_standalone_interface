@@ -22,6 +22,7 @@ class DisplayElement
 {
 public:
   DisplayElement();
+  static const uint8_t FRAMES_COUNT_MAX = 8;
   void setDisplayPosition(const uint8_t display_position);
   uint8_t getDisplayPosition();
   void setDisplayWidth(const uint8_t display_width=3);
@@ -31,10 +32,14 @@ public:
   boolean checkLeftJustify();
   virtual String getDisplayString() {};
   void updateOnDisplay(NewhavenDisplay &display);
+  void addToFrame(int frame);
+  boolean inFrame(int frame);
 private:
+  typedef uint8_t frames_t;
   uint8_t display_position_;
   uint8_t display_width_;
   boolean left_justify_;
+  uint8_t frames_;
 };
 }
 #endif

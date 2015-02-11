@@ -15,6 +15,7 @@ Controller::Controller() :
                                                         constants::enc_btn_int,
                                                         constants::btn_pin,
                                                         constants::btn_int,
+                                                        constants::led_pwr_pin,
                                                         constants::standalone_update_period))
 {
 }

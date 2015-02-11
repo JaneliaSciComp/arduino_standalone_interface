@@ -23,6 +23,7 @@ const int enc_btn_pin = 19;
 const int enc_btn_int = 4;
 const int btn_pin = 21;
 const int btn_int = 2;
+const int led_pwr_pin = 18;
 const int standalone_update_period = 300;
 
 const uint8_t display_label1_display_position = 0;
