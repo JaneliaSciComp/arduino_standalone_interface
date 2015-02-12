@@ -13,14 +13,15 @@ namespace Standalone
 DisplayVariable::DisplayVariable()
 {
   value_ = 0;
+  setDisplayWidth(DISPLAY_WIDTH_DEFAULT);
 }
 
-void DisplayVariable::setValue(uint8_t value)
+void DisplayVariable::setValue(int value)
 {
   value_ = value;
 }
 
-uint8_t DisplayVariable::getValue()
+int DisplayVariable::getValue()
 {
   return value_;
 }

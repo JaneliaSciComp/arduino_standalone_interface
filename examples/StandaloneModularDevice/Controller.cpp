@@ -111,7 +111,7 @@ void Controller::update()
   standalone_interface_.update();
 }
 
-void Controller::setDisplayVariable1(uint8_t value)
+void Controller::setDisplayVariable1(int value)
 {
   display_var1_ptr_->setValue(value);
 }

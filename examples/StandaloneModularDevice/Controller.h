@@ -7,6 +7,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 #include "ModularDevice.h"
+#include "Flash.h"
 #include "StandaloneInterface.h"
 #include "Constants.h"
 #include "Callbacks.h"
@@ -18,7 +19,7 @@ public:
   Controller();
   void setup();
   void update();
-  void setDisplayVariable1(uint8_t value);
+  void setDisplayVariable1(int value);
   void setInteractiveVariable1(uint8_t value);
   uint8_t getInteractiveVariable1();
   void setInteractiveVariable2(uint8_t value);

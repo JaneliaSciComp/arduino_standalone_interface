@@ -32,11 +32,11 @@ const uint8_t display_label1_display_position = 20;
 const uint8_t display_label2_display_position = 40;
 const uint8_t display_label3_display_position = 60;
 
-const uint8_t display_variable_min = 0;
-const uint8_t display_variable_max = 255;
+const int display_variable_min = -999;
+const int display_variable_max = 999;
 
 const uint8_t display_var1_display_position = 29;
-const uint8_t display_var1_default_value = 11;
+const int display_var1_default_value = 11;
 
 const uint8_t interactive_var1_display_position = 49;
 const uint8_t interactive_var1_min = 7;

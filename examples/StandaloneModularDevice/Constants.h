@@ -33,11 +33,11 @@ extern const uint8_t display_label1_display_position;
 extern const uint8_t display_label2_display_position;
 extern const uint8_t display_label3_display_position;
 
-extern const uint8_t display_variable_min;
-extern const uint8_t display_variable_max;
+extern const int display_variable_min;
+extern const int display_variable_max;
 
 extern const uint8_t display_var1_display_position;
-extern const uint8_t display_var1_default_value;
+extern const int display_var1_default_value;
 
 extern const uint8_t interactive_var1_display_position;
 extern const uint8_t interactive_var1_min;

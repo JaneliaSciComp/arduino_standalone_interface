@@ -14,6 +14,7 @@ InteractiveVariable::InteractiveVariable()
 {
   min_ = 0;
   max_ = 255;
+  setDisplayWidth(DISPLAY_WIDTH_DEFAULT);
   value_dirty_ = true;
 }
 

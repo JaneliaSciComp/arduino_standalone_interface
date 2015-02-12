@@ -25,6 +25,7 @@ public:
   uint8_t getMax();
   void setValue(uint8_t value);
 private:
+  static const uint8_t DISPLAY_WIDTH_DEFAULT=3;
   uint8_t min_;
   uint8_t max_;
   boolean value_dirty_;

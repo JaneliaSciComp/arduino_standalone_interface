@@ -21,11 +21,12 @@ class DisplayVariable : public DisplayElement
 {
 public:
   DisplayVariable();
-  void setValue(uint8_t value);
-  uint8_t getValue();
+  void setValue(int value);
+  int getValue();
   String getDisplayString();
 private:
-  uint8_t value_;
+  static const uint8_t DISPLAY_WIDTH_DEFAULT=6;
+  int value_;
 };
 }
 #endif
