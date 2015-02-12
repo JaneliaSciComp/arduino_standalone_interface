@@ -64,7 +64,7 @@ void Controller::setup()
   modular_device.startServer(constants::baudrate);
 
   // Standalone Interface
-  standalone_interface_.setup(constants::frame_count);
+  standalone_interface_.setup(constants::frame_name_array,constants::FRAME_COUNT);
 
   // Display Labels
   Standalone::DisplayLabel& display_label1 = standalone_interface_.createDisplayLabel();

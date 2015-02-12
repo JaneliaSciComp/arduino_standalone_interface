@@ -33,9 +33,10 @@ Server::Server(HardwareSerial &serial,
   setup_ = false;
   interactive_variable_count_ = 0;
   interactive_variable_index_ = -1;
+  frame_name_array_ = NULL;
 }
 
-void Server::setup(int frame_count)
+void Server::setup(const uint8_t frame_count)
 {
   if (!setup_)
   {
@@ -57,11 +58,22 @@ void Server::setup(int frame_count)
   }
   if (frame_count > DisplayElement::FRAMES_COUNT_MAX)
   {
-    frame_count = DisplayElement::FRAMES_COUNT_MAX;
+    frame_count_ = DisplayElement::FRAMES_COUNT_MAX;
   }
-  frame_count_ = frame_count;
+  else
+  {
+    frame_count_ = frame_count;
+  }
   frame_var_ptr_->setRange(0,frame_count-1);
+  frame_var_ptr_->setFlashStringArray(frame_name_array_,frame_count_);
   display_labels_dirty_ = true;
+}
+
+void Server::setup(const _FLASH_STRING frame_name_array[],
+                   const uint8_t frame_count)
+{
+  frame_name_array_ = frame_name_array;
+  setup(frame_count);
 }
 
 void Server::enable()

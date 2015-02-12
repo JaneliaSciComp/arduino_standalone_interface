@@ -38,7 +38,9 @@ public:
          const int btn_int,
          const int led_pwr_pin,
          const int update_period);
-  void setup(int frame_count);
+  void setup(const uint8_t frame_count);
+  void setup(const _FLASH_STRING frame_name_array[],
+             const uint8_t frame_count);
   void enable();
   void disable();
   void update();
@@ -60,6 +62,7 @@ private:
   unsigned long time_last_update_;
   uint8_t frame_count_;
   InteractiveVariable *frame_var_ptr_;
+  const _FLASH_STRING *frame_name_array_;
   std::vector<DisplayLabel> display_label_vector_;
   std::vector<DisplayVariable> display_variable_vector_;
   std::vector<InteractiveVariable> interactive_variable_vector_;

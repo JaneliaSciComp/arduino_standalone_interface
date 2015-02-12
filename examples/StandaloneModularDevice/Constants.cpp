@@ -26,8 +26,6 @@ const int btn_int = 2;
 const int led_pwr_pin = 18;
 const int standalone_update_period = 300;
 
-const uint8_t frame_count = 2;
-
 const uint8_t display_label1_display_position = 20;
 const uint8_t display_label2_display_position = 40;
 const uint8_t display_label3_display_position = 60;
@@ -58,4 +56,12 @@ FLASH_STRING(get_interactive_variable2_method_name,"getInteractiveVariable2");
 FLASH_STRING(display_value_parameter_name,"display_value");
 FLASH_STRING(interactive_variable1_parameter_name,"interactive_variable1");
 FLASH_STRING(interactive_variable2_parameter_name,"interactive_variable2");
+
+FLASH_STRING(frame0_name,"DspVar1+IntVar1");
+FLASH_STRING(frame1_name,"DspVar1-IntVar2");
+const _FLASH_STRING frame_name_array[] =
+  {
+    frame0_name,
+    frame1_name,
+  };
 }

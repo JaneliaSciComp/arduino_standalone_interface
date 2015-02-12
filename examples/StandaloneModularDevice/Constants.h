@@ -11,6 +11,8 @@
 
 namespace constants
 {
+enum {FRAME_COUNT=2};
+
 extern const int baudrate;
 
 extern const int model_number;
@@ -26,8 +28,6 @@ extern const int btn_pin;
 extern const int btn_int;
 extern const int led_pwr_pin;
 extern const int standalone_update_period;
-
-extern const uint8_t frame_count;
 
 extern const uint8_t display_label1_display_position;
 extern const uint8_t display_label2_display_position;
@@ -59,5 +59,9 @@ extern _FLASH_STRING get_interactive_variable2_method_name;
 extern _FLASH_STRING display_value_parameter_name;
 extern _FLASH_STRING interactive_variable1_parameter_name;
 extern _FLASH_STRING interactive_variable2_parameter_name;
+
+extern _FLASH_STRING frame0_name;
+extern _FLASH_STRING frame1_name;
+extern const _FLASH_STRING frame_name_array[FRAME_COUNT];
 }
 #endif

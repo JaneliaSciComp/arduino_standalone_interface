@@ -30,7 +30,14 @@ uint8_t DisplayElement::getDisplayPosition()
 
 void DisplayElement::setDisplayWidth(const uint8_t display_width)
 {
-  display_width_ = display_width;
+  if (display_width <= DISPLAY_WIDTH_MAX)
+  {
+    display_width_ = display_width;
+  }
+  else
+  {
+    display_width_ = DISPLAY_WIDTH_MAX;
+  }
 }
 
 uint8_t DisplayElement::getDisplayWidth()

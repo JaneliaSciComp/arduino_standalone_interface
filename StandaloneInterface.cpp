@@ -31,9 +31,15 @@ StandaloneInterface::StandaloneInterface(HardwareSerial &serial,
 {
 }
 
-void StandaloneInterface::setup(int frame_count)
+void StandaloneInterface::setup(const uint8_t frame_count)
 {
   server_.setup(frame_count);
+}
+
+void StandaloneInterface::setup(const _FLASH_STRING frame_name_array[],
+                                const uint8_t frame_count)
+{
+  server_.setup(frame_name_array,frame_count);
 }
 
 void StandaloneInterface::enable()

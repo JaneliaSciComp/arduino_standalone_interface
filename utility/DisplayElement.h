@@ -23,6 +23,7 @@ class DisplayElement
 public:
   DisplayElement();
   static const uint8_t FRAMES_COUNT_MAX = 8;
+  static const uint8_t DISPLAY_WIDTH_MAX = 20;
   void setDisplayPosition(const uint8_t display_position);
   uint8_t getDisplayPosition();
   void setDisplayWidth(const uint8_t display_width=3);

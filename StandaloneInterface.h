@@ -24,7 +24,9 @@ public:
                       const int btn_int,
                       const int led_pwr_pin,
                       const int update_period);
-  void setup(int frame_count);
+  void setup(const uint8_t frame_count);
+  void setup(const _FLASH_STRING frame_name_array[],
+             const uint8_t frame_count);
   void enable();
   void disable();
   void update();
