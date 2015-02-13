@@ -26,20 +26,20 @@ const int btn_int = 2;
 const int led_pwr_pin = 18;
 const int standalone_update_period = 300;
 
-const uint8_t dsp_lbl1_display_position = 20;
-const uint8_t dsp_lbl2_display_position = 40;
+const uint8_t dsp_lbl1_display_position = 40;
+const uint8_t dsp_lbl2_display_position = 60;
 const uint8_t dsp_lbl3_display_position = 60;
 
-const uint8_t dsp_var1_display_position = 29;
+const uint8_t dsp_var1_display_position = 51;
 const int dsp_var1_default_value = 11;
 const int dsp_var1_min = -32768;
 const int dsp_var1_max = 32767;
 
-const uint8_t int_var1_display_position = 49;
+const uint8_t int_var1_display_position = 71;
 const uint8_t int_var1_min = 7;
 const uint8_t int_var1_max = 38;
 
-const uint8_t int_var2_display_position = 69;
+const uint8_t int_var2_display_position = 71;
 const uint8_t int_var2_min = 66;
 const uint8_t int_var2_max = 199;
 

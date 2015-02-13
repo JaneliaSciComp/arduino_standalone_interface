@@ -26,11 +26,10 @@ public:
   static const uint8_t DISPLAY_WIDTH_MAX = 20;
   void setDisplayPosition(const uint8_t display_position);
   uint8_t getDisplayPosition();
-  void setDisplayWidth(const uint8_t display_width=3);
+  void setDisplayWidth(const uint8_t display_width);
   uint8_t getDisplayWidth();
   void setLeftJustify();
   void setRightJustify();
-  boolean checkLeftJustify();
   virtual String getDisplayString() {};
   void updateOnDisplay(NewhavenDisplay &display, int frame);
   void addToFrame(int frame);

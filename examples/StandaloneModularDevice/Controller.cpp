@@ -76,14 +76,20 @@ void Controller::setup()
   Standalone::DisplayLabel& dsp_lbl1 = standalone_interface_.createDisplayLabel();
   dsp_lbl1.setDisplayPosition(constants::dsp_lbl1_display_position);
   dsp_lbl1.setFlashString(constants::dsp_lbl1_string);
+  // dsp_lbl1.setDisplayWidth(6);
+  // dsp_lbl1.setRightJustify();
 
   Standalone::DisplayLabel& dsp_lbl2 = standalone_interface_.createDisplayLabel();
   dsp_lbl2.setDisplayPosition(constants::dsp_lbl2_display_position);
   dsp_lbl2.setFlashString(constants::dsp_lbl2_string);
+  // dsp_lbl2.setDisplayWidth(6);
+  // dsp_lbl2.setRightJustify();
 
   Standalone::DisplayLabel& dsp_lbl3 = standalone_interface_.createDisplayLabel();
   dsp_lbl3.setDisplayPosition(constants::dsp_lbl3_display_position);
   dsp_lbl3.setFlashString(constants::dsp_lbl3_string);
+  // dsp_lbl3.setDisplayWidth(6);
+  // dsp_lbl3.setRightJustify();
 
   // Display Variables
   dsp_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
@@ -94,12 +100,10 @@ void Controller::setup()
   int_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
   int_var1_ptr_->setDisplayPosition(constants::int_var1_display_position);
   int_var1_ptr_->setRange(constants::int_var1_min,constants::int_var1_max);
-  int_var1_ptr_->setRightJustify();
 
   int_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
   int_var2_ptr_->setDisplayPosition(constants::int_var2_display_position);
   int_var2_ptr_->setRange(constants::int_var2_min,constants::int_var2_max);
-  int_var2_ptr_->setLeftJustify();
 
   // All Frames
   dsp_lbl1.addToAllFrames();

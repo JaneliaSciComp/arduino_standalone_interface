@@ -13,14 +13,21 @@ namespace Standalone
 DisplayElement::DisplayElement()
 {
   display_position_ = 0;
-  setDisplayWidth();
+  setDisplayWidth(0);
   setLeftJustify();
   frames_ = 0;
 }
 
 void DisplayElement::setDisplayPosition(const uint8_t display_position)
 {
-  display_position_ = display_position;
+  if (left_justify_)
+  {
+    display_position_ = display_position;
+  }
+  else
+  {
+    display_position_ = display_position - display_width_;
+  }
 }
 
 uint8_t DisplayElement::getDisplayPosition()
@@ -30,6 +37,11 @@ uint8_t DisplayElement::getDisplayPosition()
 
 void DisplayElement::setDisplayWidth(const uint8_t display_width)
 {
+  if (!left_justify_)
+  {
+    display_position_ -= display_width_;
+  }
+
   if (display_width <= DISPLAY_WIDTH_MAX)
   {
     display_width_ = display_width;
@@ -37,6 +49,11 @@ void DisplayElement::setDisplayWidth(const uint8_t display_width)
   else
   {
     display_width_ = DISPLAY_WIDTH_MAX;
+  }
+
+  if (!left_justify_)
+  {
+    display_position_ += display_width_;
   }
 }
 
@@ -47,17 +64,20 @@ uint8_t DisplayElement::getDisplayWidth()
 
 void DisplayElement::setLeftJustify()
 {
-  left_justify_ = true;
+  if (!left_justify_)
+  {
+    left_justify_ = true;
+    display_position_ -= display_width_;
+  }
 }
 
 void DisplayElement::setRightJustify()
 {
-  left_justify_ = false;
-}
-
-boolean DisplayElement::checkLeftJustify()
-{
-  return left_justify_;
+  if (left_justify_)
+  {
+    left_justify_ = false;
+    display_position_ += display_width_;
+  }
 }
 
 void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
@@ -66,7 +86,7 @@ void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
   {
     display.setCursor(getDisplayPosition());
     uint8_t display_width = getDisplayWidth();
-    if (checkLeftJustify())
+    if (left_justify_)
     {
       display.printPadRight(getDisplayString(),display_width);
     }
