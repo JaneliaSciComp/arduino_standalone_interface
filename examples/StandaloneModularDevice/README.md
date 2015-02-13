@@ -42,11 +42,12 @@ Example Response:
     "getMemoryFree",
     "resetDefaults",
     "setSerialNumber",
+    "getDisplayVariable1",
     "setDisplayVariable1",
-    "setInteractiveVariable1",
     "getInteractiveVariable1",
-    "setInteractiveVariable2",
-    "getInteractiveVariable2"
+    "setInteractiveVariable1",
+    "getInteractiveVariable2",
+    "setInteractiveVariable2"
   ],
   "status":success
 }
