@@ -48,17 +48,18 @@ FLASH_STRING(device_name,"standalone_modular_device");
 FLASH_STRING(display_label1_string,"dsp_var1");
 FLASH_STRING(display_label2_string,"int_var1");
 FLASH_STRING(display_label3_string,"int_var2");
+FLASH_STRING(get_display_variable1_method_name,"getDisplayVariable1");
 FLASH_STRING(set_display_variable1_method_name,"setDisplayVariable1");
-FLASH_STRING(set_interactive_variable1_method_name,"setInteractiveVariable1");
 FLASH_STRING(get_interactive_variable1_method_name,"getInteractiveVariable1");
-FLASH_STRING(set_interactive_variable2_method_name,"setInteractiveVariable2");
+FLASH_STRING(set_interactive_variable1_method_name,"setInteractiveVariable1");
 FLASH_STRING(get_interactive_variable2_method_name,"getInteractiveVariable2");
+FLASH_STRING(set_interactive_variable2_method_name,"setInteractiveVariable2");
 FLASH_STRING(display_value_parameter_name,"display_value");
 FLASH_STRING(interactive_variable1_parameter_name,"interactive_variable1");
 FLASH_STRING(interactive_variable2_parameter_name,"interactive_variable2");
 
-FLASH_STRING(frame0_name,"DspVar1+IntVar1");
-FLASH_STRING(frame1_name,"DspVar1-IntVar2");
+FLASH_STRING(frame0_name,"dsp_var1 + int_var1");
+FLASH_STRING(frame1_name,"dsp_var1 - int_var2");
 const _FLASH_STRING frame_name_array[] =
   {
     frame0_name,

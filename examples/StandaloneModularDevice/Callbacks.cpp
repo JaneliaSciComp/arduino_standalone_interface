@@ -26,10 +26,22 @@ namespace callbacks
 // modular_device.getSavedVariableValue type must match the saved variable default type
 // modular_device.setSavedVariableValue type must match the saved variable default type
 
+void getDisplayVariable1Callback()
+{
+  int value = controller.getDisplayVariable1();
+  modular_device.addToResponse("value",value);
+}
+
 void setDisplayVariable1Callback()
 {
   long display_value = modular_device.getParameterValue(constants::display_value_parameter_name);
   controller.setDisplayVariable1(display_value);
+}
+
+void getInteractiveVariable1Callback()
+{
+  uint8_t value = controller.getInteractiveVariable1();
+  modular_device.addToResponse("value",value);
 }
 
 void setInteractiveVariable1Callback()
@@ -38,9 +50,9 @@ void setInteractiveVariable1Callback()
   controller.setInteractiveVariable1(int_var);
 }
 
-void getInteractiveVariable1Callback()
+void getInteractiveVariable2Callback()
 {
-  uint8_t value = controller.getInteractiveVariable1();
+  uint8_t value = controller.getInteractiveVariable2();
   modular_device.addToResponse("value",value);
 }
 
@@ -50,10 +62,17 @@ void setInteractiveVariable2Callback()
   controller.setInteractiveVariable2(int_var);
 }
 
-void getInteractiveVariable2Callback()
+void addIntVar1ToDspVar1Callback()
 {
-  uint8_t value = controller.getInteractiveVariable2();
-  modular_device.addToResponse("value",value);
+  int dis_var1 = controller.getDisplayVariable1();
+  uint8_t int_var1 = controller.getInteractiveVariable1();
+  controller.setDisplayVariable1(dis_var1+int_var1);
 }
 
+void subtractIntVar2FromDspVar1Callback()
+{
+  int dis_var1 = controller.getDisplayVariable1();
+  uint8_t int_var2 = controller.getInteractiveVariable2();
+  controller.setDisplayVariable1(dis_var1-int_var2);
+}
 }

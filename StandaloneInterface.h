@@ -12,7 +12,7 @@
 
 namespace Standalone
 {
-typedef void(*FunctionPointer)();
+typedef void(*Callback)();
 
 class StandaloneInterface
 {
@@ -35,10 +35,7 @@ public:
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
-  void addFunctionToFrame(FunctionPointer frame_function, uint8_t frame);
-  void executeCurrentFrameFunction();
-  uint8_t getCurrentFrame();
-  String getCurrentFrameDisplayString();
+  void attachCallbackToFrame(Callback callback, uint8_t frame);
 private:
   Server server_;
 };

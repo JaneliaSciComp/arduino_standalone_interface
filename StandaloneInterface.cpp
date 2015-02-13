@@ -72,23 +72,8 @@ InteractiveVariable& StandaloneInterface::createInteractiveVariable()
   return server_.createInteractiveVariable();
 }
 
-void StandaloneInterface::addFunctionToFrame(FunctionPointer frame_function, uint8_t frame)
+void StandaloneInterface::attachCallbackToFrame(Callback callback, uint8_t frame)
 {
-  server_.addFunctionToFrame(frame_function,frame);
-}
-
-void StandaloneInterface::executeCurrentFrameFunction()
-{
-  server_.executeCurrentFrameFunction();
-}
-
-uint8_t StandaloneInterface::getCurrentFrame()
-{
-  return server_.getCurrentFrame();
-}
-
-String StandaloneInterface::getCurrentFrameDisplayString()
-{
-  return server_.getCurrentFrameDisplayString();
+  server_.attachCallbackToFrame(callback,frame);
 }
 }

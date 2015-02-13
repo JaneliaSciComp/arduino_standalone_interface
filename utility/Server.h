@@ -25,8 +25,8 @@
 
 namespace Standalone
 {
-typedef void(*FunctionPointer)();
-void defaultFrameFunction();
+typedef void(*Callback)();
+void defaultCallback();
 
 class Server
 {
@@ -49,10 +49,7 @@ public:
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
-  void addFunctionToFrame(FunctionPointer frame_function, uint8_t frame);
-  void executeCurrentFrameFunction();
-  uint8_t getCurrentFrame();
-  String getCurrentFrameDisplayString();
+  void attachCallbackToFrame(Callback callback, uint8_t frame);
 private:
   NewhavenDisplay display_;
   Encoder encoder_;
@@ -79,7 +76,8 @@ private:
   static const int FRAME_VAR_DISPLAY_WIDTH = 1;
   static volatile boolean enc_btn_pressed_;
   static void encBtnIsr();
-  static FunctionPointer frame_function_ptr_array_[DisplayElement::FRAMES_COUNT_MAX];
+  static void btnIsr();
+  static Callback callback_array_[DisplayElement::FRAMES_COUNT_MAX];
   static uint8_t frame_current_;
   void ledOn();
   void ledOff();

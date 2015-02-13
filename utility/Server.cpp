@@ -10,12 +10,12 @@
 
 namespace Standalone
 {
-void defaultFrameFunction()
+void defaultCallback()
 {
 }
 volatile boolean Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
-FunctionPointer Server::frame_function_ptr_array_[DisplayElement::FRAMES_COUNT_MAX];
+Callback Server::callback_array_[DisplayElement::FRAMES_COUNT_MAX];
 
 Server::Server(HardwareSerial &serial,
                const int enc_a_pin,
@@ -55,6 +55,10 @@ void Server::setup(const uint8_t frame_count)
     digitalWrite(enc_btn_pin_,HIGH);
     attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
 
+    pinMode(btn_pin_,INPUT);
+    digitalWrite(btn_pin_,HIGH);
+    attachInterrupt(btn_int_,btnIsr,FALLING);
+
     pinMode(led_pwr_pin_,INPUT);
 
     frame_var_ptr_ = &(createInteractiveVariable());
@@ -64,7 +68,7 @@ void Server::setup(const uint8_t frame_count)
 
     for (uint8_t frame=0; frame < DisplayElement::FRAMES_COUNT_MAX; frame++)
     {
-      Server::frame_function_ptr_array_[frame] = defaultFrameFunction;
+      Server::callback_array_[frame] = defaultCallback;
     }
   }
   if (frame_count > DisplayElement::FRAMES_COUNT_MAX)
@@ -235,31 +239,22 @@ InteractiveVariable& Server::createInteractiveVariable()
   return interactive_variable_vector_.back();
 }
 
-void Server::addFunctionToFrame(FunctionPointer frame_function, uint8_t frame)
+void Server::attachCallbackToFrame(Callback callback, uint8_t frame)
 {
   if (frame < DisplayElement::FRAMES_COUNT_MAX)
   {
-    Server::frame_function_ptr_array_[frame] = frame_function;
+    Server::callback_array_[frame] = callback;
   }
-}
-
-void Server::executeCurrentFrameFunction()
-{
-}
-
-uint8_t Server::getCurrentFrame()
-{
-  return Server::frame_current_;
-}
-
-String Server::getCurrentFrameDisplayString()
-{
-  return String("");
 }
 
 void Server::encBtnIsr()
 {
   Server::enc_btn_pressed_ = true;
+}
+
+void Server::btnIsr()
+{
+  (*Server::callback_array_[Server::frame_current_])();
 }
 
 void Server::ledOn()
