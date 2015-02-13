@@ -42,6 +42,7 @@ Example Response:
     "getMemoryFree",
     "resetDefaults",
     "setSerialNumber",
+    "executeStandaloneCallback",
     "getDisplayVariable1",
     "setDisplayVariable1",
     "getInteractiveVariable1",

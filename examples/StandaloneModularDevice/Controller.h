@@ -19,6 +19,7 @@ public:
   Controller();
   void setup();
   void update();
+  void executeStandaloneCallback();
   int getDisplayVariable1();
   void setDisplayVariable1(int value);
   uint8_t getInteractiveVariable1();

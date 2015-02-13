@@ -48,6 +48,7 @@ FLASH_STRING(device_name,"standalone_modular_device");
 FLASH_STRING(display_label1_string,"dsp_var1");
 FLASH_STRING(display_label2_string,"int_var1");
 FLASH_STRING(display_label3_string,"int_var2");
+FLASH_STRING(execute_standalone_callback_method_name,"executeStandaloneCallback");
 FLASH_STRING(get_display_variable1_method_name,"getDisplayVariable1");
 FLASH_STRING(set_display_variable1_method_name,"setDisplayVariable1");
 FLASH_STRING(get_interactive_variable1_method_name,"getInteractiveVariable1");

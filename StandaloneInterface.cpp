@@ -76,4 +76,9 @@ void StandaloneInterface::attachCallbackToFrame(Callback callback, uint8_t frame
 {
   server_.attachCallbackToFrame(callback,frame);
 }
+
+void StandaloneInterface::executeCurrentFrameCallback()
+{
+  server_.executeCurrentFrameCallback();
+}
 }

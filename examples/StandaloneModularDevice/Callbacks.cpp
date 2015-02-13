@@ -26,6 +26,11 @@ namespace callbacks
 // modular_device.getSavedVariableValue type must match the saved variable default type
 // modular_device.setSavedVariableValue type must match the saved variable default type
 
+void executeStandaloneCallbackCallback()
+{
+  controller.executeStandaloneCallback();
+}
+
 void getDisplayVariable1Callback()
 {
   int value = controller.getDisplayVariable1();

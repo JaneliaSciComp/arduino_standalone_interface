@@ -247,6 +247,11 @@ void Server::attachCallbackToFrame(Callback callback, uint8_t frame)
   }
 }
 
+void Server::executeCurrentFrameCallback()
+{
+  (*Server::callback_array_[Server::frame_current_])();
+}
+
 void Server::encBtnIsr()
 {
   Server::enc_btn_pressed_ = true;

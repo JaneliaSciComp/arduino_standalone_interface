@@ -15,6 +15,8 @@
 
 namespace callbacks
 {
+void executeStandaloneCallbackCallback();
+
 void getDisplayVariable1Callback();
 
 void setDisplayVariable1Callback();

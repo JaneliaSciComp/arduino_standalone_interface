@@ -51,6 +51,7 @@ extern _FLASH_STRING device_name;
 extern _FLASH_STRING display_label1_string;
 extern _FLASH_STRING display_label2_string;
 extern _FLASH_STRING display_label3_string;
+extern _FLASH_STRING execute_standalone_callback_method_name;
 extern _FLASH_STRING get_display_variable1_method_name;
 extern _FLASH_STRING set_display_variable1_method_name;
 extern _FLASH_STRING get_interactive_variable1_method_name;

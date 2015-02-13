@@ -42,6 +42,9 @@ void Controller::setup()
   interactive_variable2_parameter.setRange(constants::interactive_var2_min,constants::interactive_var2_max);
 
   // Methods
+  ModularDevice::Method& execute_standalone_callback_method = modular_device.createMethod(constants::execute_standalone_callback_method_name);
+  execute_standalone_callback_method.attachCallback(callbacks::executeStandaloneCallbackCallback);
+
   ModularDevice::Method& get_display_variable1_method = modular_device.createMethod(constants::get_display_variable1_method_name);
   get_display_variable1_method.attachCallback(callbacks::getDisplayVariable1Callback);
 
@@ -120,6 +123,11 @@ void Controller::update()
 {
   modular_device.handleServerRequests();
   standalone_interface_.update();
+}
+
+void Controller::executeStandaloneCallback()
+{
+  standalone_interface_.executeCurrentFrameCallback();
 }
 
 int Controller::getDisplayVariable1()

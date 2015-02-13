@@ -50,6 +50,7 @@ public:
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
   void attachCallbackToFrame(Callback callback, uint8_t frame);
+  void executeCurrentFrameCallback();
 private:
   NewhavenDisplay display_;
   Encoder encoder_;
