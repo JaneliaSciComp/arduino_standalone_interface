@@ -12,6 +12,8 @@
 
 namespace Standalone
 {
+typedef void(*FunctionPointer)();
+
 class StandaloneInterface
 {
 public:
@@ -33,6 +35,10 @@ public:
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
+  void addFunctionToFrame(FunctionPointer frame_function, uint8_t frame);
+  void executeCurrentFrameFunction();
+  uint8_t getCurrentFrame();
+  String getCurrentFrameDisplayString();
 private:
   Server server_;
 };
