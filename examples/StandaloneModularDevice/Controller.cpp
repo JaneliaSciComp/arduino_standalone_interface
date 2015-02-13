@@ -32,39 +32,39 @@ void Controller::setup()
   // Saved Variables
 
   // Parameters
-  ModularDevice::Parameter& display_value_parameter = modular_device.createParameter(constants::display_value_parameter_name);
-  display_value_parameter.setRange(constants::display_variable_min,constants::display_variable_max);
+  ModularDevice::Parameter& dsp_var1_parameter = modular_device.createParameter(constants::dsp_var1_parameter_name);
+  dsp_var1_parameter.setRange(constants::dsp_var1_min,constants::dsp_var1_max);
 
-  ModularDevice::Parameter& interactive_variable1_parameter = modular_device.createParameter(constants::interactive_variable1_parameter_name);
-  interactive_variable1_parameter.setRange(constants::interactive_var1_min,constants::interactive_var1_max);
+  ModularDevice::Parameter& int_var1_parameter = modular_device.createParameter(constants::int_var1_parameter_name);
+  int_var1_parameter.setRange(constants::int_var1_min,constants::int_var1_max);
 
-  ModularDevice::Parameter& interactive_variable2_parameter = modular_device.createParameter(constants::interactive_variable2_parameter_name);
-  interactive_variable2_parameter.setRange(constants::interactive_var2_min,constants::interactive_var2_max);
+  ModularDevice::Parameter& int_var2_parameter = modular_device.createParameter(constants::int_var2_parameter_name);
+  int_var2_parameter.setRange(constants::int_var2_min,constants::int_var2_max);
 
   // Methods
   ModularDevice::Method& execute_standalone_callback_method = modular_device.createMethod(constants::execute_standalone_callback_method_name);
   execute_standalone_callback_method.attachCallback(callbacks::executeStandaloneCallbackCallback);
 
-  ModularDevice::Method& get_display_variable1_method = modular_device.createMethod(constants::get_display_variable1_method_name);
-  get_display_variable1_method.attachCallback(callbacks::getDisplayVariable1Callback);
+  ModularDevice::Method& get_dsp_var1_method = modular_device.createMethod(constants::get_dsp_var1_method_name);
+  get_dsp_var1_method.attachCallback(callbacks::getDspVar1Callback);
 
-  ModularDevice::Method& set_display_variable1_method = modular_device.createMethod(constants::set_display_variable1_method_name);
-  set_display_variable1_method.attachCallback(callbacks::setDisplayVariable1Callback);
-  set_display_variable1_method.addParameter(display_value_parameter);
+  ModularDevice::Method& set_dsp_var1_method = modular_device.createMethod(constants::set_dsp_var1_method_name);
+  set_dsp_var1_method.attachCallback(callbacks::setDspVar1Callback);
+  set_dsp_var1_method.addParameter(dsp_var1_parameter);
 
-  ModularDevice::Method& get_interactive_variable1_method = modular_device.createMethod(constants::get_interactive_variable1_method_name);
-  get_interactive_variable1_method.attachCallback(callbacks::getInteractiveVariable1Callback);
+  ModularDevice::Method& get_int_var1_method = modular_device.createMethod(constants::get_int_var1_method_name);
+  get_int_var1_method.attachCallback(callbacks::getIntVar1Callback);
 
-  ModularDevice::Method& set_interactive_variable1_method = modular_device.createMethod(constants::set_interactive_variable1_method_name);
-  set_interactive_variable1_method.attachCallback(callbacks::setInteractiveVariable1Callback);
-  set_interactive_variable1_method.addParameter(interactive_variable1_parameter);
+  ModularDevice::Method& set_int_var1_method = modular_device.createMethod(constants::set_int_var1_method_name);
+  set_int_var1_method.attachCallback(callbacks::setIntVar1Callback);
+  set_int_var1_method.addParameter(int_var1_parameter);
 
-  ModularDevice::Method& get_interactive_variable2_method = modular_device.createMethod(constants::get_interactive_variable2_method_name);
-  get_interactive_variable2_method.attachCallback(callbacks::getInteractiveVariable2Callback);
+  ModularDevice::Method& get_int_var2_method = modular_device.createMethod(constants::get_int_var2_method_name);
+  get_int_var2_method.attachCallback(callbacks::getIntVar2Callback);
 
-  ModularDevice::Method& set_interactive_variable2_method = modular_device.createMethod(constants::set_interactive_variable2_method_name);
-  set_interactive_variable2_method.attachCallback(callbacks::setInteractiveVariable2Callback);
-  set_interactive_variable2_method.addParameter(interactive_variable2_parameter);
+  ModularDevice::Method& set_int_var2_method = modular_device.createMethod(constants::set_int_var2_method_name);
+  set_int_var2_method.attachCallback(callbacks::setIntVar2Callback);
+  set_int_var2_method.addParameter(int_var2_parameter);
 
   // Start ModularDevice Server
   modular_device.startServer(constants::baudrate);
@@ -73,47 +73,47 @@ void Controller::setup()
   standalone_interface_.setup(constants::frame_name_array,constants::FRAME_COUNT);
 
   // Display Labels
-  Standalone::DisplayLabel& display_label1 = standalone_interface_.createDisplayLabel();
-  display_label1.setDisplayPosition(constants::display_label1_display_position);
-  display_label1.setFlashString(constants::display_label1_string);
+  Standalone::DisplayLabel& dsp_lbl1 = standalone_interface_.createDisplayLabel();
+  dsp_lbl1.setDisplayPosition(constants::dsp_lbl1_display_position);
+  dsp_lbl1.setFlashString(constants::dsp_lbl1_string);
 
-  Standalone::DisplayLabel& display_label2 = standalone_interface_.createDisplayLabel();
-  display_label2.setDisplayPosition(constants::display_label2_display_position);
-  display_label2.setFlashString(constants::display_label2_string);
+  Standalone::DisplayLabel& dsp_lbl2 = standalone_interface_.createDisplayLabel();
+  dsp_lbl2.setDisplayPosition(constants::dsp_lbl2_display_position);
+  dsp_lbl2.setFlashString(constants::dsp_lbl2_string);
 
-  Standalone::DisplayLabel& display_label3 = standalone_interface_.createDisplayLabel();
-  display_label3.setDisplayPosition(constants::display_label3_display_position);
-  display_label3.setFlashString(constants::display_label3_string);
+  Standalone::DisplayLabel& dsp_lbl3 = standalone_interface_.createDisplayLabel();
+  dsp_lbl3.setDisplayPosition(constants::dsp_lbl3_display_position);
+  dsp_lbl3.setFlashString(constants::dsp_lbl3_string);
 
   // Display Variables
-  display_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
-  display_var1_ptr_->setDisplayPosition(constants::display_var1_display_position);
-  display_var1_ptr_->setValue(constants::display_var1_default_value);
+  dsp_var1_ptr_ = &(standalone_interface_.createDisplayVariable());
+  dsp_var1_ptr_->setDisplayPosition(constants::dsp_var1_display_position);
+  dsp_var1_ptr_->setValue(constants::dsp_var1_default_value);
 
   // Interactive Variables
-  interactive_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
-  interactive_var1_ptr_->setDisplayPosition(constants::interactive_var1_display_position);
-  interactive_var1_ptr_->setRange(constants::interactive_var1_min,constants::interactive_var1_max);
-  interactive_var1_ptr_->setRightJustify();
+  int_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
+  int_var1_ptr_->setDisplayPosition(constants::int_var1_display_position);
+  int_var1_ptr_->setRange(constants::int_var1_min,constants::int_var1_max);
+  int_var1_ptr_->setRightJustify();
 
-  interactive_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
-  interactive_var2_ptr_->setDisplayPosition(constants::interactive_var2_display_position);
-  interactive_var2_ptr_->setRange(constants::interactive_var2_min,constants::interactive_var2_max);
-  interactive_var2_ptr_->setLeftJustify();
+  int_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
+  int_var2_ptr_->setDisplayPosition(constants::int_var2_display_position);
+  int_var2_ptr_->setRange(constants::int_var2_min,constants::int_var2_max);
+  int_var2_ptr_->setLeftJustify();
 
   // All Frames
-  display_label1.addToAllFrames();
-  display_var1_ptr_->addToAllFrames();
+  dsp_lbl1.addToAllFrames();
+  dsp_var1_ptr_->addToAllFrames();
 
   // Frame 0
-  display_label2.addToFrame(0);
-  interactive_var1_ptr_->addToFrame(0);
+  dsp_lbl2.addToFrame(0);
+  int_var1_ptr_->addToFrame(0);
   standalone_interface_.attachCallbackToFrame(callbacks::addIntVar1ToDspVar1Callback,0);
 
   // Frame 1
-  display_label3.addToFrame(1);
-  interactive_var2_ptr_->addToFrame(1);
-  standalone_interface_.attachCallbackToFrame(callbacks::subtractIntVar2FromDspVar1Callback,1);
+  dsp_lbl3.addToFrame(1);
+  int_var2_ptr_->addToFrame(1);
+  standalone_interface_.attachCallbackToFrame(callbacks::subIntVar2FromDspVar1Callback,1);
 
   // Enable Standalone Interface
   standalone_interface_.enable();
@@ -130,34 +130,34 @@ void Controller::executeStandaloneCallback()
   standalone_interface_.executeCurrentFrameCallback();
 }
 
-int Controller::getDisplayVariable1()
+int Controller::getDspVar1()
 {
-  return display_var1_ptr_->getValue();
+  return dsp_var1_ptr_->getValue();
 }
 
-void Controller::setDisplayVariable1(int value)
+void Controller::setDspVar1(int value)
 {
-  display_var1_ptr_->setValue(value);
+  dsp_var1_ptr_->setValue(value);
 }
 
-uint8_t Controller::getInteractiveVariable1()
+uint8_t Controller::getIntVar1()
 {
-  return interactive_var1_ptr_->getValue();
+  return int_var1_ptr_->getValue();
 }
 
-void Controller::setInteractiveVariable1(uint8_t value)
+void Controller::setIntVar1(uint8_t value)
 {
-  interactive_var1_ptr_->setValue(value);
+  int_var1_ptr_->setValue(value);
 }
 
-uint8_t Controller::getInteractiveVariable2()
+uint8_t Controller::getIntVar2()
 {
-  return interactive_var2_ptr_->getValue();
+  return int_var2_ptr_->getValue();
 }
 
-void Controller::setInteractiveVariable2(uint8_t value)
+void Controller::setIntVar2(uint8_t value)
 {
-  interactive_var2_ptr_->setValue(value);
+  int_var2_ptr_->setValue(value);
 }
 
 Controller controller;

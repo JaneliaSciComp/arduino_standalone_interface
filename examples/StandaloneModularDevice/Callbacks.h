@@ -17,20 +17,20 @@ namespace callbacks
 {
 void executeStandaloneCallbackCallback();
 
-void getDisplayVariable1Callback();
+void getDspVar1Callback();
 
-void setDisplayVariable1Callback();
+void setDspVar1Callback();
 
-void getInteractiveVariable1Callback();
+void getIntVar1Callback();
 
-void setInteractiveVariable1Callback();
+void setIntVar1Callback();
 
-void getInteractiveVariable2Callback();
+void getIntVar2Callback();
 
-void setInteractiveVariable2Callback();
+void setIntVar2Callback();
 
 void addIntVar1ToDspVar1Callback();
 
-void subtractIntVar2FromDspVar1Callback();
+void subIntVar2FromDspVar1Callback();
 }
 #endif

@@ -26,38 +26,37 @@ const int btn_int = 2;
 const int led_pwr_pin = 18;
 const int standalone_update_period = 300;
 
-const uint8_t display_label1_display_position = 20;
-const uint8_t display_label2_display_position = 40;
-const uint8_t display_label3_display_position = 60;
+const uint8_t dsp_lbl1_display_position = 20;
+const uint8_t dsp_lbl2_display_position = 40;
+const uint8_t dsp_lbl3_display_position = 60;
 
-const int display_variable_min = -999;
-const int display_variable_max = 999;
+const uint8_t dsp_var1_display_position = 29;
+const int dsp_var1_default_value = 11;
+const int dsp_var1_min = -32768;
+const int dsp_var1_max = 32767;
 
-const uint8_t display_var1_display_position = 29;
-const int display_var1_default_value = 11;
+const uint8_t int_var1_display_position = 49;
+const uint8_t int_var1_min = 7;
+const uint8_t int_var1_max = 38;
 
-const uint8_t interactive_var1_display_position = 49;
-const uint8_t interactive_var1_min = 7;
-const uint8_t interactive_var1_max = 38;
-
-const uint8_t interactive_var2_display_position = 69;
-const uint8_t interactive_var2_min = 66;
-const uint8_t interactive_var2_max = 199;
+const uint8_t int_var2_display_position = 69;
+const uint8_t int_var2_min = 66;
+const uint8_t int_var2_max = 199;
 
 FLASH_STRING(device_name,"standalone_modular_device");
-FLASH_STRING(display_label1_string,"dsp_var1");
-FLASH_STRING(display_label2_string,"int_var1");
-FLASH_STRING(display_label3_string,"int_var2");
+FLASH_STRING(dsp_lbl1_string,"dsp_var1");
+FLASH_STRING(dsp_lbl2_string,"int_var1");
+FLASH_STRING(dsp_lbl3_string,"int_var2");
 FLASH_STRING(execute_standalone_callback_method_name,"executeStandaloneCallback");
-FLASH_STRING(get_display_variable1_method_name,"getDisplayVariable1");
-FLASH_STRING(set_display_variable1_method_name,"setDisplayVariable1");
-FLASH_STRING(get_interactive_variable1_method_name,"getInteractiveVariable1");
-FLASH_STRING(set_interactive_variable1_method_name,"setInteractiveVariable1");
-FLASH_STRING(get_interactive_variable2_method_name,"getInteractiveVariable2");
-FLASH_STRING(set_interactive_variable2_method_name,"setInteractiveVariable2");
-FLASH_STRING(display_value_parameter_name,"display_value");
-FLASH_STRING(interactive_variable1_parameter_name,"interactive_variable1");
-FLASH_STRING(interactive_variable2_parameter_name,"interactive_variable2");
+FLASH_STRING(get_dsp_var1_method_name,"getDspVar1");
+FLASH_STRING(set_dsp_var1_method_name,"setDspVar1");
+FLASH_STRING(get_int_var1_method_name,"getIntVar1");
+FLASH_STRING(set_int_var1_method_name,"setIntVar1");
+FLASH_STRING(get_int_var2_method_name,"getIntVar2");
+FLASH_STRING(set_int_var2_method_name,"setIntVar2");
+FLASH_STRING(dsp_var1_parameter_name,"dsp_var1");
+FLASH_STRING(int_var1_parameter_name,"int_var1");
+FLASH_STRING(int_var2_parameter_name,"int_var2");
 
 FLASH_STRING(frame0_name,"dsp_var1 + int_var1");
 FLASH_STRING(frame1_name,"dsp_var1 - int_var2");

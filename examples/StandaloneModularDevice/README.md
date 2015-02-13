@@ -43,12 +43,12 @@ Example Response:
     "resetDefaults",
     "setSerialNumber",
     "executeStandaloneCallback",
-    "getDisplayVariable1",
-    "setDisplayVariable1",
-    "getInteractiveVariable1",
-    "setInteractiveVariable1",
-    "getInteractiveVariable2",
-    "setInteractiveVariable2"
+    "getDspVar1",
+    "setDspVar1",
+    "getIntVar1",
+    "setIntVar1",
+    "getIntVar2",
+    "setIntVar2"
   ],
   "status":success
 }

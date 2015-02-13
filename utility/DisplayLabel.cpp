@@ -33,6 +33,9 @@ String DisplayLabel::getDisplayString()
 void DisplayLabel::setFlashString(const _FLASH_STRING &label)
 {
   label_ptr_ = &label;
-  setDisplayWidth(label.length());
+  if (getDisplayWidth() == 0)
+  {
+    setDisplayWidth(label.length());
+  }
 }
 }

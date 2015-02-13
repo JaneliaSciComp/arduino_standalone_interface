@@ -31,53 +31,53 @@ void executeStandaloneCallbackCallback()
   controller.executeStandaloneCallback();
 }
 
-void getDisplayVariable1Callback()
+void getDspVar1Callback()
 {
-  int value = controller.getDisplayVariable1();
+  int value = controller.getDspVar1();
   modular_device.addToResponse("value",value);
 }
 
-void setDisplayVariable1Callback()
+void setDspVar1Callback()
 {
-  long display_value = modular_device.getParameterValue(constants::display_value_parameter_name);
-  controller.setDisplayVariable1(display_value);
+  long value = modular_device.getParameterValue(constants::dsp_var1_parameter_name);
+  controller.setDspVar1(value);
 }
 
-void getInteractiveVariable1Callback()
+void getIntVar1Callback()
 {
-  uint8_t value = controller.getInteractiveVariable1();
+  uint8_t value = controller.getIntVar1();
   modular_device.addToResponse("value",value);
 }
 
-void setInteractiveVariable1Callback()
+void setIntVar1Callback()
 {
-  long int_var = modular_device.getParameterValue(constants::interactive_variable1_parameter_name);
-  controller.setInteractiveVariable1(int_var);
+  long value = modular_device.getParameterValue(constants::int_var1_parameter_name);
+  controller.setIntVar1(value);
 }
 
-void getInteractiveVariable2Callback()
+void getIntVar2Callback()
 {
-  uint8_t value = controller.getInteractiveVariable2();
+  uint8_t value = controller.getIntVar2();
   modular_device.addToResponse("value",value);
 }
 
-void setInteractiveVariable2Callback()
+void setIntVar2Callback()
 {
-  long int_var = modular_device.getParameterValue(constants::interactive_variable2_parameter_name);
-  controller.setInteractiveVariable2(int_var);
+  long value = modular_device.getParameterValue(constants::int_var2_parameter_name);
+  controller.setIntVar2(value);
 }
 
 void addIntVar1ToDspVar1Callback()
 {
-  int dis_var1 = controller.getDisplayVariable1();
-  uint8_t int_var1 = controller.getInteractiveVariable1();
-  controller.setDisplayVariable1(dis_var1+int_var1);
+  int dis_var1 = controller.getDspVar1();
+  uint8_t int_var1 = controller.getIntVar1();
+  controller.setDspVar1(dis_var1+int_var1);
 }
 
-void subtractIntVar2FromDspVar1Callback()
+void subIntVar2FromDspVar1Callback()
 {
-  int dis_var1 = controller.getDisplayVariable1();
-  uint8_t int_var2 = controller.getInteractiveVariable2();
-  controller.setDisplayVariable1(dis_var1-int_var2);
+  int dis_var1 = controller.getDspVar1();
+  uint8_t int_var2 = controller.getIntVar2();
+  controller.setDspVar1(dis_var1-int_var2);
 }
 }
