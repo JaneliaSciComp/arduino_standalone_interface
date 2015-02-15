@@ -14,6 +14,7 @@ const int ENC_BTN_PIN = 19;
 const int ENC_BTN_INT = 4;
 const int BTN_PIN = 21;
 const int BTN_INT = 2;
+const int LED_PWR_PIN = 18;
 const int UPDATE_PERIOD = 300;
 
 const uint8_t DISPLAY_LABEL1_DISPLAY_POSITION = 0;
@@ -42,6 +43,7 @@ StandaloneInterface standalone_interface(DISPLAY_SERIAL,
                                          ENC_BTN_INT,
                                          BTN_PIN,
                                          BTN_INT,
+                                         LED_PWR_PIN,
                                          UPDATE_PERIOD);
 
 DisplayLabel& display_label1 = standalone_interface.createDisplayLabel();
