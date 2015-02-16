@@ -79,7 +79,6 @@ void Server::setup(const uint8_t frame_count)
   {
     frame_count_ = frame_count;
   }
-  frame_var_ptr_->setRange(0,frame_count-1);
   frame_var_ptr_->setFlashStringArray(frame_name_array_,frame_count_);
   display_labels_dirty_ = true;
 }

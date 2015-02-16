@@ -58,8 +58,8 @@ FLASH_STRING(dsp_var1_parameter_name,"dsp_var1");
 FLASH_STRING(int_var1_parameter_name,"int_var1");
 FLASH_STRING(int_var2_parameter_name,"int_var2");
 
-FLASH_STRING(frame0_name,"dsp_var1 + int_var1");
-FLASH_STRING(frame1_name,"dsp_var1 - int_var2");
+FLASH_STRING(frame0_name,"dsp_var1 += int_var1");
+FLASH_STRING(frame1_name,"dsp_var1 -= int_var2");
 const _FLASH_STRING frame_name_array[] =
   {
     frame0_name,

@@ -86,4 +86,11 @@ uint8_t InteractiveVariable::wrapValue(int value)
     return min_ + (value - min_)%range;
   }
 }
+
+void InteractiveVariable::setFlashStringArray(const _FLASH_STRING string_array[],
+                                              const uint8_t string_count)
+{
+  DisplayVariable::setFlashStringArray(string_array,string_count);
+  setRange(0,string_count-1);
+}
 }
