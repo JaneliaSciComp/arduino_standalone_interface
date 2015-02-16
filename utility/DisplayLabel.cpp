@@ -20,7 +20,8 @@ String DisplayLabel::getDisplayString()
 {
   if (label_ptr_)
   {
-    char label_char_array[getDisplayWidth()+1];
+    int label_length = label_ptr_->length();
+    char label_char_array[label_length+1];
     label_ptr_->copy(label_char_array);
     return String(label_char_array);
   }
@@ -33,9 +34,6 @@ String DisplayLabel::getDisplayString()
 void DisplayLabel::setFlashString(const _FLASH_STRING &label)
 {
   label_ptr_ = &label;
-  if (getDisplayWidth() == 0)
-  {
-    setDisplayWidth(label.length());
-  }
+  setDisplayWidth(label.length());
 }
 }

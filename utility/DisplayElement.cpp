@@ -26,7 +26,7 @@ void DisplayElement::setDisplayPosition(const uint8_t display_position)
   }
   else
   {
-    display_position_ = display_position - display_width_;
+    display_position_ = display_position - (display_width_ - 1);
   }
 }
 
@@ -39,7 +39,7 @@ void DisplayElement::setDisplayWidth(const uint8_t display_width)
 {
   if (!left_justify_)
   {
-    display_position_ -= display_width_;
+    display_position_ += display_width_ - 1;
   }
 
   if (display_width <= DISPLAY_WIDTH_MAX)
@@ -53,7 +53,7 @@ void DisplayElement::setDisplayWidth(const uint8_t display_width)
 
   if (!left_justify_)
   {
-    display_position_ += display_width_;
+    display_position_ -= display_width_ - 1;
   }
 }
 
@@ -67,7 +67,7 @@ void DisplayElement::setLeftJustify()
   if (!left_justify_)
   {
     left_justify_ = true;
-    display_position_ -= display_width_;
+    display_position_ += display_width_ - 1;
   }
 }
 
@@ -76,7 +76,7 @@ void DisplayElement::setRightJustify()
   if (left_justify_)
   {
     left_justify_ = false;
-    display_position_ += display_width_;
+    display_position_ -= display_width_ - 1;
   }
 }
 

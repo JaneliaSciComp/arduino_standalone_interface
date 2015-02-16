@@ -26,9 +26,9 @@ const int btn_int = 2;
 const int led_pwr_pin = 18;
 const int standalone_update_period = 300;
 
-const uint8_t dsp_lbl1_display_position = 40;
-const uint8_t dsp_lbl2_display_position = 60;
-const uint8_t dsp_lbl3_display_position = 60;
+const uint8_t dsp_lbl1_display_position = 48;
+const uint8_t dsp_lbl2_display_position = 68;
+const uint8_t dsp_lbl3_display_position = 68;
 
 const uint8_t dsp_var1_display_position = 51;
 const int dsp_var1_default_value = 11;
