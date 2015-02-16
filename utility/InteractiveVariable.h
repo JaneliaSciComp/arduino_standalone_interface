@@ -31,7 +31,7 @@ private:
   uint8_t min_;
   uint8_t max_;
   boolean value_dirty_;
-  void updateWithEncoderValue(uint8_t value);
+  void updateWithEncoderValue(int value);
   boolean checkValueDirty();
   void clearValueDirty();
   uint8_t wrapValue(int value);

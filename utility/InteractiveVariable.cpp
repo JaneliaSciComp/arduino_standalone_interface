@@ -56,7 +56,7 @@ void InteractiveVariable::setValue(uint8_t value)
   value_dirty_ = true;
 }
 
-void InteractiveVariable::updateWithEncoderValue(uint8_t value)
+void InteractiveVariable::updateWithEncoderValue(int value)
 {
   DisplayVariable::setValue(wrapValue(value));
 }
@@ -80,9 +80,11 @@ uint8_t InteractiveVariable::wrapValue(int value)
   else
   {
     value_dirty_ = true;
-    int range = max_ - min_ + 1;
+    unsigned int range = (max_ - min_) + 1;
     if (value < min_)
-        value += range*((min_ - value)/range + 1);
+    {
+      value += range*((min_ - value)/range + 1);
+    }
     return min_ + (value - min_)%range;
   }
 }
