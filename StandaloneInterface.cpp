@@ -52,9 +52,9 @@ void StandaloneInterface::disable()
   server_.disable();
 }
 
-void StandaloneInterface::update()
+boolean StandaloneInterface::update()
 {
-  server_.update();
+  return server_.update();
 }
 
 DisplayLabel& StandaloneInterface::createDisplayLabel()

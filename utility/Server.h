@@ -45,7 +45,7 @@ public:
              const uint8_t frame_count);
   void enable();
   void disable();
-  void update();
+  boolean update();
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();

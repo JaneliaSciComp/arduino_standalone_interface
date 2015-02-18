@@ -104,11 +104,11 @@ void Server::disable()
   display_.displayOff();
 }
 
-void Server::update()
+boolean Server::update()
 {
   if (!enabled_)
   {
-    return;
+    return false;
   }
 
   if (led_off_ && (digitalRead(led_pwr_pin_) == HIGH))
@@ -123,7 +123,7 @@ void Server::update()
   unsigned long time_now = millis();
   if ((time_now - time_last_update_) < update_period_)
   {
-    return;
+    return false;
   }
 
   time_last_update_ = time_now;
@@ -206,6 +206,7 @@ void Server::update()
     InteractiveVariable &int_var = interactive_variable_vector_[interactive_variable_index_];
     display_.setCursor(int_var.getDisplayPosition());
   }
+  return true;
 }
 
 DisplayLabel& Server::createDisplayLabel()
