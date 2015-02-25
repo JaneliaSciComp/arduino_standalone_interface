@@ -4,6 +4,7 @@
 #include "StandardCplusplus.h"
 #include "MemoryFree.h"
 #include "Flash.h"
+#include "BetterMap.h"
 #include "ModularDevice.h"
 #include "NewhavenDisplay.h"
 #include "Encoder.h"

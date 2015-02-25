@@ -107,14 +107,16 @@ void Controller::setup()
   dsp_var1_ptr_->addToAllFrames();
 
   // Frame 0
-  dsp_lbl2.addToFrame(0);
-  int_var1_ptr_->addToFrame(0);
-  standalone_interface_.attachCallbackToFrame(callbacks::addIntVar1ToDspVar1Callback,0);
+  int frame = 0;
+  dsp_lbl2.addToFrame(frame);
+  int_var1_ptr_->addToFrame(frame);
+  standalone_interface_.attachCallbackToFrame(callbacks::addIntVar1ToDspVar1Callback,frame);
 
   // Frame 1
-  dsp_lbl3.addToFrame(1);
-  int_var2_ptr_->addToFrame(1);
-  standalone_interface_.attachCallbackToFrame(callbacks::subIntVar2FromDspVar1Callback,1);
+  frame = 1;
+  dsp_lbl3.addToFrame(frame);
+  int_var2_ptr_->addToFrame(frame);
+  standalone_interface_.attachCallbackToFrame(callbacks::subIntVar2FromDspVar1Callback,frame);
 
   // Enable Standalone Interface
   standalone_interface_.enable();
