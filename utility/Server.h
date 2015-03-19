@@ -15,9 +15,9 @@
 #include "Streaming.h"
 #include "NewhavenDisplay.h"
 #include "Encoder.h"
-#include "StandardCplusplus.h"
-#include "vector"
+#include "Array.h"
 #include "Flash.h"
+#include "Constants.h"
 #include "DisplayLabel.h"
 #include "DisplayVariable.h"
 #include "InteractiveVariable.h"
@@ -67,10 +67,9 @@ private:
   uint8_t frame_count_;
   InteractiveVariable *frame_var_ptr_;
   const _FLASH_STRING *frame_name_array_;
-  std::vector<DisplayLabel> display_label_vector_;
-  std::vector<DisplayVariable> display_variable_vector_;
-  std::vector<InteractiveVariable> interactive_variable_vector_;
-  int interactive_variable_count_;
+  Array<DisplayLabel,constants::DISPLAY_LABEL_COUNT_MAX> display_label_array_;
+  Array<DisplayVariable,constants::DISPLAY_VARIABLE_COUNT_MAX> display_variable_array_;
+  Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;
   int interactive_variable_index_;
   boolean display_labels_dirty_;
   static const int FRAME_VAR_DISPLAY_POSITION = 0;

@@ -17,13 +17,13 @@ const int firmware_number = 1;
 
 HardwareSerial display_serial = Serial3;
 
-const int enc_a_pin = 2;
-const int enc_b_pin = 3;
+const int enc_a_pin = 18;
+const int enc_b_pin = 2;
 const int enc_btn_pin = 19;
 const int enc_btn_int = 4;
 const int btn_pin = 21;
 const int btn_int = 2;
-const int led_pwr_pin = 18;
+const int led_pwr_pin = 17;
 const int standalone_update_period = 300;
 
 const uint8_t dsp_lbl1_display_position = 48;

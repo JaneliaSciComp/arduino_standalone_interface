@@ -36,7 +36,6 @@ Server::Server(HardwareSerial &serial,
   update_period_(update_period)
 {
   setup_ = false;
-  interactive_variable_count_ = 0;
   interactive_variable_index_ = -1;
   frame_var_ptr_ = NULL;
   frame_name_array_ = NULL;
@@ -132,7 +131,7 @@ boolean Server::update()
   // Update current interactive variable values
   if (interactive_variable_index_ >= 0)
   {
-    InteractiveVariable *int_var_ptr = &(interactive_variable_vector_[interactive_variable_index_]);
+    InteractiveVariable *int_var_ptr = &(interactive_variable_array_[interactive_variable_index_]);
     boolean interactive_variable_index_changed = false;
     if (Server::enc_btn_pressed_)
     {
@@ -141,11 +140,11 @@ boolean Server::update()
       do
       {
         interactive_variable_index_++;
-        if (interactive_variable_index_ >= interactive_variable_count_)
+        if (interactive_variable_index_ >= interactive_variable_array_.size())
         {
           interactive_variable_index_ = 0;
         }
-        int_var_ptr = &(interactive_variable_vector_[interactive_variable_index_]);
+        int_var_ptr = &(interactive_variable_array_[interactive_variable_index_]);
       }
       while (!int_var_ptr->inFrame(Server::frame_current_));
       if (int_var_prev != interactive_variable_index_)
@@ -179,31 +178,25 @@ boolean Server::update()
   if (display_labels_dirty_)
   {
     display_labels_dirty_ = false;
-    for (std::vector<DisplayLabel>::iterator display_label_it = display_label_vector_.begin();
-         display_label_it != display_label_vector_.end();
-         ++display_label_it)
+    for (int i=0; i<display_label_array_.size(); ++i)
     {
-      display_label_it->updateOnDisplay(display_,Server::frame_current_);
+      display_label_array_[i].updateOnDisplay(display_,Server::frame_current_);
     }
   }
   // Update all display_variables on display
-  for (std::vector<DisplayVariable>::iterator display_var_it = display_variable_vector_.begin();
-       display_var_it != display_variable_vector_.end();
-       ++display_var_it)
+  for (int i=0; i<display_variable_array_.size(); ++i)
   {
-    display_var_it->updateOnDisplay(display_,Server::frame_current_);
+    display_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }
   // Update all interactive_variables on display
-  for (std::vector<InteractiveVariable>::iterator int_var_it = interactive_variable_vector_.begin();
-       int_var_it != interactive_variable_vector_.end();
-       ++int_var_it)
+  for (int i=0; i<interactive_variable_array_.size(); ++i)
   {
-    int_var_it->updateOnDisplay(display_,Server::frame_current_);
+    interactive_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }
   // Place the cursor back on the current interactive variable
   if (interactive_variable_index_ >= 0)
   {
-    InteractiveVariable &int_var = interactive_variable_vector_[interactive_variable_index_];
+    InteractiveVariable &int_var = interactive_variable_array_[interactive_variable_index_];
     display_.setCursor(int_var.getDisplayPosition());
   }
   return true;
@@ -212,15 +205,15 @@ boolean Server::update()
 DisplayLabel& Server::createDisplayLabel()
 {
   DisplayLabel display_label;
-  display_label_vector_.push_back(display_label);
-  return display_label_vector_.back();
+  display_label_array_.push_back(display_label);
+  return display_label_array_.back();
 }
 
 DisplayVariable& Server::createDisplayVariable()
 {
   DisplayVariable display_var;
-  display_variable_vector_.push_back(display_var);
-  return display_variable_vector_.back();
+  display_variable_array_.push_back(display_var);
+  return display_variable_array_.back();
 }
 
 InteractiveVariable& Server::createInteractiveVariable()
@@ -230,13 +223,12 @@ InteractiveVariable& Server::createInteractiveVariable()
     setup(DisplayElement::FRAMES_COUNT_MAX);
   }
   InteractiveVariable int_var;
-  interactive_variable_vector_.push_back(int_var);
+  interactive_variable_array_.push_back(int_var);
   if (interactive_variable_index_ < 0)
   {
     interactive_variable_index_ = 0;
   }
-  interactive_variable_count_++;
-  return interactive_variable_vector_.back();
+  return interactive_variable_array_.back();
 }
 
 void Server::attachCallbackToFrame(Callback callback, uint8_t frame)
