@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------------
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
-#include "Flash.h"
+#include "ConstantVariable.h"
 
 namespace constants
 {
@@ -46,23 +46,23 @@ extern const uint8_t int_var2_display_position;
 extern const uint8_t int_var2_min;
 extern const uint8_t int_var2_max;
 
-extern _FLASH_STRING device_name;
-extern _FLASH_STRING dsp_lbl1_string;
-extern _FLASH_STRING dsp_lbl2_string;
-extern _FLASH_STRING dsp_lbl3_string;
-extern _FLASH_STRING execute_standalone_callback_method_name;
-extern _FLASH_STRING get_dsp_var1_method_name;
-extern _FLASH_STRING set_dsp_var1_method_name;
-extern _FLASH_STRING get_int_var1_method_name;
-extern _FLASH_STRING set_int_var1_method_name;
-extern _FLASH_STRING get_int_var2_method_name;
-extern _FLASH_STRING set_int_var2_method_name;
-extern _FLASH_STRING dsp_var1_parameter_name;
-extern _FLASH_STRING int_var1_parameter_name;
-extern _FLASH_STRING int_var2_parameter_name;
+extern ConstantString device_name;
+extern ConstantString dsp_lbl1_string;
+extern ConstantString dsp_lbl2_string;
+extern ConstantString dsp_lbl3_string;
+extern ConstantString execute_standalone_callback_method_name;
+extern ConstantString get_dsp_var1_method_name;
+extern ConstantString set_dsp_var1_method_name;
+extern ConstantString get_int_var1_method_name;
+extern ConstantString set_int_var1_method_name;
+extern ConstantString get_int_var2_method_name;
+extern ConstantString set_int_var2_method_name;
+extern ConstantString dsp_var1_parameter_name;
+extern ConstantString int_var1_parameter_name;
+extern ConstantString int_var2_parameter_name;
 
-extern _FLASH_STRING frame0_name;
-extern _FLASH_STRING frame1_name;
-extern const _FLASH_STRING frame_name_array[FRAME_COUNT];
+extern ConstantString frame0_name;
+extern ConstantString frame1_name;
+extern const ConstantString frame_name_array[FRAME_COUNT];
 }
 #endif

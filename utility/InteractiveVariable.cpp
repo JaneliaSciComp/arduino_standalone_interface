@@ -89,7 +89,7 @@ uint8_t InteractiveVariable::wrapValue(int value)
   }
 }
 
-void InteractiveVariable::setFlashStringArray(const _FLASH_STRING string_array[],
+void InteractiveVariable::setFlashStringArray(const ConstantString string_array[],
                                               const uint8_t string_count)
 {
   DisplayVariable::setFlashStringArray(string_array,string_count);

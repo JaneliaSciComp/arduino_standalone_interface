@@ -16,7 +16,7 @@
 #include "NewhavenDisplay.h"
 #include "Encoder.h"
 #include "Array.h"
-#include "Flash.h"
+#include "ConstantVariable.h"
 #include "Constants.h"
 #include "DisplayLabel.h"
 #include "DisplayVariable.h"
@@ -41,7 +41,7 @@ public:
          const int led_pwr_pin,
          const int update_period);
   void setup(const uint8_t frame_count);
-  void setup(const _FLASH_STRING frame_name_array[],
+  void setup(const ConstantString frame_name_array[],
              const uint8_t frame_count);
   void enable();
   void disable();
@@ -66,7 +66,7 @@ private:
   unsigned long time_last_update_;
   uint8_t frame_count_;
   InteractiveVariable *frame_var_ptr_;
-  const _FLASH_STRING *frame_name_array_;
+  const ConstantString *frame_name_array_;
   Array<DisplayLabel,constants::DISPLAY_LABEL_COUNT_MAX> display_label_array_;
   Array<DisplayVariable,constants::DISPLAY_VARIABLE_COUNT_MAX> display_variable_array_;
   Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;

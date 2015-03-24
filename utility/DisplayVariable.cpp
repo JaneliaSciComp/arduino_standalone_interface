@@ -42,7 +42,7 @@ String DisplayVariable::getDisplayString()
   }
 }
 
-void DisplayVariable::setFlashStringArray(const _FLASH_STRING string_array[],
+void DisplayVariable::setFlashStringArray(const ConstantString string_array[],
                                           const uint8_t string_count)
 {
   string_array_ = string_array;

@@ -43,24 +43,24 @@ const uint8_t int_var2_display_position = 71;
 const uint8_t int_var2_min = 66;
 const uint8_t int_var2_max = 199;
 
-FLASH_STRING(device_name,"standalone_modular_device");
-FLASH_STRING(dsp_lbl1_string,"dsp_var1");
-FLASH_STRING(dsp_lbl2_string,"int_var1");
-FLASH_STRING(dsp_lbl3_string,"int_var2");
-FLASH_STRING(execute_standalone_callback_method_name,"executeStandaloneCallback");
-FLASH_STRING(get_dsp_var1_method_name,"getDspVar1");
-FLASH_STRING(set_dsp_var1_method_name,"setDspVar1");
-FLASH_STRING(get_int_var1_method_name,"getIntVar1");
-FLASH_STRING(set_int_var1_method_name,"setIntVar1");
-FLASH_STRING(get_int_var2_method_name,"getIntVar2");
-FLASH_STRING(set_int_var2_method_name,"setIntVar2");
-FLASH_STRING(dsp_var1_parameter_name,"dsp_var1");
-FLASH_STRING(int_var1_parameter_name,"int_var1");
-FLASH_STRING(int_var2_parameter_name,"int_var2");
+CONSTANT_STRING(device_name,"standalone_modular_device");
+CONSTANT_STRING(dsp_lbl1_string,"dsp_var1");
+CONSTANT_STRING(dsp_lbl2_string,"int_var1");
+CONSTANT_STRING(dsp_lbl3_string,"int_var2");
+CONSTANT_STRING(execute_standalone_callback_method_name,"executeStandaloneCallback");
+CONSTANT_STRING(get_dsp_var1_method_name,"getDspVar1");
+CONSTANT_STRING(set_dsp_var1_method_name,"setDspVar1");
+CONSTANT_STRING(get_int_var1_method_name,"getIntVar1");
+CONSTANT_STRING(set_int_var1_method_name,"setIntVar1");
+CONSTANT_STRING(get_int_var2_method_name,"getIntVar2");
+CONSTANT_STRING(set_int_var2_method_name,"setIntVar2");
+CONSTANT_STRING(dsp_var1_parameter_name,"dsp_var1");
+CONSTANT_STRING(int_var1_parameter_name,"int_var1");
+CONSTANT_STRING(int_var2_parameter_name,"int_var2");
 
-FLASH_STRING(frame0_name,"dsp_var1 += int_var1");
-FLASH_STRING(frame1_name,"dsp_var1 -= int_var2");
-const _FLASH_STRING frame_name_array[] =
+CONSTANT_STRING(frame0_name,"dsp_var1 += int_var1");
+CONSTANT_STRING(frame1_name,"dsp_var1 -= int_var2");
+const ConstantString frame_name_array[] =
   {
     frame0_name,
     frame1_name,

@@ -12,7 +12,7 @@
 #else
 #include "WProgram.h"
 #endif
-#include "Flash.h"
+#include "ConstantVariable.h"
 #include "DisplayElement.h"
 
 
@@ -23,9 +23,9 @@ class DisplayLabel : public DisplayElement
 public:
   DisplayLabel();
   String getDisplayString();
-  void setFlashString(const _FLASH_STRING &label);
+  void setFlashString(const ConstantString &label);
 private:
-  const _FLASH_STRING *label_ptr_;
+  const ConstantString *label_ptr_;
 };
 }
 #endif

@@ -27,7 +27,7 @@ public:
                       const int led_pwr_pin,
                       const int update_period);
   void setup(const uint8_t frame_count);
-  void setup(const _FLASH_STRING frame_name_array[],
+  void setup(const ConstantString frame_name_array[],
              const uint8_t frame_count);
   void enable();
   void disable();

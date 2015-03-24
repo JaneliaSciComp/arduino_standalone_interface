@@ -12,7 +12,7 @@
 #else
 #include "WProgram.h"
 #endif
-#include "Flash.h"
+#include "ConstantVariable.h"
 #include "DisplayElement.h"
 
 
@@ -25,12 +25,12 @@ public:
   void setValue(int value);
   int getValue();
   String getDisplayString();
-  virtual void setFlashStringArray(const _FLASH_STRING string_array[],
+  virtual void setFlashStringArray(const ConstantString string_array[],
                                    const uint8_t string_count);
 private:
   static const uint8_t DISPLAY_WIDTH_DEFAULT=6;
   int value_;
-  const _FLASH_STRING *string_array_;
+  const ConstantString *string_array_;
   uint8_t string_count_;
 };
 }

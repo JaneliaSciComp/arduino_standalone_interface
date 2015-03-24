@@ -82,7 +82,7 @@ void Server::setup(const uint8_t frame_count)
   display_labels_dirty_ = true;
 }
 
-void Server::setup(const _FLASH_STRING frame_name_array[],
+void Server::setup(const ConstantString frame_name_array[],
                    const uint8_t frame_count)
 {
   frame_name_array_ = frame_name_array;
