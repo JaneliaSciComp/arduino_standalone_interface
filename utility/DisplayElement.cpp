@@ -16,6 +16,7 @@ DisplayElement::DisplayElement()
   setDisplayWidth(0);
   setLeftJustify();
   frames_ = 0;
+  display_dirty_ = true;
 }
 
 void DisplayElement::setDisplayPosition(const uint8_t display_position)
@@ -84,15 +85,19 @@ void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
 {
   if (inFrame(frame))
   {
-    display.setCursor(getDisplayPosition());
-    uint8_t display_width = getDisplayWidth();
-    if (left_justify_)
+    if (display_dirty_)
     {
-      display.printPadRight(getDisplayString(),display_width);
-    }
-    else
-    {
-      display.printPadLeft(getDisplayString(),display_width);
+      display_dirty_ = false;
+      display.setCursor(getDisplayPosition());
+      uint8_t display_width = getDisplayWidth();
+      if (left_justify_)
+      {
+        display.printPadRight(getDisplayString(),display_width);
+      }
+      else
+      {
+        display.printPadLeft(getDisplayString(),display_width);
+      }
     }
   }
 }
@@ -119,5 +124,10 @@ boolean DisplayElement::inFrame(int frame)
 {
   frames_t bit = 1;
   return frames_ & (1 << frame);
+}
+
+void DisplayElement::setDisplayDirty()
+{
+  display_dirty_ = true;
 }
 }

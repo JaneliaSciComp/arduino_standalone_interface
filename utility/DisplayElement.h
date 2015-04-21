@@ -36,12 +36,16 @@ public:
   void addToAllFrames();
   void removeFromFrame(int frame);
   boolean inFrame(int frame);
+protected:
+  void setDisplayDirty();
 private:
   typedef uint8_t frames_t;
   uint8_t display_position_;
   uint8_t display_width_;
   boolean left_justify_;
   uint8_t frames_;
+  boolean display_dirty_;
+  friend class Server;
 };
 }
 #endif

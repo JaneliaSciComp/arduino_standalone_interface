@@ -203,6 +203,23 @@ boolean Server::update()
   if (Server::frame_current_ != frame_prev)
   {
     display_.clearScreen();
+    // Dirty all interactive_variables
+    for (int i=0; i<interactive_variable_array_.size(); ++i)
+    {
+      interactive_variable_array_[i].setDisplayDirty();
+    }
+
+    // Dirty all display_variables
+    for (int i=0; i<display_variable_array_.size(); ++i)
+    {
+      display_variable_array_[i].setDisplayDirty();
+    }
+
+    // Dirty all display_labels
+    for (int i=0; i<display_label_array_.size(); ++i)
+    {
+      display_label_array_[i].setDisplayDirty();
+    }
   }
 
   // Update all interactive_variables on display
@@ -217,6 +234,7 @@ boolean Server::update()
     display_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }
 
+  // Update all display_labels on display
   for (int i=0; i<display_label_array_.size(); ++i)
   {
     display_label_array_[i].updateOnDisplay(display_,Server::frame_current_);
