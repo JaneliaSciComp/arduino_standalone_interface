@@ -1,3 +1,4 @@
+// StandaloneModularDevice
 #ifdef __AVR__
 #include "Flash.h"
 #include <EEPROM.h>

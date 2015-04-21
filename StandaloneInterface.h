@@ -35,6 +35,7 @@ public:
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
+  InteractiveVariable& createIncrementVariable();
   void attachCallbackToFrame(Callback callback, uint8_t frame);
   void executeCurrentFrameCallback();
 private:

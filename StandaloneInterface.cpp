@@ -72,6 +72,11 @@ InteractiveVariable& StandaloneInterface::createInteractiveVariable()
   return server_.createInteractiveVariable();
 }
 
+InteractiveVariable& StandaloneInterface::createIncrementVariable()
+{
+  return server_.createIncrementVariable();
+}
+
 void StandaloneInterface::attachCallbackToFrame(Callback callback, uint8_t frame)
 {
   server_.attachCallbackToFrame(callback,frame);

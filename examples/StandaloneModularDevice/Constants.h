@@ -29,6 +29,7 @@ extern const int btn_int;
 extern const int led_pwr_pin;
 extern const int standalone_update_period;
 
+extern const uint8_t dsp_lbl0_display_position;
 extern const uint8_t dsp_lbl1_display_position;
 extern const uint8_t dsp_lbl2_display_position;
 extern const uint8_t dsp_lbl3_display_position;
@@ -38,15 +39,18 @@ extern const int dsp_var1_default_value;
 extern const int dsp_var1_min;
 extern const int dsp_var1_max;
 
+extern const uint8_t inc_var_display_position;
+
 extern const uint8_t int_var1_display_position;
-extern const uint8_t int_var1_min;
-extern const uint8_t int_var1_max;
+extern const int int_var1_min;
+extern const int int_var1_max;
 
 extern const uint8_t int_var2_display_position;
-extern const uint8_t int_var2_min;
-extern const uint8_t int_var2_max;
+extern const int int_var2_min;
+extern const int int_var2_max;
 
 extern ConstantString device_name;
+extern ConstantString dsp_lbl0_string;
 extern ConstantString dsp_lbl1_string;
 extern ConstantString dsp_lbl2_string;
 extern ConstantString dsp_lbl3_string;

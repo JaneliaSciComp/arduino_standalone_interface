@@ -26,6 +26,7 @@ const int btn_int = 2;
 const int led_pwr_pin = 17;
 const int standalone_update_period = 300;
 
+const uint8_t dsp_lbl0_display_position = 28;
 const uint8_t dsp_lbl1_display_position = 48;
 const uint8_t dsp_lbl2_display_position = 68;
 const uint8_t dsp_lbl3_display_position = 68;
@@ -35,15 +36,18 @@ const int dsp_var1_default_value = 11;
 const int dsp_var1_min = -32768;
 const int dsp_var1_max = 32767;
 
+const uint8_t inc_var_display_position = 31;
+
 const uint8_t int_var1_display_position = 71;
-const uint8_t int_var1_min = 7;
-const uint8_t int_var1_max = 38;
+const int int_var1_min = -10;
+const int int_var1_max = 10;
 
 const uint8_t int_var2_display_position = 71;
-const uint8_t int_var2_min = 66;
-const uint8_t int_var2_max = 199;
+const int int_var2_min = -9999;
+const int int_var2_max = 12345;
 
 CONSTANT_STRING(device_name,"standalone_modular_device");
+CONSTANT_STRING(dsp_lbl0_string,"inc");
 CONSTANT_STRING(dsp_lbl1_string,"dsp_var1");
 CONSTANT_STRING(dsp_lbl2_string,"int_var1");
 CONSTANT_STRING(dsp_lbl3_string,"int_var2");

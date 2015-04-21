@@ -67,17 +67,18 @@ void setIntVar2Callback()
   controller.setIntVar2(value);
 }
 
+// Standalone Callbacks
 void addIntVar1ToDspVar1Callback()
 {
   int dis_var1 = controller.getDspVar1();
-  uint8_t int_var1 = controller.getIntVar1();
+  int int_var1 = controller.getIntVar1();
   controller.setDspVar1(dis_var1+int_var1);
 }
 
 void subIntVar2FromDspVar1Callback()
 {
   int dis_var1 = controller.getDspVar1();
-  uint8_t int_var2 = controller.getIntVar2();
+  int int_var2 = controller.getIntVar2();
   controller.setDspVar1(dis_var1-int_var2);
 }
 }

@@ -73,19 +73,24 @@ void Controller::setup()
   standalone_interface_.setup(constants::frame_name_array,constants::FRAME_COUNT);
 
   // Display Labels
+  Standalone::DisplayLabel& dsp_lbl0 = standalone_interface_.createDisplayLabel();
+  dsp_lbl0.setDisplayPosition(constants::dsp_lbl0_display_position);
+  dsp_lbl0.setConstantString(constants::dsp_lbl0_string);
+  dsp_lbl0.setRightJustify();
+
   Standalone::DisplayLabel& dsp_lbl1 = standalone_interface_.createDisplayLabel();
   dsp_lbl1.setDisplayPosition(constants::dsp_lbl1_display_position);
-  dsp_lbl1.setFlashString(constants::dsp_lbl1_string);
+  dsp_lbl1.setConstantString(constants::dsp_lbl1_string);
   dsp_lbl1.setRightJustify();
 
   Standalone::DisplayLabel& dsp_lbl2 = standalone_interface_.createDisplayLabel();
   dsp_lbl2.setDisplayPosition(constants::dsp_lbl2_display_position);
-  dsp_lbl2.setFlashString(constants::dsp_lbl2_string);
+  dsp_lbl2.setConstantString(constants::dsp_lbl2_string);
   dsp_lbl2.setRightJustify();
 
   Standalone::DisplayLabel& dsp_lbl3 = standalone_interface_.createDisplayLabel();
   dsp_lbl3.setDisplayPosition(constants::dsp_lbl3_display_position);
-  dsp_lbl3.setFlashString(constants::dsp_lbl3_string);
+  dsp_lbl3.setConstantString(constants::dsp_lbl3_string);
   dsp_lbl3.setRightJustify();
 
   // Display Variables
@@ -94,6 +99,9 @@ void Controller::setup()
   dsp_var1_ptr_->setValue(constants::dsp_var1_default_value);
 
   // Interactive Variables
+  Standalone::InteractiveVariable& inc_var = standalone_interface_.createIncrementVariable();
+  inc_var.setDisplayPosition(constants::inc_var_display_position);
+
   int_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
   int_var1_ptr_->setDisplayPosition(constants::int_var1_display_position);
   int_var1_ptr_->setRange(constants::int_var1_min,constants::int_var1_max);
@@ -114,6 +122,8 @@ void Controller::setup()
 
   // Frame 1
   frame = 1;
+  inc_var.addToFrame(frame);
+  dsp_lbl0.addToFrame(frame);
   dsp_lbl3.addToFrame(frame);
   int_var2_ptr_->addToFrame(frame);
   standalone_interface_.attachCallbackToFrame(callbacks::subIntVar2FromDspVar1Callback,frame);
@@ -143,22 +153,22 @@ void Controller::setDspVar1(int value)
   dsp_var1_ptr_->setValue(value);
 }
 
-uint8_t Controller::getIntVar1()
+int Controller::getIntVar1()
 {
   return int_var1_ptr_->getValue();
 }
 
-void Controller::setIntVar1(uint8_t value)
+void Controller::setIntVar1(int value)
 {
   int_var1_ptr_->setValue(value);
 }
 
-uint8_t Controller::getIntVar2()
+int Controller::getIntVar2()
 {
   return int_var2_ptr_->getValue();
 }
 
-void Controller::setIntVar2(uint8_t value)
+void Controller::setIntVar2(int value)
 {
   int_var2_ptr_->setValue(value);
 }

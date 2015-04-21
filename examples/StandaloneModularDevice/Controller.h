@@ -21,10 +21,10 @@ public:
   void executeStandaloneCallback();
   int getDspVar1();
   void setDspVar1(int value);
-  uint8_t getIntVar1();
-  void setIntVar1(uint8_t value);
-  uint8_t getIntVar2();
-  void setIntVar2(uint8_t value);
+  int getIntVar1();
+  void setIntVar1(int value);
+  int getIntVar2();
+  void setIntVar2(int value);
 private:
   Standalone::StandaloneInterface standalone_interface_;
   Standalone::DisplayVariable *dsp_var1_ptr_;

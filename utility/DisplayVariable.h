@@ -22,11 +22,11 @@ class DisplayVariable : public DisplayElement
 {
 public:
   DisplayVariable();
-  void setValue(int value);
+  virtual void setValue(int value);
   int getValue();
   String getDisplayString();
-  virtual void setFlashStringArray(const ConstantString string_array[],
-                                   const uint8_t string_count);
+  virtual void setConstantStringArray(const ConstantString string_array[],
+                                      const uint8_t string_count);
 private:
   static const uint8_t DISPLAY_WIDTH_DEFAULT=6;
   int value_;

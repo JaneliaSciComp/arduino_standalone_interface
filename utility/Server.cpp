@@ -16,6 +16,20 @@ void defaultCallback()
 volatile boolean Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
 Callback Server::callback_array_[DisplayElement::FRAMES_COUNT_MAX];
+CONSTANT_STRING(inc0,"1");
+CONSTANT_STRING(inc1,"10");
+CONSTANT_STRING(inc2,"100");
+CONSTANT_STRING(inc3,"1000");
+CONSTANT_STRING(inc4,"10000");
+const uint8_t INC_STRING_COUNT = 5;
+const ConstantString increment_array[] =
+  {
+    inc0,
+    inc1,
+    inc2,
+    inc3,
+    inc4,
+  };
 
 Server::Server(HardwareSerial &serial,
                const int enc_a_pin,
@@ -39,6 +53,8 @@ Server::Server(HardwareSerial &serial,
   interactive_variable_index_ = -1;
   frame_var_ptr_ = NULL;
   frame_name_array_ = NULL;
+  inc_var_ptr_ = NULL;
+  enc_value_prev_ = 0;
 }
 
 void Server::setup(const uint8_t frame_count)
@@ -78,7 +94,7 @@ void Server::setup(const uint8_t frame_count)
   {
     frame_count_ = frame_count;
   }
-  frame_var_ptr_->setFlashStringArray(frame_name_array_,frame_count_);
+  frame_var_ptr_->setConstantStringArray(frame_name_array_,frame_count_);
   display_labels_dirty_ = true;
 }
 
@@ -155,12 +171,29 @@ boolean Server::update()
 
     if (!int_var_ptr->checkValueDirty() && !interactive_variable_index_changed)
     {
-      int_var_ptr->updateWithEncoderValue(encoder_.read());
+      int32_t enc_value = encoder_.read();
+      if (inc_var_ptr_ && (int_var_ptr != inc_var_ptr_) && (int_var_ptr != frame_var_ptr_))
+      {
+        if (inc_var_ptr_->inFrame(Server::frame_current_))
+        {
+          int8_t inc_exp = inc_var_ptr_->getValue();
+          int inc_value = 1;
+          for (int i=0; i<inc_exp; ++i)
+          {
+            inc_value *= 10;
+          }
+          enc_value = (enc_value - enc_value_prev_)*inc_value + enc_value_prev_;
+          encoder_.write(enc_value);
+        }
+      }
+      int_var_ptr->updateWithEncoderValue(enc_value);
+      enc_value_prev_ = enc_value;
     }
     // updateWithEncoderValue may have dirtied value
     if (int_var_ptr->checkValueDirty() || interactive_variable_index_changed)
     {
       encoder_.write(int_var_ptr->getValue());
+      enc_value_prev_ = encoder_.read();
       int_var_ptr->clearValueDirty();
       interactive_variable_index_changed = false;
     }
@@ -229,6 +262,24 @@ InteractiveVariable& Server::createInteractiveVariable()
     interactive_variable_index_ = 0;
   }
   return interactive_variable_array_.back();
+}
+
+InteractiveVariable& Server::createIncrementVariable()
+{
+  if (!inc_var_ptr_)
+  {
+    InteractiveVariable& inc_var = createInteractiveVariable();
+    inc_var_ptr_ = &inc_var;
+    inc_var.setRange(0,INC_STRING_COUNT-1);
+    inc_var.setDisplayWidth(5);
+    inc_var.setConstantStringArray(increment_array,INC_STRING_COUNT);
+    inc_var.setValue(0);
+    return inc_var;
+  }
+  else
+  {
+    return *inc_var_ptr_;
+  }
 }
 
 void Server::attachCallbackToFrame(Callback callback, uint8_t frame)

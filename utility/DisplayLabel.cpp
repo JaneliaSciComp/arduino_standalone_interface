@@ -31,7 +31,7 @@ String DisplayLabel::getDisplayString()
   }
 }
 
-void DisplayLabel::setFlashString(const ConstantString &label)
+void DisplayLabel::setConstantString(const ConstantString &label)
 {
   label_ptr_ = &label;
   setDisplayWidth(label.length());

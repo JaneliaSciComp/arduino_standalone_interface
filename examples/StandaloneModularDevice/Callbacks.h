@@ -29,6 +29,7 @@ void getIntVar2Callback();
 
 void setIntVar2Callback();
 
+// Standalone Callbacks
 void addIntVar1ToDspVar1Callback();
 
 void subIntVar2FromDspVar1Callback();

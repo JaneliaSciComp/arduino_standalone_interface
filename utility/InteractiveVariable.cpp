@@ -12,13 +12,13 @@ namespace Standalone
 {
 InteractiveVariable::InteractiveVariable()
 {
-  min_ = 0;
-  max_ = 255;
+  min_ = -32768;
+  max_ = 32767;
   setDisplayWidth(DISPLAY_WIDTH_DEFAULT);
   value_dirty_ = true;
 }
 
-void InteractiveVariable::setRange(const uint8_t min, const uint8_t max)
+void InteractiveVariable::setRange(const int min, const int max)
 {
   if (min_ < max_)
   {
@@ -40,17 +40,17 @@ void InteractiveVariable::setRange(const uint8_t min, const uint8_t max)
   }
 }
 
-uint8_t InteractiveVariable::getMin()
+int InteractiveVariable::getMin()
 {
   return min_;
 }
 
-uint8_t InteractiveVariable::getMax()
+int InteractiveVariable::getMax()
 {
   return max_;
 }
 
-void InteractiveVariable::setValue(uint8_t value)
+void InteractiveVariable::setValue(int value)
 {
   DisplayVariable::setValue(wrapValue(value));
   value_dirty_ = true;
@@ -71,7 +71,7 @@ void InteractiveVariable::clearValueDirty()
   value_dirty_ = false;
 }
 
-uint8_t InteractiveVariable::wrapValue(int value)
+int InteractiveVariable::wrapValue(int value)
 {
   if ((value >= min_) && (value <= max_))
   {
@@ -89,10 +89,10 @@ uint8_t InteractiveVariable::wrapValue(int value)
   }
 }
 
-void InteractiveVariable::setFlashStringArray(const ConstantString string_array[],
-                                              const uint8_t string_count)
+void InteractiveVariable::setConstantStringArray(const ConstantString string_array[],
+                                                 const uint8_t string_count)
 {
-  DisplayVariable::setFlashStringArray(string_array,string_count);
+  DisplayVariable::setConstantStringArray(string_array,string_count);
   setRange(0,string_count-1);
 }
 }

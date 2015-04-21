@@ -49,6 +49,7 @@ public:
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
+  InteractiveVariable& createIncrementVariable();
   void attachCallbackToFrame(Callback callback, uint8_t frame);
   void executeCurrentFrameCallback();
 private:
@@ -72,6 +73,8 @@ private:
   Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;
   int interactive_variable_index_;
   boolean display_labels_dirty_;
+  InteractiveVariable *inc_var_ptr_;
+  uint32_t enc_value_prev_;
   static const int FRAME_VAR_DISPLAY_POSITION = 0;
   static const int FRAME_VAR_DISPLAY_WIDTH = 1;
   static volatile boolean enc_btn_pressed_;

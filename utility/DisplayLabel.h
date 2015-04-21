@@ -23,7 +23,7 @@ class DisplayLabel : public DisplayElement
 public:
   DisplayLabel();
   String getDisplayString();
-  void setFlashString(const ConstantString &label);
+  void setConstantString(const ConstantString &label);
 private:
   const ConstantString *label_ptr_;
 };
