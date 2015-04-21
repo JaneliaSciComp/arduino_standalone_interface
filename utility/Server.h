@@ -72,7 +72,6 @@ private:
   Array<DisplayVariable,constants::DISPLAY_VARIABLE_COUNT_MAX> display_variable_array_;
   Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;
   int interactive_variable_index_;
-  boolean display_labels_dirty_;
   InteractiveVariable *inc_var_ptr_;
   uint32_t enc_value_prev_;
   static const int FRAME_VAR_DISPLAY_POSITION = 0;

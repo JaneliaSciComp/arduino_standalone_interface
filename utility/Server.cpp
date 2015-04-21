@@ -95,7 +95,6 @@ void Server::setup(const uint8_t frame_count)
     frame_count_ = frame_count;
   }
   frame_var_ptr_->setConstantStringArray(frame_name_array_,frame_count_);
-  display_labels_dirty_ = true;
 }
 
 void Server::setup(const ConstantString frame_name_array[],
@@ -204,28 +203,25 @@ boolean Server::update()
   if (Server::frame_current_ != frame_prev)
   {
     display_.clearScreen();
-    display_labels_dirty_ = true;
   }
 
-  // Update all display_labels on display if necessary
-  if (display_labels_dirty_)
-  {
-    display_labels_dirty_ = false;
-    for (int i=0; i<display_label_array_.size(); ++i)
-    {
-      display_label_array_[i].updateOnDisplay(display_,Server::frame_current_);
-    }
-  }
-  // Update all display_variables on display
-  for (int i=0; i<display_variable_array_.size(); ++i)
-  {
-    display_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
-  }
   // Update all interactive_variables on display
   for (int i=0; i<interactive_variable_array_.size(); ++i)
   {
     interactive_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }
+
+  // Update all display_variables on display
+  for (int i=0; i<display_variable_array_.size(); ++i)
+  {
+    display_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
+  }
+
+  for (int i=0; i<display_label_array_.size(); ++i)
+  {
+    display_label_array_[i].updateOnDisplay(display_,Server::frame_current_);
+  }
+
   // Place the cursor back on the current interactive variable
   if (interactive_variable_index_ >= 0)
   {
