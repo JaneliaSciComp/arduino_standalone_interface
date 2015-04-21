@@ -21,6 +21,7 @@ class InteractiveVariable : public DisplayVariable
 public:
   InteractiveVariable();
   void setRange(const int min, const int max);
+  void setDisplayWidthUsingRange();
   int getMin();
   int getMax();
   virtual void setValue(int value);

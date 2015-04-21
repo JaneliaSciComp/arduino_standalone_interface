@@ -40,6 +40,22 @@ void InteractiveVariable::setRange(const int min, const int max)
   }
 }
 
+void InteractiveVariable::setDisplayWidthUsingRange()
+{
+  uint8_t display_width = 1;
+  if (min_ < 0)
+  {
+    ++display_width;
+  }
+  int max_temp = max_;
+  while ((max_temp/10 > 0) && (display_width <= DISPLAY_WIDTH_DEFAULT))
+  {
+    ++display_width;
+    max_temp /= 10;
+  }
+  setDisplayWidth(display_width);
+}
+
 int InteractiveVariable::getMin()
 {
   return min_;

@@ -32,6 +32,7 @@ String DisplayVariable::getDisplayString()
 {
   if ((string_count_ > 0) && (value_ < string_count_))
   {
+    // setDisplayWidth(string_array_[value_].length());
     char display_char_array[DISPLAY_WIDTH_MAX+1];
     string_array_[value_].copy(display_char_array);
     return String(display_char_array);
