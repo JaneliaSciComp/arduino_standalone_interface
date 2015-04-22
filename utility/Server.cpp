@@ -15,7 +15,7 @@ void defaultCallback()
 }
 volatile boolean Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
-Callback Server::callback_array_[DisplayElement::FRAMES_COUNT_MAX];
+Server::Callback Server::callback_array_[DisplayElement::FRAMES_COUNT_MAX];
 CONSTANT_STRING(inc0,"1");
 CONSTANT_STRING(inc1,"10");
 CONSTANT_STRING(inc2,"100");
@@ -200,6 +200,7 @@ boolean Server::update()
       int_var_ptr->clearValueDirty();
       interactive_variable_index_changed = false;
     }
+    int_var_ptr->executeUpdateCallback();
   }
 
   int frame_prev = Server::frame_current_;

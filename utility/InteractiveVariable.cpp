@@ -16,11 +16,12 @@ InteractiveVariable::InteractiveVariable()
   max_ = 32767;
   setDisplayWidth(DISPLAY_WIDTH_DEFAULT);
   value_dirty_ = true;
+  update_callback_ = NULL;
 }
 
 void InteractiveVariable::setRange(const int min, const int max)
 {
-  if (min_ < max_)
+  if (min < max)
   {
     min_ = min;
     max_ = max;
@@ -110,5 +111,18 @@ void InteractiveVariable::setConstantStringArray(const ConstantString string_arr
 {
   DisplayVariable::setConstantStringArray(string_array,string_count);
   setRange(0,string_count-1);
+}
+
+void InteractiveVariable::attachUpdateCallback(Callback update_callback)
+{
+  update_callback_ = update_callback;
+}
+
+void InteractiveVariable::executeUpdateCallback()
+{
+  if (update_callback_)
+  {
+    (*update_callback_)();
+  }
 }
 }

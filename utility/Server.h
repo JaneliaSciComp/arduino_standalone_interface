@@ -25,12 +25,12 @@
 
 namespace Standalone
 {
-typedef void(*Callback)();
 void defaultCallback();
 
 class Server
 {
 public:
+  typedef void(*Callback)();
   Server(HardwareSerial &serial,
          const int enc_a_pin,
          const int enc_b_pin,
