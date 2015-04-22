@@ -186,6 +186,10 @@ boolean Server::update()
         }
       }
       int_var_ptr->updateWithEncoderValue(enc_value);
+      if (int_var_ptr == frame_var_ptr_)
+      {
+        int_var_ptr->trimDisplayWidth();
+      }
       enc_value_prev_ = enc_value;
     }
     // updateWithEncoderValue may have dirtied value

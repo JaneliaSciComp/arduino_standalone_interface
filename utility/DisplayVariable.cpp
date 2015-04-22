@@ -22,9 +22,29 @@ void DisplayVariable::setValue(int value)
 {
   value_ = value;
   setDisplayDirty();
+}
+
+void DisplayVariable::trimDisplayWidth()
+{
   if ((string_count_ > 0) && (value_ < string_count_))
   {
     setDisplayWidth(string_array_[value_].length());
+  }
+  else
+  {
+    uint8_t display_width = 1;
+    int value_temp = value_;
+    if (value_temp < 0)
+    {
+      ++display_width;
+      value_temp = abs(value_temp);
+    }
+    while ((value_temp/10 > 0) && (display_width <= DISPLAY_WIDTH_DEFAULT))
+    {
+      ++display_width;
+      value_temp /= 10;
+    }
+    setDisplayWidth(display_width);
   }
 }
 

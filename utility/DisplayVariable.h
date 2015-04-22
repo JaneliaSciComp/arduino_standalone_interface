@@ -27,6 +27,7 @@ public:
   String getDisplayString();
   virtual void setConstantStringArray(const ConstantString string_array[],
                                       const uint8_t string_count);
+  void trimDisplayWidth();
 private:
   static const uint8_t DISPLAY_WIDTH_DEFAULT=6;
   int value_;
