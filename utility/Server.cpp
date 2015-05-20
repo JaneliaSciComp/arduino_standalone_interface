@@ -15,7 +15,7 @@ void defaultCallback()
 }
 volatile boolean Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
-Server::Callback Server::callback_array_[DisplayElement::FRAMES_COUNT_MAX];
+Server::Callback Server::callback_array_[constants::FRAMES_COUNT_MAX];
 CONSTANT_STRING(inc0,"1");
 CONSTANT_STRING(inc1,"10");
 CONSTANT_STRING(inc2,"100");
@@ -81,14 +81,14 @@ void Server::setup(const uint8_t frame_count)
     frame_var_ptr_->setDisplayWidth(FRAME_VAR_DISPLAY_WIDTH);
     frame_var_ptr_->addToAllFrames();
 
-    for (uint8_t frame=0; frame < DisplayElement::FRAMES_COUNT_MAX; frame++)
+    for (uint8_t frame=0; frame < constants::FRAMES_COUNT_MAX; frame++)
     {
       Server::callback_array_[frame] = defaultCallback;
     }
   }
-  if (frame_count > DisplayElement::FRAMES_COUNT_MAX)
+  if (frame_count > constants::FRAMES_COUNT_MAX)
   {
-    frame_count_ = DisplayElement::FRAMES_COUNT_MAX;
+    frame_count_ = constants::FRAMES_COUNT_MAX;
   }
   else
   {
@@ -272,7 +272,7 @@ InteractiveVariable& Server::createInteractiveVariable()
 {
   if (!setup_)
   {
-    setup(DisplayElement::FRAMES_COUNT_MAX);
+    setup(constants::FRAMES_COUNT_MAX);
   }
   InteractiveVariable int_var;
   interactive_variable_array_.push_back(int_var);
@@ -303,7 +303,7 @@ InteractiveVariable& Server::createIncrementVariable()
 
 void Server::attachCallbackToFrame(Callback callback, uint8_t frame)
 {
-  if (frame < DisplayElement::FRAMES_COUNT_MAX)
+  if (frame < constants::FRAMES_COUNT_MAX)
   {
     Server::callback_array_[frame] = callback;
   }

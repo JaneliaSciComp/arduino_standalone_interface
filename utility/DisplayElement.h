@@ -22,7 +22,6 @@ class DisplayElement
 {
 public:
   DisplayElement();
-  static const uint8_t FRAMES_COUNT_MAX = 8;
   static const uint8_t DISPLAY_WIDTH_MAX = 20;
   void setDisplayPosition(const uint8_t display_position);
   uint8_t getDisplayPosition();
@@ -39,11 +38,11 @@ public:
 protected:
   void setDisplayDirty();
 private:
-  typedef uint8_t frames_t;
+  typedef uint32_t frames_t;
   uint8_t display_position_;
   uint8_t display_width_;
   boolean left_justify_;
-  uint8_t frames_;
+  frames_t frames_;
   boolean display_dirty_;
   friend class Server;
 };

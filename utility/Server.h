@@ -79,7 +79,7 @@ private:
   static volatile boolean enc_btn_pressed_;
   static void encBtnIsr();
   static void btnIsr();
-  static Callback callback_array_[DisplayElement::FRAMES_COUNT_MAX];
+  static Callback callback_array_[constants::FRAMES_COUNT_MAX];
   static uint8_t frame_current_;
   void ledOn();
   void ledOff();
