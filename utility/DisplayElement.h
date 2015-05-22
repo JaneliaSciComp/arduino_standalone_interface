@@ -38,7 +38,7 @@ public:
 protected:
   void setDisplayDirty();
 private:
-  typedef uint32_t frames_t;
+  typedef uint16_t frames_t;
   uint8_t display_position_;
   uint8_t display_width_;
   boolean left_justify_;
