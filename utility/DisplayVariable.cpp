@@ -13,9 +13,9 @@ namespace Standalone
 DisplayVariable::DisplayVariable()
 {
   value_ = 0;
-  setDisplayWidth(DISPLAY_WIDTH_DEFAULT);
   string_array_ = NULL;
   string_count_ = 0;
+  setBaseDec();
 }
 
 void DisplayVariable::setValue(int value)
@@ -39,10 +39,28 @@ void DisplayVariable::trimDisplayWidth()
       ++display_width;
       value_temp = abs(value_temp);
     }
-    while ((value_temp/10 > 0) && (display_width <= DISPLAY_WIDTH_DEFAULT))
+    uint8_t display_width_default;
+    switch (base_)
+    {
+      case BASE_DEC:
+        display_width_default = DISPLAY_WIDTH_DEFAULT_DEC;
+        break;
+      case BASE_BIN:
+        display_width_default = DISPLAY_WIDTH_DEFAULT_BIN;
+        break;
+      case BASE_HEX:
+        display_width_default = DISPLAY_WIDTH_DEFAULT_HEX;
+        break;
+      case BASE_OCT:
+        display_width_default = DISPLAY_WIDTH_DEFAULT_OCT;
+        break;
+      default:
+        display_width_default = DISPLAY_WIDTH_DEFAULT_DEC;
+    }
+    while ((value_temp/base_ > 0) && (display_width <= display_width_default))
     {
       ++display_width;
-      value_temp /= 10;
+      value_temp /= base_;
     }
     setDisplayWidth(display_width);
   }
@@ -63,7 +81,23 @@ String DisplayVariable::getDisplayString()
   }
   else
   {
-    return String(value_);
+    switch (base_)
+    {
+      case BASE_DEC:
+        return String(value_);
+        break;
+      case BASE_BIN:
+        return String(value_,BIN);
+        break;
+      case BASE_HEX:
+        return String(value_,HEX);
+        break;
+      case BASE_OCT:
+        return String(value_,OCT);
+        break;
+      default:
+        return String(value_);
+    }
   }
 }
 
@@ -85,5 +119,34 @@ void DisplayVariable::setConstantStringArray(const ConstantString string_array[]
   {
     setDisplayWidth(string_length_max);
   }
+}
+
+void DisplayVariable::setBaseDec()
+{
+  base_ = BASE_DEC;
+  setDisplayWidth(DISPLAY_WIDTH_DEFAULT_DEC);
+}
+
+void DisplayVariable::setBaseBin()
+{
+  base_ = BASE_BIN;
+  setDisplayWidth(DISPLAY_WIDTH_DEFAULT_BIN);
+}
+
+void DisplayVariable::setBaseHex()
+{
+  base_ = BASE_HEX;
+  setDisplayWidth(DISPLAY_WIDTH_DEFAULT_HEX);
+}
+
+void DisplayVariable::setBaseOct()
+{
+  base_ = BASE_OCT;
+  setDisplayWidth(DISPLAY_WIDTH_DEFAULT_OCT);
+}
+
+uint8_t DisplayVariable::getBase()
+{
+  return base_;
 }
 }

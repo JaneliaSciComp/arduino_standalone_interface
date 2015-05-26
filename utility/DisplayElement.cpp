@@ -17,6 +17,7 @@ DisplayElement::DisplayElement()
   setLeftJustify();
   frames_ = 0;
   display_dirty_ = true;
+  resetDefaultPaddingChar();
 }
 
 void DisplayElement::setDisplayPosition(const uint8_t display_position)
@@ -89,6 +90,7 @@ void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
     {
       display_dirty_ = false;
       display.setCursor(getDisplayPosition());
+      display.setPaddingChar(padding_char_);
       uint8_t display_width = getDisplayWidth();
       if (left_justify_)
       {
@@ -124,6 +126,16 @@ boolean DisplayElement::inFrame(int frame)
 {
   frames_t bit = 1;
   return frames_ & (1 << frame);
+}
+
+void DisplayElement::resetDefaultPaddingChar()
+{
+  padding_char_ = ' ';
+}
+
+char DisplayElement::getPaddingChar()
+{
+  return padding_char_;
 }
 
 void DisplayElement::setDisplayDirty()

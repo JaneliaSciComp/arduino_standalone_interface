@@ -14,7 +14,7 @@ InteractiveVariable::InteractiveVariable()
 {
   min_ = -32768;
   max_ = 32767;
-  setDisplayWidth(DISPLAY_WIDTH_DEFAULT);
+  setBaseDec();
   value_dirty_ = true;
   update_callback_ = NULL;
 }
@@ -49,10 +49,29 @@ void InteractiveVariable::trimDisplayWidthUsingRange()
     ++display_width;
   }
   int max_temp = max_;
-  while ((max_temp/10 > 0) && (display_width <= DISPLAY_WIDTH_DEFAULT))
+  uint8_t display_width_default;
+  uint8_t base = getBase();
+  switch (base)
+  {
+    case BASE_DEC:
+      display_width_default = DISPLAY_WIDTH_DEFAULT_DEC;
+      break;
+    case BASE_BIN:
+      display_width_default = DISPLAY_WIDTH_DEFAULT_BIN;
+      break;
+    case BASE_HEX:
+      display_width_default = DISPLAY_WIDTH_DEFAULT_HEX;
+      break;
+    case BASE_OCT:
+      display_width_default = DISPLAY_WIDTH_DEFAULT_OCT;
+      break;
+    default:
+      display_width_default = DISPLAY_WIDTH_DEFAULT_DEC;
+  }
+  while ((max_temp/base > 0) && (display_width <= display_width_default))
   {
     ++display_width;
-    max_temp /= 10;
+    max_temp /= base;
   }
   setDisplayWidth(display_width);
 }

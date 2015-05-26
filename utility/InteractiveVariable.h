@@ -30,7 +30,6 @@ public:
                                       const uint8_t string_count);
   void attachUpdateCallback(Callback callback);
 private:
-  static const uint8_t DISPLAY_WIDTH_DEFAULT=6;
   int min_;
   int max_;
   boolean value_dirty_;

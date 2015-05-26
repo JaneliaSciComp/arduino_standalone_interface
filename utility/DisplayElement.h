@@ -35,6 +35,21 @@ public:
   void addToAllFrames();
   void removeFromFrame(int frame);
   boolean inFrame(int frame);
+  template<typename T>
+  void setPaddingChar(const T value)
+  {
+    String string = String(value);
+    if (string.length() > 0)
+    {
+      padding_char_ = string.charAt(0);
+    }
+    else
+    {
+      padding_char_ = ' ';
+    }
+  }
+  void resetDefaultPaddingChar();
+  char getPaddingChar();
 protected:
   void setDisplayDirty();
 private:
@@ -44,6 +59,7 @@ private:
   boolean left_justify_;
   frames_t frames_;
   boolean display_dirty_;
+  char padding_char_;
   friend class Server;
 };
 }

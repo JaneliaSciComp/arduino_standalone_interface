@@ -16,11 +16,22 @@
 #include "DisplayElement.h"
 
 
+#define BASE_DEC 10
+#define BASE_BIN 2
+#define BASE_HEX 16
+#define BASE_OCT 8
+
+
 namespace Standalone
 {
 class DisplayVariable : public DisplayElement
 {
 public:
+  static const uint8_t DISPLAY_WIDTH_DEFAULT_DEC=6;
+  static const uint8_t DISPLAY_WIDTH_DEFAULT_BIN=15;
+  static const uint8_t DISPLAY_WIDTH_DEFAULT_HEX=4;
+  static const uint8_t DISPLAY_WIDTH_DEFAULT_OCT=5;
+
   DisplayVariable();
   virtual void setValue(int value);
   int getValue();
@@ -28,9 +39,14 @@ public:
   virtual void setConstantStringArray(const ConstantString string_array[],
                                       const uint8_t string_count);
   void trimDisplayWidth();
+  void setBaseDec();
+  void setBaseBin();
+  void setBaseHex();
+  void setBaseOct();
+  uint8_t getBase();
 private:
-  static const uint8_t DISPLAY_WIDTH_DEFAULT=6;
   int value_;
+  uint8_t base_;
   const ConstantString *string_array_;
   uint8_t string_count_;
 };
