@@ -15,4 +15,4 @@ License:
 
 ###Install This Library and its Dependencies Together
 
-<https://github.com/JaneliaSciComp/arduino-libraries>
+<https://github.com/janelia-arduino/arduino-libraries>
