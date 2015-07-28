@@ -13,7 +13,7 @@ namespace Standalone
 void defaultCallback()
 {
 }
-volatile boolean Server::enc_btn_pressed_ = false;
+volatile bool Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
 Server::Callback Server::callback_array_[constants::FRAMES_COUNT_MAX];
 CONSTANT_STRING(inc0,"1");
@@ -118,7 +118,7 @@ void Server::disable()
   display_.displayOff();
 }
 
-boolean Server::update()
+bool Server::update()
 {
   if (!enabled_)
   {
@@ -147,7 +147,7 @@ boolean Server::update()
   if (interactive_variable_index_ >= 0)
   {
     InteractiveVariable *int_var_ptr = &(interactive_variable_array_[interactive_variable_index_]);
-    boolean interactive_variable_index_changed = false;
+    bool interactive_variable_index_changed = false;
     if (Server::enc_btn_pressed_)
     {
       Server::enc_btn_pressed_ = false;

@@ -52,7 +52,7 @@ void StandaloneInterface::disable()
   server_.disable();
 }
 
-boolean StandaloneInterface::update()
+bool StandaloneInterface::update()
 {
   return server_.update();
 }

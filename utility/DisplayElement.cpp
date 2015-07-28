@@ -122,7 +122,7 @@ void DisplayElement::removeFromFrame(int frame)
   frames_ &= ~(1 << frame);
 }
 
-boolean DisplayElement::inFrame(int frame)
+bool DisplayElement::inFrame(int frame)
 {
   frames_t bit = 1;
   return frames_ & (1 << frame);

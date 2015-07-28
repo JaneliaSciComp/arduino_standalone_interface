@@ -34,7 +34,7 @@ public:
   void addToFrame(int frame);
   void addToAllFrames();
   void removeFromFrame(int frame);
-  boolean inFrame(int frame);
+  bool inFrame(int frame);
   template<typename T>
   void setPaddingChar(const T value)
   {
@@ -56,9 +56,9 @@ private:
   typedef uint16_t frames_t;
   uint8_t display_position_;
   uint8_t display_width_;
-  boolean left_justify_;
+  bool left_justify_;
   frames_t frames_;
-  boolean display_dirty_;
+  bool display_dirty_;
   char padding_char_;
   friend class Server;
 };

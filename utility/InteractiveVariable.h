@@ -32,10 +32,10 @@ public:
 private:
   int min_;
   int max_;
-  boolean value_dirty_;
+  bool value_dirty_;
   Callback update_callback_;
   void updateWithEncoderValue(int value);
-  boolean checkValueDirty();
+  bool checkValueDirty();
   void clearValueDirty();
   int wrapValue(int value);
   void executeUpdateCallback();

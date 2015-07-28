@@ -45,7 +45,7 @@ public:
              const uint8_t frame_count);
   void enable();
   void disable();
-  boolean update();
+  bool update();
   DisplayLabel& createDisplayLabel();
   DisplayVariable& createDisplayVariable();
   InteractiveVariable& createInteractiveVariable();
@@ -61,9 +61,9 @@ private:
   const int btn_int_;
   const int led_pwr_pin_;
   const int update_period_;
-  boolean setup_;
-  boolean enabled_;
-  boolean led_off_;
+  bool setup_;
+  bool enabled_;
+  bool led_off_;
   unsigned long time_last_update_;
   uint8_t frame_count_;
   InteractiveVariable *frame_var_ptr_;
@@ -76,7 +76,7 @@ private:
   uint32_t enc_value_prev_;
   static const int FRAME_VAR_DISPLAY_POSITION = 0;
   static const int FRAME_VAR_DISPLAY_WIDTH = 1;
-  static volatile boolean enc_btn_pressed_;
+  static volatile bool enc_btn_pressed_;
   static void encBtnIsr();
   static void btnIsr();
   static Callback callback_array_[constants::FRAMES_COUNT_MAX];

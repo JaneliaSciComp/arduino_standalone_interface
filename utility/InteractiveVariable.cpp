@@ -97,7 +97,7 @@ void InteractiveVariable::updateWithEncoderValue(int value)
   DisplayVariable::setValue(wrapValue(value));
 }
 
-boolean InteractiveVariable::checkValueDirty()
+bool InteractiveVariable::checkValueDirty()
 {
   return value_dirty_;
 }
