@@ -38,7 +38,7 @@ public:
          const int enc_btn_int,
          const int btn_pin,
          const int btn_int,
-         const int led_pwr_pin,
+         const int lights_pin,
          const int update_period);
   void setup(const uint8_t frame_count);
   void setup(const ConstantString frame_name_array[],
@@ -59,7 +59,7 @@ private:
   const int enc_btn_int_;
   const int btn_pin_;
   const int btn_int_;
-  const int led_pwr_pin_;
+  const int lights_pin_;
   const int update_period_;
   bool setup_;
   bool enabled_;

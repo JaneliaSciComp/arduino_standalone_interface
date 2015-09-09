@@ -38,7 +38,7 @@ Server::Server(HardwareSerial &serial,
                const int enc_btn_int,
                const int btn_pin,
                const int btn_int,
-               const int led_pwr_pin,
+               const int lights_pin,
                const int update_period) :
   display_(serial),
   encoder_(enc_b_pin,enc_a_pin),
@@ -46,7 +46,7 @@ Server::Server(HardwareSerial &serial,
   enc_btn_int_(enc_btn_int),
   btn_pin_(btn_pin),
   btn_int_(btn_int),
-  led_pwr_pin_(led_pwr_pin),
+  lights_pin_(lights_pin),
   update_period_(update_period)
 {
   setup_ = false;
@@ -74,7 +74,7 @@ void Server::setup(const uint8_t frame_count)
     digitalWrite(btn_pin_,HIGH);
     attachInterrupt(btn_int_,btnIsr,FALLING);
 
-    pinMode(led_pwr_pin_,INPUT);
+    pinMode(lights_pin_,INPUT);
 
     frame_var_ptr_ = &(createInteractiveVariable());
     frame_var_ptr_->setDisplayPosition(FRAME_VAR_DISPLAY_POSITION);
@@ -125,11 +125,11 @@ bool Server::update()
     return false;
   }
 
-  if (led_off_ && (digitalRead(led_pwr_pin_) == HIGH))
+  if (led_off_ && (digitalRead(lights_pin_) == LOW))
   {
     ledOn();
   }
-  else if (!led_off_ && (digitalRead(led_pwr_pin_) == LOW))
+  else if (!led_off_ && (digitalRead(lights_pin_) == HIGH))
   {
     ledOff();
   }
