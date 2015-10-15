@@ -135,7 +135,7 @@ bool Server::update()
   }
 
   unsigned long time_now = millis();
-  if ((time_now - time_last_update_) < update_period_)
+  if ((int)(time_now - time_last_update_) < update_period_)
   {
     return false;
   }
@@ -155,7 +155,7 @@ bool Server::update()
       do
       {
         interactive_variable_index_++;
-        if (interactive_variable_index_ >= interactive_variable_array_.size())
+        if (interactive_variable_index_ >= (int)interactive_variable_array_.size())
         {
           interactive_variable_index_ = 0;
         }
@@ -209,38 +209,38 @@ bool Server::update()
   {
     display_.clearScreen();
     // Dirty all interactive_variables
-    for (int i=0; i<interactive_variable_array_.size(); ++i)
+    for (unsigned int i=0; i<interactive_variable_array_.size(); ++i)
     {
       interactive_variable_array_[i].setDisplayDirty();
     }
 
     // Dirty all display_variables
-    for (int i=0; i<display_variable_array_.size(); ++i)
+    for (unsigned int i=0; i<display_variable_array_.size(); ++i)
     {
       display_variable_array_[i].setDisplayDirty();
     }
 
     // Dirty all display_labels
-    for (int i=0; i<display_label_array_.size(); ++i)
+    for (unsigned int i=0; i<display_label_array_.size(); ++i)
     {
       display_label_array_[i].setDisplayDirty();
     }
   }
 
   // Update all interactive_variables on display
-  for (int i=0; i<interactive_variable_array_.size(); ++i)
+  for (unsigned int i=0; i<interactive_variable_array_.size(); ++i)
   {
     interactive_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }
 
   // Update all display_variables on display
-  for (int i=0; i<display_variable_array_.size(); ++i)
+  for (unsigned int i=0; i<display_variable_array_.size(); ++i)
   {
     display_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }
 
   // Update all display_labels on display
-  for (int i=0; i<display_label_array_.size(); ++i)
+  for (unsigned int i=0; i<display_label_array_.size(); ++i)
   {
     display_label_array_[i].updateOnDisplay(display_,Server::frame_current_);
   }

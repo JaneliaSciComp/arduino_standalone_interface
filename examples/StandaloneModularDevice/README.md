@@ -1,5 +1,4 @@
-StandaloneModularDevice
-=======================
+#StandaloneModularDevice
 
 Authors:
 
