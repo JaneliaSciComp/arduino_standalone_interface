@@ -8,25 +8,11 @@ License:
 
     BSD
 
-###Host Computer Interface
+##More Detailed Modular Device Information
 
-####Arduino Serial Monitor
+<https://github.com/janelia-modular-devices/modular-devices>
 
-Open the Serial Monitor in the Arduino IDE.
-
-Set the baudrate to match the value in the Arduino sketch (9600).
-
-Set the line ending to 'Newline'.
-
-To get help information about the Arduino device, type a single
-question mark ? into the input field and press the 'Send' button or
-press the 'Enter' key.
-
-```shell
-?
-```
-
-Example Response:
+##Device Information
 
 ```json
 {
@@ -35,7 +21,11 @@ Example Response:
     "name":"standalone_modular_device",
     "model_number":1003,
     "serial_number":0,
-    "firmware_number":1
+    "firmware_version":{
+      "major":0,
+      "minor":1,
+      "patch":0
+    }
   },
   "methods":[
     "getMemoryFree",
@@ -53,43 +43,77 @@ Example Response:
 }
 ```
 
-####Python
+##Verbose Device Information
 
-Example Python session:
-
-```python
-from modular_device import ModularDevice
-dev = ModularDevice() # Automatically finds device if one available
-dev.get_device_info()
+```json
+{
+  "method":"??",
+  "device_info":{
+    "name":"standalone_modular_device",
+    "model_number":1003,
+    "serial_number":0,
+    "firmware_version":{
+      "major":0,
+      "minor":1,
+      "patch":0
+    }
+  },
+  "methods":{
+    "getMemoryFree":{
+      "parameters":{}
+    },
+    "resetDefaults":{
+      "parameters":{}
+    },
+    "setSerialNumber":{
+      "parameters":{
+        "serial_number":{
+          "type":"long",
+          "min":0,
+          "max":65535
+        }
+      }
+    },
+    "executeStandaloneCallback":{
+      "parameters":{}
+    },
+    "getDspVar1":{
+      "parameters":{}
+    },
+    "setDspVar1":{
+      "parameters":{
+        "dsp_var1":{
+          "type":"long",
+          "min":-32768,
+          "max":32767
+        }
+      }
+    },
+    "getIntVar1":{
+      "parameters":{}
+    },
+    "setIntVar1":{
+      "parameters":{
+        "int_var1":{
+          "type":"long",
+          "min":-10,
+          "max":10
+        }
+      }
+    },
+    "getIntVar2":{
+      "parameters":{}
+    },
+    "setIntVar2":{
+      "parameters":{
+        "int_var2":{
+          "type":"long",
+          "min":-9999,
+          "max":12345
+        }
+      }
+    }
+  },
+  "status":success
+}
 ```
-
-For more details on the Python interface:
-
-<https://github.com/janelia-modular-devices/modular_device_python>
-
-####Matlab
-
-Example Matlab session:
-
-```matlab
-% Linux and Mac OS X
-ls /dev/tty*
-serial_port = '/dev/ttyACM0'     % example Linux serial port
-serial_port = '/dev/tty.usbmodem262471' % example Mac OS X serial port
-% Windows
-getAvailableComPorts()
-serial_port = 'COM4'             % example Windows serial port
-dev = ModularDevice(serial_port) % creates a device object
-dev.open()                       % opens a serial connection to the device
-device_info = dev.getDeviceInfo()
-```
-
-For more details on the Matlab interface:
-
-<https://github.com/janelia-modular-devices/modular_device_matlab>
-
-##Installation
-
-###Install This Library and its Dependencies Together
-
-<https://github.com/janelia-arduino/arduino-libraries>

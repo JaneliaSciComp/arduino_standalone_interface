@@ -12,6 +12,4 @@ License:
 
 ##Installation
 
-###Install This Library and its Dependencies Together
-
 <https://github.com/janelia-arduino/arduino-libraries>
