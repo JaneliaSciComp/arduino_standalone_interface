@@ -8,9 +8,9 @@ License:
 
     BSD
 
-##More Detailed Modular Device Information
+##More Detailed Help on Installation and Usage
 
-<https://github.com/janelia-modular-devices/modular-devices>
+[modular-devices](https://github.com/janelia-modular-devices/modular-devices)
 
 ##Device Information
 
