@@ -106,7 +106,6 @@ void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
 
 void DisplayElement::addToFrame(int frame)
 {
-  frames_t bit = 1;
   frames_ |= (1 << frame);
 }
 
@@ -118,13 +117,11 @@ void DisplayElement::addToAllFrames()
 
 void DisplayElement::removeFromFrame(int frame)
 {
-  frames_t bit = 1;
   frames_ &= ~(1 << frame);
 }
 
 bool DisplayElement::inFrame(int frame)
 {
-  frames_t bit = 1;
   return frames_ & (1 << frame);
 }
 
