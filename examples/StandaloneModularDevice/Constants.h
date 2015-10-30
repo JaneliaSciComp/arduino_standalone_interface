@@ -46,10 +46,12 @@ extern const uint8_t inc_var_display_position;
 extern const uint8_t int_var1_display_position;
 extern const int int_var1_min;
 extern const int int_var1_max;
+extern const int int_var1_default_value;
 
 extern const uint8_t int_var2_display_position;
 extern const int int_var2_min;
 extern const int int_var2_max;
+extern const int int_var2_default_value;
 
 extern ConstantString device_name;
 extern ConstantString dsp_lbl0_string;

@@ -43,10 +43,12 @@ const uint8_t inc_var_display_position = 31;
 const uint8_t int_var1_display_position = 71;
 const int int_var1_min = -10;
 const int int_var1_max = 10;
+const int int_var1_default_value = 4;
 
 const uint8_t int_var2_display_position = 71;
 const int int_var2_min = -9999;
 const int int_var2_max = 12345;
+const int int_var2_default_value = 7;
 
 CONSTANT_STRING(device_name,"standalone_modular_device");
 CONSTANT_STRING(dsp_lbl0_string,"inc");

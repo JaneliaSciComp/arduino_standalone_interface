@@ -105,10 +105,12 @@ void Controller::setup()
   int_var1_ptr_ = &(standalone_interface_.createInteractiveVariable());
   int_var1_ptr_->setDisplayPosition(constants::int_var1_display_position);
   int_var1_ptr_->setRange(constants::int_var1_min,constants::int_var1_max);
+  int_var1_ptr_->setValue(constants::int_var1_default_value);
 
   int_var2_ptr_ = &(standalone_interface_.createInteractiveVariable());
   int_var2_ptr_->setDisplayPosition(constants::int_var2_display_position);
   int_var2_ptr_->setRange(constants::int_var2_min,constants::int_var2_max);
+  int_var2_ptr_->setValue(constants::int_var2_default_value);
 
   // All Frames
   dsp_lbl1.addToAllFrames();
