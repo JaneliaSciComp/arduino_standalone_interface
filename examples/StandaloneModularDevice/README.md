@@ -39,7 +39,7 @@ License:
     "getIntVar2",
     "setIntVar2"
   ],
-  "status":success
+  "status":"success"
 }
 ```
 
@@ -114,6 +114,6 @@ License:
       }
     }
   },
-  "status":success
+  "status":"success"
 }
 ```
