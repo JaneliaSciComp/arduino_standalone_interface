@@ -58,62 +58,86 @@ License:
       "patch":0
     }
   },
-  "methods":{
-    "getMemoryFree":{
-      "parameters":{}
+  "methods":[
+    {
+      "name":"getMemoryFree",
+      "parameters":[],
+      "return":"long"
     },
-    "resetDefaults":{
-      "parameters":{}
+    {
+      "name":"resetDefaults",
+      "parameters":[],
+      "return":null
     },
-    "setSerialNumber":{
-      "parameters":{
-        "serial_number":{
+    {
+      "name":"setSerialNumber",
+      "parameters":[
+        {
+          "name":"serial_number",
           "type":"long",
           "min":0,
           "max":65535
         }
-      }
+      ],
+      "return":null
     },
-    "executeStandaloneCallback":{
-      "parameters":{}
+    {
+      "name":"executeStandaloneCallback",
+      "parameters":[],
+      "return":null
     },
-    "getDspVar1":{
-      "parameters":{}
+    {
+      "name":"getDspVar1",
+      "parameters":[],
+      "return":null
     },
-    "setDspVar1":{
-      "parameters":{
-        "dsp_var1":{
+    {
+      "name":"setDspVar1",
+      "parameters":[
+        {
+          "name":"dsp_var1",
           "type":"long",
           "min":-32768,
           "max":32767
         }
-      }
+      ],
+      "return":null
     },
-    "getIntVar1":{
-      "parameters":{}
+    {
+      "name":"getIntVar1",
+      "parameters":[],
+      "return":null
     },
-    "setIntVar1":{
-      "parameters":{
-        "int_var1":{
+    {
+      "name":"setIntVar1",
+      "parameters":[
+        {
+          "name":"int_var1",
           "type":"long",
           "min":-10,
           "max":10
         }
-      }
+      ],
+      "return":null
     },
-    "getIntVar2":{
-      "parameters":{}
+    {
+      "name":"getIntVar2",
+      "parameters":[],
+      "return":null
     },
-    "setIntVar2":{
-      "parameters":{
-        "int_var2":{
+    {
+      "name":"setIntVar2",
+      "parameters":[
+        {
+          "name":"int_var2",
           "type":"long",
           "min":-9999,
           "max":12345
         }
-      }
+      ],
+      "return":null
     }
-  },
+  ],
   "status":"success"
 }
 ```
