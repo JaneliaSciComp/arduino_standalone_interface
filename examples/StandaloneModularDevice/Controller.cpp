@@ -47,6 +47,7 @@ void Controller::setup()
 
   ModularDevice::Method& get_dsp_var1_method = modular_device.createMethod(constants::get_dsp_var1_method_name);
   get_dsp_var1_method.attachCallback(callbacks::getDspVar1Callback);
+  get_dsp_var1_method.setReturnTypeLong();
 
   ModularDevice::Method& set_dsp_var1_method = modular_device.createMethod(constants::set_dsp_var1_method_name);
   set_dsp_var1_method.attachCallback(callbacks::setDspVar1Callback);
@@ -54,6 +55,7 @@ void Controller::setup()
 
   ModularDevice::Method& get_int_var1_method = modular_device.createMethod(constants::get_int_var1_method_name);
   get_int_var1_method.attachCallback(callbacks::getIntVar1Callback);
+  get_int_var1_method.setReturnTypeLong();
 
   ModularDevice::Method& set_int_var1_method = modular_device.createMethod(constants::set_int_var1_method_name);
   set_int_var1_method.attachCallback(callbacks::setIntVar1Callback);
@@ -61,6 +63,7 @@ void Controller::setup()
 
   ModularDevice::Method& get_int_var2_method = modular_device.createMethod(constants::get_int_var2_method_name);
   get_int_var2_method.attachCallback(callbacks::getIntVar2Callback);
+  get_int_var2_method.setReturnTypeLong();
 
   ModularDevice::Method& set_int_var2_method = modular_device.createMethod(constants::set_int_var2_method_name);
   set_int_var2_method.attachCallback(callbacks::setIntVar2Callback);

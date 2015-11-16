@@ -33,7 +33,7 @@ void executeStandaloneCallbackCallback()
 void getDspVar1Callback()
 {
   int value = controller.getDspVar1();
-  modular_device.addToResponse("value",value);
+  modular_device.addResultToResponse(value);
 }
 
 void setDspVar1Callback()
@@ -45,7 +45,7 @@ void setDspVar1Callback()
 void getIntVar1Callback()
 {
   uint8_t value = controller.getIntVar1();
-  modular_device.addToResponse("value",value);
+  modular_device.addResultToResponse(value);
 }
 
 void setIntVar1Callback()
@@ -57,7 +57,7 @@ void setIntVar1Callback()
 void getIntVar2Callback()
 {
   uint8_t value = controller.getIntVar2();
-  modular_device.addToResponse("value",value);
+  modular_device.addResultToResponse(value);
 }
 
 void setIntVar2Callback()

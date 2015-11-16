@@ -62,12 +62,12 @@ License:
     {
       "name":"getMemoryFree",
       "parameters":[],
-      "return":"long"
+      "result_type":"long"
     },
     {
       "name":"resetDefaults",
       "parameters":[],
-      "return":null
+      "result_type":null
     },
     {
       "name":"setSerialNumber",
@@ -79,17 +79,17 @@ License:
           "max":65535
         }
       ],
-      "return":null
+      "result_type":null
     },
     {
       "name":"executeStandaloneCallback",
       "parameters":[],
-      "return":null
+      "result_type":null
     },
     {
       "name":"getDspVar1",
       "parameters":[],
-      "return":null
+      "result_type":"long"
     },
     {
       "name":"setDspVar1",
@@ -101,12 +101,12 @@ License:
           "max":32767
         }
       ],
-      "return":null
+      "result_type":null
     },
     {
       "name":"getIntVar1",
       "parameters":[],
-      "return":null
+      "result_type":"long"
     },
     {
       "name":"setIntVar1",
@@ -118,12 +118,12 @@ License:
           "max":10
         }
       ],
-      "return":null
+      "result_type":null
     },
     {
       "name":"getIntVar2",
       "parameters":[],
-      "return":null
+      "result_type":"long"
     },
     {
       "name":"setIntVar2",
@@ -135,7 +135,7 @@ License:
           "max":12345
         }
       ],
-      "return":null
+      "result_type":null
     }
   ],
   "status":"success"
