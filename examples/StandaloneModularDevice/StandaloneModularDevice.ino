@@ -9,7 +9,6 @@
 #include "MemoryFree.h"
 #include "ConstantVariable.h"
 #include "SavedVariable.h"
-#include "GenericSerial.h"
 #include "ModularDevice.h"
 #include "BetterMap.h"
 #include "NewhavenDisplay.h"

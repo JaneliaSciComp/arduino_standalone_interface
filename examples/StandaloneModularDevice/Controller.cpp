@@ -29,6 +29,8 @@ void Controller::setup()
   modular_device.setModelNumber(constants::model_number);
   modular_device.setFirmwareVersion(constants::firmware_major,constants::firmware_minor,constants::firmware_patch);
 
+  // Add Server Streams
+
   // Saved Variables
 
   // Parameters
@@ -69,8 +71,11 @@ void Controller::setup()
   set_int_var2_method.attachCallback(callbacks::setIntVar2Callback);
   set_int_var2_method.addParameter(int_var2_parameter);
 
+  // Setup Streams
+  Serial.begin(constants::baudrate);
+
   // Start ModularDevice Server
-  modular_device.startServer(constants::baudrate);
+  modular_device.startServer();
 
   // Standalone Interface
   standalone_interface_.setup(constants::frame_name_array,constants::FRAME_COUNT);
