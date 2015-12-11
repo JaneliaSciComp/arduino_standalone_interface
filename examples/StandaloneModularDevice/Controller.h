@@ -7,7 +7,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 #include "ModularServer.h"
-#include "ModularStandalone.h"
+#include "StandaloneInterface.h"
 #include "Constants.h"
 #include "Callbacks.h"
 
@@ -26,7 +26,7 @@ public:
   int getIntVar2();
   void setIntVar2(int value);
 private:
-  Standalone::ModularStandalone standalone_interface_;
+  Standalone::StandaloneInterface standalone_interface_;
   Standalone::DisplayVariable *dsp_var1_ptr_;
   Standalone::InteractiveVariable *int_var1_ptr_;
   Standalone::InteractiveVariable *int_var2_ptr_;
