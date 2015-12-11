@@ -1,6 +1,6 @@
-#############################################
-# Syntax Coloring Map For StandaloneInterface
-#############################################
+###########################################
+# Syntax Coloring Map For ModularStandalone
+###########################################
 
 #######################################
 # Datatypes (KEYWORD1)
@@ -30,8 +30,6 @@ removeRange	KEYWORD2
 #######################################
 # Instances (KEYWORD2)
 #######################################
-
-standalone_interface	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

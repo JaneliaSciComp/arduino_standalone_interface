@@ -13,7 +13,7 @@
 #include "BetterMap.h"
 #include "NewhavenDisplay.h"
 #include "Encoder.h"
-#include "StandaloneInterface.h"
+#include "ModularStandalone.h"
 #include "Constants.h"
 #include "Callbacks.h"
 #include "Controller.h"

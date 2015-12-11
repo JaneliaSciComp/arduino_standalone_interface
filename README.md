@@ -1,4 +1,4 @@
-#StandaloneInterface
+#ModularStandalone
 
 Authors:
 

@@ -1,12 +1,12 @@
 // ----------------------------------------------------------------------------
-// StandaloneInterface.h
+// ModularStandalone.h
 //
 //
 // Authors:
 // Peter Polidoro polidorop@janelia.hhmi.org
 // ----------------------------------------------------------------------------
-#ifndef STANDALONE_INTERFACE_H
-#define STANDALONE_INTERFACE_H
+#ifndef MODULAR_STANDALONE_H
+#define MODULAR_STANDALONE_H
 #include "utility/Server.h"
 
 
@@ -14,18 +14,18 @@ namespace Standalone
 {
 typedef void(*Callback)();
 
-class StandaloneInterface
+class ModularStandalone
 {
 public:
-  StandaloneInterface(HardwareSerial &display_serial,
-                      const int enc_a_pin,
-                      const int enc_b_pin,
-                      const int enc_btn_pin,
-                      const int enc_btn_int,
-                      const int btn_pin,
-                      const int btn_int,
-                      const int lights_pin,
-                      const int update_period);
+  ModularStandalone(HardwareSerial &display_serial,
+                    const int enc_a_pin,
+                    const int enc_b_pin,
+                    const int enc_btn_pin,
+                    const int enc_btn_int,
+                    const int btn_pin,
+                    const int btn_int,
+                    const int lights_pin,
+                    const int update_period);
   void setup(const uint8_t frame_count);
   void setup(const ConstantString frame_name_array[],
              const uint8_t frame_count);
