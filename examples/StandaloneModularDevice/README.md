@@ -72,12 +72,7 @@ License:
     {
       "name":"setSerialNumber",
       "parameters":[
-        {
-          "name":"serial_number",
-          "type":"long",
-          "min":0,
-          "max":65535
-        }
+        "serial_number"
       ],
       "result_type":null
     },
@@ -94,12 +89,7 @@ License:
     {
       "name":"setDspVar1",
       "parameters":[
-        {
-          "name":"dsp_var1",
-          "type":"long",
-          "min":-32768,
-          "max":32767
-        }
+        "dsp_var1"
       ],
       "result_type":null
     },
@@ -111,12 +101,7 @@ License:
     {
       "name":"setIntVar1",
       "parameters":[
-        {
-          "name":"int_var1",
-          "type":"long",
-          "min":-10,
-          "max":10
-        }
+        "int_var1"
       ],
       "result_type":null
     },
@@ -128,14 +113,35 @@ License:
     {
       "name":"setIntVar2",
       "parameters":[
-        {
-          "name":"int_var2",
-          "type":"long",
-          "min":-9999,
-          "max":12345
-        }
+        "int_var2"
       ],
       "result_type":null
+    }
+  ],
+  "parameters":[
+    {
+      "name":"serial_number",
+      "type":"long",
+      "min":0,
+      "max":65535
+    },
+    {
+      "name":"dsp_var1",
+      "type":"long",
+      "min":-32768,
+      "max":32767
+    },
+    {
+      "name":"int_var1",
+      "type":"long",
+      "min":-10,
+      "max":10
+    },
+    {
+      "name":"int_var2",
+      "type":"long",
+      "min":-9999,
+      "max":12345
     }
   ],
   "status":"success"
