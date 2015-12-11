@@ -25,49 +25,49 @@ void Controller::setup()
   // Pin Setup
 
   // Device Info
-  modular_device.setName(constants::device_name);
-  modular_device.setModelNumber(constants::model_number);
-  modular_device.setFirmwareVersion(constants::firmware_major,constants::firmware_minor,constants::firmware_patch);
+  modular_server.setName(constants::device_name);
+  modular_server.setModelNumber(constants::model_number);
+  modular_server.setFirmwareVersion(constants::firmware_major,constants::firmware_minor,constants::firmware_patch);
 
   // Add Server Streams
 
   // Saved Variables
 
   // Parameters
-  ModularDevice::Parameter& dsp_var1_parameter = modular_device.createParameter(constants::dsp_var1_parameter_name);
+  ModularDevice::Parameter& dsp_var1_parameter = modular_server.createParameter(constants::dsp_var1_parameter_name);
   dsp_var1_parameter.setRange(constants::dsp_var1_min,constants::dsp_var1_max);
 
-  ModularDevice::Parameter& int_var1_parameter = modular_device.createParameter(constants::int_var1_parameter_name);
+  ModularDevice::Parameter& int_var1_parameter = modular_server.createParameter(constants::int_var1_parameter_name);
   int_var1_parameter.setRange(constants::int_var1_min,constants::int_var1_max);
 
-  ModularDevice::Parameter& int_var2_parameter = modular_device.createParameter(constants::int_var2_parameter_name);
+  ModularDevice::Parameter& int_var2_parameter = modular_server.createParameter(constants::int_var2_parameter_name);
   int_var2_parameter.setRange(constants::int_var2_min,constants::int_var2_max);
 
   // Methods
-  ModularDevice::Method& execute_standalone_callback_method = modular_device.createMethod(constants::execute_standalone_callback_method_name);
+  ModularDevice::Method& execute_standalone_callback_method = modular_server.createMethod(constants::execute_standalone_callback_method_name);
   execute_standalone_callback_method.attachCallback(callbacks::executeStandaloneCallbackCallback);
 
-  ModularDevice::Method& get_dsp_var1_method = modular_device.createMethod(constants::get_dsp_var1_method_name);
+  ModularDevice::Method& get_dsp_var1_method = modular_server.createMethod(constants::get_dsp_var1_method_name);
   get_dsp_var1_method.attachCallback(callbacks::getDspVar1Callback);
   get_dsp_var1_method.setReturnTypeLong();
 
-  ModularDevice::Method& set_dsp_var1_method = modular_device.createMethod(constants::set_dsp_var1_method_name);
+  ModularDevice::Method& set_dsp_var1_method = modular_server.createMethod(constants::set_dsp_var1_method_name);
   set_dsp_var1_method.attachCallback(callbacks::setDspVar1Callback);
   set_dsp_var1_method.addParameter(dsp_var1_parameter);
 
-  ModularDevice::Method& get_int_var1_method = modular_device.createMethod(constants::get_int_var1_method_name);
+  ModularDevice::Method& get_int_var1_method = modular_server.createMethod(constants::get_int_var1_method_name);
   get_int_var1_method.attachCallback(callbacks::getIntVar1Callback);
   get_int_var1_method.setReturnTypeLong();
 
-  ModularDevice::Method& set_int_var1_method = modular_device.createMethod(constants::set_int_var1_method_name);
+  ModularDevice::Method& set_int_var1_method = modular_server.createMethod(constants::set_int_var1_method_name);
   set_int_var1_method.attachCallback(callbacks::setIntVar1Callback);
   set_int_var1_method.addParameter(int_var1_parameter);
 
-  ModularDevice::Method& get_int_var2_method = modular_device.createMethod(constants::get_int_var2_method_name);
+  ModularDevice::Method& get_int_var2_method = modular_server.createMethod(constants::get_int_var2_method_name);
   get_int_var2_method.attachCallback(callbacks::getIntVar2Callback);
   get_int_var2_method.setReturnTypeLong();
 
-  ModularDevice::Method& set_int_var2_method = modular_device.createMethod(constants::set_int_var2_method_name);
+  ModularDevice::Method& set_int_var2_method = modular_server.createMethod(constants::set_int_var2_method_name);
   set_int_var2_method.attachCallback(callbacks::setIntVar2Callback);
   set_int_var2_method.addParameter(int_var2_parameter);
 
@@ -75,7 +75,7 @@ void Controller::setup()
   Serial.begin(constants::baudrate);
 
   // Start Modular Device Server
-  modular_device.startServer();
+  modular_server.startServer();
 
   // Standalone Interface
   standalone_interface_.setup(constants::frame_name_array,constants::FRAME_COUNT);
@@ -144,7 +144,7 @@ void Controller::setup()
 
 void Controller::update()
 {
-  modular_device.handleServerRequests();
+  modular_server.handleServerRequests();
   standalone_interface_.update();
 }
 
