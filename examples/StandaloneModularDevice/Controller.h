@@ -18,6 +18,8 @@ public:
   Controller();
   void setup();
   void update();
+  ModularDevice::ModularServer& getModularServer();
+
   void executeStandaloneCallback();
   int getDspVar1();
   void setDspVar1(int value);
@@ -26,6 +28,11 @@ public:
   int getIntVar2();
   void setIntVar2(int value);
 private:
+  ModularDevice::ModularServer modular_server_;
+  ModularDevice::Method methods_[constants::METHOD_COUNT_MAX];
+  ModularDevice::Parameter parameters_[constants::PARAMETER_COUNT_MAX];
+  SavedVariable saved_variables_[constants::SAVED_VARIABLE_COUNT_MAX];
+
   Standalone::StandaloneInterface standalone_interface_;
   Standalone::DisplayVariable *dsp_var1_ptr_;
   Standalone::InteractiveVariable *int_var1_ptr_;

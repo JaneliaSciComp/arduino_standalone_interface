@@ -13,6 +13,8 @@ namespace constants
 const unsigned int baudrate = 9600;
 
 const unsigned int model_number = 1003;
+
+// Use semantic versioning http://semver.org/
 const unsigned char firmware_major = 0;
 const unsigned char firmware_minor = 1;
 const unsigned char firmware_patch = 0;
@@ -51,20 +53,24 @@ const int int_var2_max = 12345;
 const int int_var2_default_value = 7;
 
 CONSTANT_STRING(device_name,"standalone_modular_device");
-CONSTANT_STRING(dsp_lbl0_string,"inc");
-CONSTANT_STRING(dsp_lbl1_string,"dsp_var1");
-CONSTANT_STRING(dsp_lbl2_string,"int_var1");
-CONSTANT_STRING(dsp_lbl3_string,"int_var2");
-CONSTANT_STRING(execute_standalone_callback_method_name,"executeStandaloneCallback");
+
+CONSTANT_STRING(dsp_var1_parameter_name,"dsp_var1");
+CONSTANT_STRING(int_var1_parameter_name,"int_var1");
+CONSTANT_STRING(int_var2_parameter_name,"int_var2");
+
 CONSTANT_STRING(get_dsp_var1_method_name,"getDspVar1");
 CONSTANT_STRING(set_dsp_var1_method_name,"setDspVar1");
 CONSTANT_STRING(get_int_var1_method_name,"getIntVar1");
 CONSTANT_STRING(set_int_var1_method_name,"setIntVar1");
 CONSTANT_STRING(get_int_var2_method_name,"getIntVar2");
 CONSTANT_STRING(set_int_var2_method_name,"setIntVar2");
-CONSTANT_STRING(dsp_var1_parameter_name,"dsp_var1");
-CONSTANT_STRING(int_var1_parameter_name,"int_var1");
-CONSTANT_STRING(int_var2_parameter_name,"int_var2");
+
+CONSTANT_STRING(dsp_lbl0_string,"inc");
+CONSTANT_STRING(dsp_lbl1_string,"dsp_var1");
+CONSTANT_STRING(dsp_lbl2_string,"int_var1");
+CONSTANT_STRING(dsp_lbl3_string,"int_var2");
+
+CONSTANT_STRING(execute_standalone_callback_method_name,"executeStandaloneCallback");
 
 CONSTANT_STRING(frame0_name,"dsp_var1 += int_var1");
 CONSTANT_STRING(frame1_name,"dsp_var1 -= int_var2");

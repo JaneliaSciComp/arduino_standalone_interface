@@ -11,11 +11,17 @@
 
 namespace constants
 {
+//MAX values must be >= 1, < RAM limit, <= created
+enum{METHOD_COUNT_MAX=7};
+enum{PARAMETER_COUNT_MAX=3};
+enum{SAVED_VARIABLE_COUNT_MAX=1};
+
 enum {FRAME_COUNT=2};
 
 extern const unsigned int baudrate;
 
 extern const unsigned int model_number;
+
 extern const unsigned char firmware_major;
 extern const unsigned char firmware_minor;
 extern const unsigned char firmware_patch;
@@ -54,20 +60,24 @@ extern const int int_var2_max;
 extern const int int_var2_default_value;
 
 extern ConstantString device_name;
-extern ConstantString dsp_lbl0_string;
-extern ConstantString dsp_lbl1_string;
-extern ConstantString dsp_lbl2_string;
-extern ConstantString dsp_lbl3_string;
-extern ConstantString execute_standalone_callback_method_name;
+
+extern ConstantString dsp_var1_parameter_name;
+extern ConstantString int_var1_parameter_name;
+extern ConstantString int_var2_parameter_name;
+
 extern ConstantString get_dsp_var1_method_name;
 extern ConstantString set_dsp_var1_method_name;
 extern ConstantString get_int_var1_method_name;
 extern ConstantString set_int_var1_method_name;
 extern ConstantString get_int_var2_method_name;
 extern ConstantString set_int_var2_method_name;
-extern ConstantString dsp_var1_parameter_name;
-extern ConstantString int_var1_parameter_name;
-extern ConstantString int_var2_parameter_name;
+
+extern ConstantString dsp_lbl0_string;
+extern ConstantString dsp_lbl1_string;
+extern ConstantString dsp_lbl2_string;
+extern ConstantString dsp_lbl3_string;
+
+extern ConstantString execute_standalone_callback_method_name;
 
 extern ConstantString frame0_name;
 extern ConstantString frame1_name;
