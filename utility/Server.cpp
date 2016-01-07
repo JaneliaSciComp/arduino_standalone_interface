@@ -16,20 +16,6 @@ void defaultCallback()
 volatile bool Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
 Server::Callback Server::callback_array_[constants::FRAMES_COUNT_MAX];
-CONSTANT_STRING(inc0,"1");
-CONSTANT_STRING(inc1,"10");
-CONSTANT_STRING(inc2,"100");
-CONSTANT_STRING(inc3,"1000");
-CONSTANT_STRING(inc4,"10000");
-const uint8_t INC_STRING_COUNT = 5;
-const ConstantString increment_array[] =
-  {
-    inc0,
-    inc1,
-    inc2,
-    inc3,
-    inc4,
-  };
 
 Server::Server(HardwareSerial &serial,
                const int enc_a_pin,
@@ -146,7 +132,7 @@ bool Server::update()
   // Update current interactive variable values
   if (interactive_variable_index_ >= 0)
   {
-    InteractiveVariable *int_var_ptr = &(interactive_variable_array_[interactive_variable_index_]);
+    InteractiveVariable *int_var_ptr = &(interactive_variables_[interactive_variable_index_]);
     bool interactive_variable_index_changed = false;
     if (Server::enc_btn_pressed_)
     {
@@ -155,11 +141,11 @@ bool Server::update()
       do
       {
         interactive_variable_index_++;
-        if (interactive_variable_index_ >= (int)interactive_variable_array_.size())
+        if (interactive_variable_index_ >= (int)interactive_variables_.size())
         {
           interactive_variable_index_ = 0;
         }
-        int_var_ptr = &(interactive_variable_array_[interactive_variable_index_]);
+        int_var_ptr = &(interactive_variables_[interactive_variable_index_]);
       }
       while (!int_var_ptr->inFrame(Server::frame_current_));
       if (int_var_prev != interactive_variable_index_)
@@ -209,46 +195,46 @@ bool Server::update()
   {
     display_.clearScreen();
     // Dirty all interactive_variables
-    for (unsigned int i=0; i<interactive_variable_array_.size(); ++i)
+    for (unsigned int i=0; i<interactive_variables_.size(); ++i)
     {
-      interactive_variable_array_[i].setDisplayDirty();
+      interactive_variables_[i].setDisplayDirty();
     }
 
     // Dirty all display_variables
-    for (unsigned int i=0; i<display_variable_array_.size(); ++i)
+    for (unsigned int i=0; i<display_variables_.size(); ++i)
     {
-      display_variable_array_[i].setDisplayDirty();
+      display_variables_[i].setDisplayDirty();
     }
 
     // Dirty all display_labels
-    for (unsigned int i=0; i<display_label_array_.size(); ++i)
+    for (unsigned int i=0; i<display_labels_.size(); ++i)
     {
-      display_label_array_[i].setDisplayDirty();
+      display_labels_[i].setDisplayDirty();
     }
   }
 
   // Update all interactive_variables on display
-  for (unsigned int i=0; i<interactive_variable_array_.size(); ++i)
+  for (unsigned int i=0; i<interactive_variables_.size(); ++i)
   {
-    interactive_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
+    interactive_variables_[i].updateOnDisplay(display_,Server::frame_current_);
   }
 
   // Update all display_variables on display
-  for (unsigned int i=0; i<display_variable_array_.size(); ++i)
+  for (unsigned int i=0; i<display_variables_.size(); ++i)
   {
-    display_variable_array_[i].updateOnDisplay(display_,Server::frame_current_);
+    display_variables_[i].updateOnDisplay(display_,Server::frame_current_);
   }
 
   // Update all display_labels on display
-  for (unsigned int i=0; i<display_label_array_.size(); ++i)
+  for (unsigned int i=0; i<display_labels_.size(); ++i)
   {
-    display_label_array_[i].updateOnDisplay(display_,Server::frame_current_);
+    display_labels_[i].updateOnDisplay(display_,Server::frame_current_);
   }
 
   // Place the cursor back on the current interactive variable
   if (interactive_variable_index_ >= 0)
   {
-    InteractiveVariable &int_var = interactive_variable_array_[interactive_variable_index_];
+    InteractiveVariable &int_var = interactive_variables_[interactive_variable_index_];
     display_.setCursor(int_var.getDisplayPosition());
   }
   return true;
@@ -257,15 +243,15 @@ bool Server::update()
 DisplayLabel& Server::createDisplayLabel()
 {
   DisplayLabel display_label;
-  display_label_array_.push_back(display_label);
-  return display_label_array_.back();
+  display_labels_.push_back(display_label);
+  return display_labels_.back();
 }
 
 DisplayVariable& Server::createDisplayVariable()
 {
   DisplayVariable display_var;
-  display_variable_array_.push_back(display_var);
-  return display_variable_array_.back();
+  display_variables_.push_back(display_var);
+  return display_variables_.back();
 }
 
 InteractiveVariable& Server::createInteractiveVariable()
@@ -275,12 +261,12 @@ InteractiveVariable& Server::createInteractiveVariable()
     setup(constants::FRAMES_COUNT_MAX);
   }
   InteractiveVariable int_var;
-  interactive_variable_array_.push_back(int_var);
+  interactive_variables_.push_back(int_var);
   if (interactive_variable_index_ < 0)
   {
     interactive_variable_index_ = 0;
   }
-  return interactive_variable_array_.back();
+  return interactive_variables_.back();
 }
 
 InteractiveVariable& Server::createIncrementVariable()

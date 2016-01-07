@@ -16,6 +16,7 @@
 #include "NewhavenDisplay.h"
 #include "Encoder.h"
 #include "Array.h"
+#include "Vector.h"
 #include "ConstantVariable.h"
 #include "Constants.h"
 #include "DisplayLabel.h"
@@ -41,8 +42,8 @@ public:
          const int lights_pin,
          const int update_period);
   void setup(const uint8_t frame_count);
-  void setup(const ConstantString frame_name_array[],
-             const uint8_t frame_count);
+  template <size_t FRAME_COUNT>
+  void setup(const ConstantString (&frame_names)[FRAME_COUNT]);
   void enable();
   void disable();
   bool update();
@@ -67,10 +68,13 @@ private:
   unsigned long time_last_update_;
   uint8_t frame_count_;
   InteractiveVariable *frame_var_ptr_;
-  const ConstantString *frame_name_array_;
-  Array<DisplayLabel,constants::DISPLAY_LABEL_COUNT_MAX> display_label_array_;
-  Array<DisplayVariable,constants::DISPLAY_VARIABLE_COUNT_MAX> display_variable_array_;
-  Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;
+  const ConstantString *frame_names_ptr_;
+  // Array<DisplayLabel,constants::DISPLAY_LABEL_COUNT_MAX> display_label_array_;
+  // Array<DisplayVariable,constants::DISPLAY_VARIABLE_COUNT_MAX> display_variable_array_;
+  // Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;
+  Vector<DisplayLabel> display_labels_;
+  Vector<DisplayVariable> display_variables_;
+  Vector<InteractiveVariable> interactive_variables_;
   int interactive_variable_index_;
   InteractiveVariable *inc_var_ptr_;
   uint32_t enc_value_prev_;
@@ -85,4 +89,6 @@ private:
   void ledOff();
 };
 }
+#include "ServerDefinitions.h"
+
 #endif

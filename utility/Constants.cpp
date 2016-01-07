@@ -11,5 +11,18 @@ namespace Standalone
 {
 namespace constants
 {
+CONSTANT_STRING(inc0,"1");
+CONSTANT_STRING(inc1,"10");
+CONSTANT_STRING(inc2,"100");
+CONSTANT_STRING(inc3,"1000");
+CONSTANT_STRING(inc4,"10000");
+const ConstantString increment_array[] =
+  {
+    inc0,
+    inc1,
+    inc2,
+    inc3,
+    inc4,
+  };
 }
 }
