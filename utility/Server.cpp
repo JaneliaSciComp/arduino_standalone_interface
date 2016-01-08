@@ -15,7 +15,7 @@ void defaultCallback()
 }
 volatile bool Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
-Server::Callback Server::callback_array_[constants::FRAMES_COUNT_MAX];
+Server::Callback Server::callbacks_[constants::FRAMES_COUNT_MAX];
 
 Server::Server(HardwareSerial &serial,
                const int enc_a_pin,
@@ -35,59 +35,10 @@ Server::Server(HardwareSerial &serial,
   lights_pin_(lights_pin),
   update_period_(update_period)
 {
-  setup_ = false;
   interactive_variable_index_ = -1;
   frame_var_ptr_ = NULL;
-  frame_name_array_ = NULL;
   inc_var_ptr_ = NULL;
   enc_value_prev_ = 0;
-}
-
-void Server::setup(const uint8_t frame_count)
-{
-  if (!setup_)
-  {
-    setup_ = true;
-    display_.setup();
-    disable();
-    time_last_update_ = millis();
-
-    pinMode(enc_btn_pin_,INPUT);
-    digitalWrite(enc_btn_pin_,HIGH);
-    attachInterrupt(enc_btn_int_,encBtnIsr,FALLING);
-
-    pinMode(btn_pin_,INPUT);
-    digitalWrite(btn_pin_,HIGH);
-    attachInterrupt(btn_int_,btnIsr,FALLING);
-
-    pinMode(lights_pin_,INPUT);
-
-    frame_var_ptr_ = &(createInteractiveVariable());
-    frame_var_ptr_->setDisplayPosition(FRAME_VAR_DISPLAY_POSITION);
-    frame_var_ptr_->setDisplayWidth(FRAME_VAR_DISPLAY_WIDTH);
-    frame_var_ptr_->addToAllFrames();
-
-    for (uint8_t frame=0; frame < constants::FRAMES_COUNT_MAX; frame++)
-    {
-      Server::callback_array_[frame] = defaultCallback;
-    }
-  }
-  if (frame_count > constants::FRAMES_COUNT_MAX)
-  {
-    frame_count_ = constants::FRAMES_COUNT_MAX;
-  }
-  else
-  {
-    frame_count_ = frame_count;
-  }
-  frame_var_ptr_->setConstantStringArray(frame_name_array_,frame_count_);
-}
-
-void Server::setup(const ConstantString frame_name_array[],
-                   const uint8_t frame_count)
-{
-  frame_name_array_ = frame_name_array;
-  setup(frame_count);
 }
 
 void Server::enable()
@@ -256,10 +207,6 @@ DisplayVariable& Server::createDisplayVariable()
 
 InteractiveVariable& Server::createInteractiveVariable()
 {
-  if (!setup_)
-  {
-    setup(constants::FRAMES_COUNT_MAX);
-  }
   InteractiveVariable int_var;
   interactive_variables_.push_back(int_var);
   if (interactive_variable_index_ < 0)
@@ -275,9 +222,9 @@ InteractiveVariable& Server::createIncrementVariable()
   {
     InteractiveVariable& inc_var = createInteractiveVariable();
     inc_var_ptr_ = &inc_var;
-    inc_var.setRange(0,INC_STRING_COUNT-1);
+    inc_var.setRange(0,constants::INC_STRING_COUNT-1);
     inc_var.setDisplayWidth(5);
-    inc_var.setConstantStringArray(increment_array,INC_STRING_COUNT);
+    inc_var.setConstantStringArray(constants::increment_array,constants::INC_STRING_COUNT);
     inc_var.setValue(0);
     return inc_var;
   }
@@ -291,13 +238,13 @@ void Server::attachCallbackToFrame(Callback callback, uint8_t frame)
 {
   if (frame < constants::FRAMES_COUNT_MAX)
   {
-    Server::callback_array_[frame] = callback;
+    Server::callbacks_[frame] = callback;
   }
 }
 
 void Server::executeCurrentFrameCallback()
 {
-  (*Server::callback_array_[Server::frame_current_])();
+  (*Server::callbacks_[Server::frame_current_])();
 }
 
 void Server::encBtnIsr()
@@ -307,7 +254,7 @@ void Server::encBtnIsr()
 
 void Server::btnIsr()
 {
-  (*Server::callback_array_[Server::frame_current_])();
+  (*Server::callbacks_[Server::frame_current_])();
 }
 
 void Server::ledOn()

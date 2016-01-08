@@ -41,14 +41,19 @@ public:
          const int btn_int,
          const int lights_pin,
          const int update_period);
-  void setup(const uint8_t frame_count);
   template <size_t FRAME_COUNT>
   void setup(const ConstantString (&frame_names)[FRAME_COUNT]);
   void enable();
   void disable();
   bool update();
+  template <size_t MAX_SIZE>
+  void setDisplayLabelStorage(DisplayLabel (&display_labels)[MAX_SIZE]);
   DisplayLabel& createDisplayLabel();
+  template <size_t MAX_SIZE>
+  void setDisplayVariableStorage(DisplayVariable (&display_variables)[MAX_SIZE]);
   DisplayVariable& createDisplayVariable();
+  template <size_t MAX_SIZE>
+  void setInteractiveVariableStorage(InteractiveVariable (&interactive_variables)[MAX_SIZE]);
   InteractiveVariable& createInteractiveVariable();
   InteractiveVariable& createIncrementVariable();
   void attachCallbackToFrame(Callback callback, uint8_t frame);
@@ -62,16 +67,11 @@ private:
   const int btn_int_;
   const int lights_pin_;
   const int update_period_;
-  bool setup_;
   bool enabled_;
   bool led_off_;
   unsigned long time_last_update_;
   uint8_t frame_count_;
   InteractiveVariable *frame_var_ptr_;
-  const ConstantString *frame_names_ptr_;
-  // Array<DisplayLabel,constants::DISPLAY_LABEL_COUNT_MAX> display_label_array_;
-  // Array<DisplayVariable,constants::DISPLAY_VARIABLE_COUNT_MAX> display_variable_array_;
-  // Array<InteractiveVariable,constants::INTERACTIVE_VARIABLE_COUNT_MAX> interactive_variable_array_;
   Vector<DisplayLabel> display_labels_;
   Vector<DisplayVariable> display_variables_;
   Vector<InteractiveVariable> interactive_variables_;
@@ -83,7 +83,7 @@ private:
   static volatile bool enc_btn_pressed_;
   static void encBtnIsr();
   static void btnIsr();
-  static Callback callback_array_[constants::FRAMES_COUNT_MAX];
+  static Callback callbacks_[constants::FRAMES_COUNT_MAX];
   static uint8_t frame_current_;
   void ledOn();
   void ledOff();

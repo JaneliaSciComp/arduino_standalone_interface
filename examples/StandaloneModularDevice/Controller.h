@@ -34,6 +34,10 @@ private:
   SavedVariable saved_variables_[constants::SAVED_VARIABLE_COUNT_MAX];
 
   Standalone::StandaloneInterface standalone_interface_;
+  Standalone::DisplayLabel display_labels_[constants::DISPLAY_LABEL_COUNT_MAX];
+  Standalone::DisplayVariable display_variables_[constants::DISPLAY_VARIABLE_COUNT_MAX];
+  Standalone::InteractiveVariable interactive_variables_[constants::INTERACTIVE_VARIABLE_COUNT_MAX];
+
   Standalone::DisplayVariable *dsp_var1_ptr_;
   Standalone::InteractiveVariable *int_var1_ptr_;
   Standalone::InteractiveVariable *int_var2_ptr_;

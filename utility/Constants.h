@@ -7,15 +7,13 @@
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_CONSTANTS_H_
 #define _STANDALONE_CONSTANTS_H_
+#include "ConstantVariable.h"
 
 
 namespace Standalone
 {
 namespace constants
 {
-// enum{DISPLAY_LABEL_COUNT_MAX=24};
-// enum{DISPLAY_VARIABLE_COUNT_MAX=20};
-// enum{INTERACTIVE_VARIABLE_COUNT_MAX=20};
 enum{FRAMES_COUNT_MAX=16};
 enum{INC_STRING_COUNT=5};
 

@@ -32,10 +32,10 @@ void Controller::setup()
   // Add Server Streams
   modular_server_.addServerStream(Serial);
 
-  // Set Storage Arrays
-  modular_server_.setSavedVariableStorageArray(saved_variables_);
-  modular_server_.setParameterStorageArray(parameters_);
-  modular_server_.setMethodStorageArray(methods_);
+  // Set Storage
+  modular_server_.setSavedVariableStorage(saved_variables_);
+  modular_server_.setParameterStorage(parameters_);
+  modular_server_.setMethodStorage(methods_);
 
   // Saved Variables
 
@@ -84,7 +84,14 @@ void Controller::setup()
   modular_server_.startServer();
 
   // Standalone Interface
-  standalone_interface_.setup(constants::frame_name_array,constants::FRAME_COUNT);
+
+  // Set Storage
+  standalone_interface_.setDisplayLabelStorage(display_labels_);
+  standalone_interface_.setDisplayVariableStorage(display_variables_);
+  standalone_interface_.setInteractiveVariableStorage(interactive_variables_);
+
+  // Setup
+  standalone_interface_.setup(constants::frame_name_array);
 
   // Display Labels
   Standalone::DisplayLabel& dsp_lbl0 = standalone_interface_.createDisplayLabel();
