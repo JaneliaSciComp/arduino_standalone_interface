@@ -40,7 +40,7 @@ public:
   template <size_t MAX_SIZE>
   void setInteractiveVariableStorage(InteractiveVariable (&interactive_variables)[MAX_SIZE]);
   InteractiveVariable& createInteractiveVariable();
-  InteractiveVariable& createIncrementVariable();
+  InteractiveVariable& createIncrementVariable(int width_max=4);
   void attachCallbackToFrame(Callback callback, uint8_t frame);
   void executeCurrentFrameCallback();
 private:

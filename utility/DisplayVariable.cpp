@@ -18,7 +18,7 @@ DisplayVariable::DisplayVariable()
   setBaseDec();
 }
 
-void DisplayVariable::setValue(int value)
+void DisplayVariable::setValue(long value)
 {
   value_ = value;
   setDisplayDirty();
@@ -33,7 +33,7 @@ void DisplayVariable::trimDisplayWidth()
   else
   {
     uint8_t display_width = 1;
-    int value_temp = value_;
+    long value_temp = value_;
     if (value_temp < 0)
     {
       ++display_width;
@@ -66,7 +66,7 @@ void DisplayVariable::trimDisplayWidth()
   }
 }
 
-int DisplayVariable::getValue()
+long DisplayVariable::getValue()
 {
   return value_;
 }

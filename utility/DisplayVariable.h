@@ -33,8 +33,8 @@ public:
   static const uint8_t DISPLAY_WIDTH_DEFAULT_OCT=5;
 
   DisplayVariable();
-  virtual void setValue(int value);
-  int getValue();
+  virtual void setValue(long value);
+  long getValue();
   String getDisplayString();
   virtual void setConstantStringArray(const ConstantString string_array[],
                                       const uint8_t string_count);
@@ -45,7 +45,7 @@ public:
   void setBaseOct();
   uint8_t getBase();
 private:
-  int value_;
+  long value_;
   uint8_t base_;
   const ConstantString *string_array_;
   uint8_t string_count_;

@@ -21,23 +21,23 @@ class InteractiveVariable : public DisplayVariable
 public:
   typedef void(*Callback)();
   InteractiveVariable();
-  void setRange(const int min, const int max);
+  void setRange(const long min, const long max);
   void trimDisplayWidthUsingRange();
-  int getMin();
-  int getMax();
-  virtual void setValue(int value);
+  long getMin();
+  long getMax();
+  virtual void setValue(long value);
   virtual void setConstantStringArray(const ConstantString string_array[],
                                       const uint8_t string_count);
   void attachUpdateCallback(Callback callback);
 private:
-  int min_;
-  int max_;
+  long min_;
+  long max_;
   bool value_dirty_;
   Callback update_callback_;
-  void updateWithEncoderValue(int value);
+  void updateWithEncoderValue(long value);
   bool checkValueDirty();
   void clearValueDirty();
-  int wrapValue(int value);
+  long wrapValue(long value);
   void executeUpdateCallback();
   friend class Server;
 };

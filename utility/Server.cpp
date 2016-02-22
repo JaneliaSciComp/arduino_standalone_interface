@@ -216,22 +216,26 @@ InteractiveVariable& Server::createInteractiveVariable()
   return interactive_variables_.back();
 }
 
-InteractiveVariable& Server::createIncrementVariable()
+InteractiveVariable& Server::createIncrementVariable(int width_max)
 {
   if (!inc_var_ptr_)
   {
     InteractiveVariable& inc_var = createInteractiveVariable();
     inc_var_ptr_ = &inc_var;
-    inc_var.setRange(0,constants::INC_STRING_COUNT-1);
-    inc_var.setDisplayWidth(5);
-    inc_var.setConstantStringArray(constants::increment_array,constants::INC_STRING_COUNT);
-    inc_var.setValue(0);
-    return inc_var;
   }
-  else
+  if (width_max < 1)
   {
-    return *inc_var_ptr_;
+    width_max = 1;
   }
+  else if (width_max > (constants::INC_STRING_COUNT - 1))
+  {
+    width_max = constants::INC_STRING_COUNT - 1;
+  }
+  inc_var_ptr_->setConstantStringArray(constants::increment_array,constants::INC_STRING_COUNT);
+  inc_var_ptr_->setRange(0,width_max-1);
+  inc_var_ptr_->setDisplayWidth(width_max);
+  inc_var_ptr_->setValue(0);
+  return *inc_var_ptr_;
 }
 
 void Server::attachCallbackToFrame(Callback callback, uint8_t frame)

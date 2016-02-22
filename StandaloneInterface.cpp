@@ -61,9 +61,9 @@ InteractiveVariable& StandaloneInterface::createInteractiveVariable()
   return server_.createInteractiveVariable();
 }
 
-InteractiveVariable& StandaloneInterface::createIncrementVariable()
+InteractiveVariable& StandaloneInterface::createIncrementVariable(int width_max)
 {
-  return server_.createIncrementVariable();
+  return server_.createIncrementVariable(width_max);
 }
 
 void StandaloneInterface::attachCallbackToFrame(Callback callback, uint8_t frame)

@@ -12,14 +12,14 @@ namespace Standalone
 {
 InteractiveVariable::InteractiveVariable()
 {
-  min_ = -32768;
-  max_ = 32767;
+  min_ = -10000;
+  max_ = 10000;
   setBaseDec();
   value_dirty_ = true;
   update_callback_ = NULL;
 }
 
-void InteractiveVariable::setRange(const int min, const int max)
+void InteractiveVariable::setRange(const long min, const long max)
 {
   if (min < max)
   {
@@ -48,7 +48,7 @@ void InteractiveVariable::trimDisplayWidthUsingRange()
   {
     ++display_width;
   }
-  int max_temp = max_;
+  long max_temp = max_;
   uint8_t display_width_default;
   uint8_t base = getBase();
   switch (base)
@@ -76,23 +76,23 @@ void InteractiveVariable::trimDisplayWidthUsingRange()
   setDisplayWidth(display_width);
 }
 
-int InteractiveVariable::getMin()
+long InteractiveVariable::getMin()
 {
   return min_;
 }
 
-int InteractiveVariable::getMax()
+long InteractiveVariable::getMax()
 {
   return max_;
 }
 
-void InteractiveVariable::setValue(int value)
+void InteractiveVariable::setValue(long value)
 {
   DisplayVariable::setValue(wrapValue(value));
   value_dirty_ = true;
 }
 
-void InteractiveVariable::updateWithEncoderValue(int value)
+void InteractiveVariable::updateWithEncoderValue(long value)
 {
   DisplayVariable::setValue(wrapValue(value));
 }
@@ -107,7 +107,7 @@ void InteractiveVariable::clearValueDirty()
   value_dirty_ = false;
 }
 
-int InteractiveVariable::wrapValue(int value)
+long InteractiveVariable::wrapValue(long value)
 {
   if ((value >= min_) && (value <= max_))
   {
@@ -116,7 +116,7 @@ int InteractiveVariable::wrapValue(int value)
   else
   {
     value_dirty_ = true;
-    unsigned int range = (max_ - min_) + 1;
+    unsigned long range = (max_ - min_) + 1;
     if (value < min_)
     {
       value += range*((min_ - value)/range + 1);
