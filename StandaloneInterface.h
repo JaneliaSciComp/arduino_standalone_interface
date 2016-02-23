@@ -14,18 +14,12 @@ namespace Standalone
 {
 typedef void(*Callback)();
 
+struct Configuration;
+
 class StandaloneInterface
 {
 public:
-  StandaloneInterface(HardwareSerial &display_serial,
-                      const int enc_a_pin,
-                      const int enc_b_pin,
-                      const int enc_btn_pin,
-                      const int enc_btn_int,
-                      const int btn_pin,
-                      const int btn_int,
-                      const int lights_pin,
-                      const int update_period);
+  StandaloneInterface(Configuration configuration);
   template <size_t FRAME_COUNT>
   void setup(const ConstantString (&frame_names)[FRAME_COUNT]);
   void enable();

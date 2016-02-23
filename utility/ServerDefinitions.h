@@ -26,6 +26,10 @@ void Server::setup(const ConstantString (&frame_names)[FRAME_COUNT])
   digitalWrite(btn_pin_,HIGH);
   attachInterrupt(btn_int_,btnIsr,FALLING);
 
+  pinMode(switch_pin_,INPUT);
+  digitalWrite(switch_pin_,HIGH);
+  attachInterrupt(switch_int_,switchIsr,FALLING);
+
   pinMode(lights_pin_,INPUT);
 
   frame_var_ptr_ = &(createInteractiveVariable());

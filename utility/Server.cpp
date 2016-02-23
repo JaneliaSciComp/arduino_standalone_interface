@@ -17,23 +17,17 @@ volatile bool Server::enc_btn_pressed_ = false;
 uint8_t Server::frame_current_ = 0;
 Server::Callback Server::callbacks_[constants::FRAMES_COUNT_MAX];
 
-Server::Server(HardwareSerial &serial,
-               const int enc_a_pin,
-               const int enc_b_pin,
-               const int enc_btn_pin,
-               const int enc_btn_int,
-               const int btn_pin,
-               const int btn_int,
-               const int lights_pin,
-               const int update_period) :
-  display_(serial),
-  encoder_(enc_b_pin,enc_a_pin),
-  enc_btn_pin_(enc_btn_pin),
-  enc_btn_int_(enc_btn_int),
-  btn_pin_(btn_pin),
-  btn_int_(btn_int),
-  lights_pin_(lights_pin),
-  update_period_(update_period)
+Server::Server(Configuration configuration) :
+  display_(configuration.display_serial),
+  encoder_(configuration.enc_b_pin,configuration.enc_a_pin),
+  enc_btn_pin_(configuration.enc_btn_pin),
+  enc_btn_int_(configuration.enc_btn_int),
+  btn_pin_(configuration.btn_pin),
+  btn_int_(configuration.btn_int),
+  switch_pin_(configuration.switch_pin),
+  switch_int_(configuration.switch_int),
+  lights_pin_(configuration.lights_pin),
+  update_period_(configuration.update_period)
 {
   interactive_variable_index_ = -1;
   frame_var_ptr_ = NULL;
@@ -257,6 +251,11 @@ void Server::encBtnIsr()
 }
 
 void Server::btnIsr()
+{
+  (*Server::callbacks_[Server::frame_current_])();
+}
+
+void Server::switchIsr()
 {
   (*Server::callbacks_[Server::frame_current_])();
 }

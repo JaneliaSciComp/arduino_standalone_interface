@@ -28,19 +28,26 @@ namespace Standalone
 {
 void defaultCallback();
 
+struct Configuration
+{
+  HardwareSerial &display_serial;
+  const int enc_a_pin;
+  const int enc_b_pin;
+  const int enc_btn_pin;
+  const int enc_btn_int;
+  const int btn_pin;
+  const int btn_int;
+  const int switch_pin;
+  const int switch_int;
+  const int lights_pin;
+  const int update_period;
+};
+
 class Server
 {
 public:
   typedef void(*Callback)();
-  Server(HardwareSerial &serial,
-         const int enc_a_pin,
-         const int enc_b_pin,
-         const int enc_btn_pin,
-         const int enc_btn_int,
-         const int btn_pin,
-         const int btn_int,
-         const int lights_pin,
-         const int update_period);
+  Server(Configuration configuration);
   template <size_t FRAME_COUNT>
   void setup(const ConstantString (&frame_names)[FRAME_COUNT]);
   void enable();
@@ -65,6 +72,8 @@ private:
   const int enc_btn_int_;
   const int btn_pin_;
   const int btn_int_;
+  const int switch_pin_;
+  const int switch_int_;
   const int lights_pin_;
   const int update_period_;
   bool enabled_;
@@ -83,6 +92,7 @@ private:
   static volatile bool enc_btn_pressed_;
   static void encBtnIsr();
   static void btnIsr();
+  static void switchIsr();
   static Callback callbacks_[constants::FRAMES_COUNT_MAX];
   static uint8_t frame_current_;
   void ledOn();
