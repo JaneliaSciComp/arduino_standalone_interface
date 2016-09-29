@@ -10,6 +10,6 @@ License:
 
 [Usage Examples](./examples)
 
-##Installation
+##Install Library Dependencies
 
-<https://github.com/janelia-arduino/arduino-libraries>
+[arduino-libraries](https://github.com/janelia-arduino/arduino-libraries)
