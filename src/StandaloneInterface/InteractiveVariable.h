@@ -7,12 +7,10 @@
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_INTERACTIVE_VARIABLE_H_
 #define _STANDALONE_INTERACTIVE_VARIABLE_H_
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
+#include <Arduino.h>
+
 #include "DisplayVariable.h"
+
 
 namespace Standalone
 {

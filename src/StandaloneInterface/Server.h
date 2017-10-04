@@ -7,17 +7,14 @@
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_SERVER_H_
 #define _STANDALONE_SERVER_H_
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-#include "Streaming.h"
-#include "NewhavenDisplay.h"
-#include "Encoder.h"
-#include "Array.h"
-#include "Vector.h"
-#include "ConstantVariable.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <NewhavenDisplay.h>
+#include <Encoder.h>
+#include <Array.h>
+#include <Vector.h>
+#include <ConstantVariable.h>
+
 #include "Constants.h"
 #include "DisplayLabel.h"
 #include "DisplayVariable.h"

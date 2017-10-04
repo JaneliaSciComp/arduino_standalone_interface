@@ -6,8 +6,9 @@
 // ----------------------------------------------------------------------------
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
-#include "ModularServer.h"
-#include "StandaloneInterface.h"
+#include <ModularServer.h>
+#include <StandaloneInterface.h>
+
 #include "Constants.h"
 #include "Callbacks.h"
 

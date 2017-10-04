@@ -7,12 +7,8 @@
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_DISPLAY_ELEMENT_H_
 #define _STANDALONE_DISPLAY_ELEMENT_H_
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-#include "NewhavenDisplay.h"
+#include <Arduino.h>
+#include <NewhavenDisplay.h>
 
 
 namespace Standalone

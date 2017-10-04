@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_CONSTANTS_H_
 #define _STANDALONE_CONSTANTS_H_
-#include "ConstantVariable.h"
+#include <ConstantVariable.h>
 
 
 namespace Standalone

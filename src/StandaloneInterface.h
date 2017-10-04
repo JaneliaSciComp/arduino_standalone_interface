@@ -7,7 +7,7 @@
 // ----------------------------------------------------------------------------
 #ifndef STANDALONE_INTERFACE_H
 #define STANDALONE_INTERFACE_H
-#include "utility/Server.h"
+#include "StandaloneInterface/Server.h"
 
 
 namespace Standalone
@@ -41,6 +41,6 @@ private:
   Server server_;
 };
 }
-#include "StandaloneInterfaceDefinitions.h"
+#include "StandaloneInterface/StandaloneInterfaceDefinitions.h"
 
 #endif

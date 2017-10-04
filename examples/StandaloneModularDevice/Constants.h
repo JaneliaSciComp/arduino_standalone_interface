@@ -7,7 +7,8 @@
 // ----------------------------------------------------------------------------
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
-#include "ConstantVariable.h"
+#include <ConstantVariable.h>
+
 
 namespace constants
 {

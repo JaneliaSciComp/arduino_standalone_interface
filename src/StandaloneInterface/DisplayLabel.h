@@ -7,12 +7,9 @@
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_DISPLAY_LABEL_H_
 #define _STANDALONE_DISPLAY_LABEL_H_
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-#include "ConstantVariable.h"
+#include <Arduino.h>
+#include <ConstantVariable.h>
+
 #include "DisplayElement.h"
 
 
