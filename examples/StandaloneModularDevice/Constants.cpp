@@ -10,7 +10,7 @@
 
 namespace constants
 {
-const unsigned int baudrate = 9600;
+const unsigned int baud = 9600;
 
 const unsigned int model_number = 1003;
 

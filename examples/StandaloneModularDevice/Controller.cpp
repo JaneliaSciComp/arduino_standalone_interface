@@ -78,7 +78,7 @@ void Controller::setup()
   set_int_var2_method.addParameter(int_var2_parameter);
 
   // Setup Streams
-  Serial.begin(constants::baudrate);
+  Serial.begin(constants::baud);
 
   // Start Modular Device Server
   modular_server_.startServer();

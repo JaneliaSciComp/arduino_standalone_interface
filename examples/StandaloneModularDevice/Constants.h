@@ -22,7 +22,7 @@ enum{DISPLAY_VARIABLE_COUNT_MAX=1};
 enum{INTERACTIVE_VARIABLE_COUNT_MAX=3};
 enum{FRAME_COUNT=2};
 
-extern const unsigned int baudrate;
+extern const unsigned int baud;
 
 extern const unsigned int model_number;
 
