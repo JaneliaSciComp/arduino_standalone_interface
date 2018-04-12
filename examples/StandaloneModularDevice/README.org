@@ -1,20 +1,14 @@
-# StandaloneModularDevice
+#+TITLE: StandaloneModularDevice
+#+AUTHOR: Peter Polidoro
+#+EMAIL: peterpolidoro@gmail.com
 
-Authors:
+* Library Information
+  - Author :: Peter Polidoro
+  - License :: BSD
 
-    Peter Polidoro <polidorop@janelia.hhmi.org>
+* Device Information
 
-License:
-
-    BSD
-
-## More Detailed Help on Installation and Usage
-
-[modular-devices](https://github.com/janelia-modular-devices/modular-devices)
-
-## Device Information
-
-```json
+  #+BEGIN_SRC js
 {
   "id":"?",
   "result":{
@@ -42,11 +36,11 @@ License:
     ]
   }
 }
-```
+  #+END_SRC
 
-## Verbose Device Information
+* Verbose Device Information
 
-```json
+  #+BEGIN_SRC js
 {
   "id":"??",
   "result":{
@@ -148,4 +142,12 @@ License:
     ]
   }
 }
-```
+  #+END_SRC
+
+* More Detailed Modular Device Information
+
+  [[https://github.com/janelia-modular-devices/modular-devices][modular-devices]]
+
+* Library Dependencies
+
+  [[https://github.com/janelia-arduino/arduino-libraries][arduino-libraries]]
