@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro polidorop@janelia.hhmi.org
+// Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_DISPLAY_VARIABLE_H_
 #define _STANDALONE_DISPLAY_VARIABLE_H_
