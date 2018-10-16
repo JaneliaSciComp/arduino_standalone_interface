@@ -19,13 +19,14 @@ class InteractiveVariable : public DisplayVariable
 public:
   typedef void(*Callback)();
   InteractiveVariable();
-  void setRange(const long min, const long max);
+  void setRange(long min,
+    long max);
   void trimDisplayWidthUsingRange();
   long getMin();
   long getMax();
   virtual void setValue(long value);
   virtual void setConstantStringArray(const ConstantString string_array[],
-    const uint8_t string_count);
+    uint8_t string_count);
   void attachUpdateCallback(Callback callback);
 private:
   long min_;

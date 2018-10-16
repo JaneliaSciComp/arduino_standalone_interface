@@ -60,7 +60,8 @@ public:
   void setInteractiveVariableStorage(InteractiveVariable (&interactive_variables)[MAX_SIZE]);
   InteractiveVariable& createInteractiveVariable();
   InteractiveVariable& createIncrementVariable(int width_max);
-  void attachCallbackToFrame(Callback callback, uint8_t frame);
+  void attachCallbackToFrame(Callback callback,
+    uint8_t frame);
   void executeCurrentFrameCallback();
 private:
   NewhavenDisplay display_;

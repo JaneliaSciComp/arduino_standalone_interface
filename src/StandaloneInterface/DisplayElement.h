@@ -19,14 +19,15 @@ class DisplayElement
 public:
   DisplayElement();
   static const uint8_t DISPLAY_WIDTH_MAX = 20;
-  void setDisplayPosition(const uint8_t display_position);
+  void setDisplayPosition(uint8_t display_position);
   uint8_t getDisplayPosition();
-  void setDisplayWidth(const uint8_t display_width);
+  void setDisplayWidth(uint8_t display_width);
   uint8_t getDisplayWidth();
   void setLeftJustify();
   void setRightJustify();
   virtual String getDisplayString() {};
-  void updateOnDisplay(NewhavenDisplay &display, int frame);
+  void updateOnDisplay(NewhavenDisplay &display,
+    int frame);
   void addToFrame(int frame);
   void addToAllFrames();
   void removeFromFrame(int frame);

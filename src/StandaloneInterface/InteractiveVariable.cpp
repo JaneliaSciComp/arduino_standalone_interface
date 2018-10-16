@@ -19,7 +19,8 @@ InteractiveVariable::InteractiveVariable()
   update_callback_ = NULL;
 }
 
-void InteractiveVariable::setRange(const long min, const long max)
+void InteractiveVariable::setRange(long min,
+  long max)
 {
   if (min < max)
   {
@@ -126,7 +127,7 @@ long InteractiveVariable::wrapValue(long value)
 }
 
 void InteractiveVariable::setConstantStringArray(const ConstantString string_array[],
-  const uint8_t string_count)
+  uint8_t string_count)
 {
   DisplayVariable::setConstantStringArray(string_array,string_count);
   setRange(0,string_count-1);

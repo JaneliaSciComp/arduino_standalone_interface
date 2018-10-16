@@ -20,7 +20,7 @@ DisplayElement::DisplayElement()
   resetDefaultPaddingChar();
 }
 
-void DisplayElement::setDisplayPosition(const uint8_t display_position)
+void DisplayElement::setDisplayPosition(uint8_t display_position)
 {
   if (left_justify_)
   {
@@ -37,7 +37,7 @@ uint8_t DisplayElement::getDisplayPosition()
   return display_position_;
 }
 
-void DisplayElement::setDisplayWidth(const uint8_t display_width)
+void DisplayElement::setDisplayWidth(uint8_t display_width)
 {
   if (!left_justify_)
   {
@@ -82,7 +82,8 @@ void DisplayElement::setRightJustify()
   }
 }
 
-void DisplayElement::updateOnDisplay(NewhavenDisplay &display, int frame)
+void DisplayElement::updateOnDisplay(NewhavenDisplay &display,
+  int frame)
 {
   if (inFrame(frame))
   {

@@ -232,7 +232,8 @@ InteractiveVariable& Server::createIncrementVariable(int width_max)
   return *inc_var_ptr_;
 }
 
-void Server::attachCallbackToFrame(Callback callback, uint8_t frame)
+void Server::attachCallbackToFrame(Callback callback,
+  uint8_t frame)
 {
   if (frame < constants::FRAMES_COUNT_MAX)
   {
