@@ -102,7 +102,7 @@ String DisplayVariable::getDisplayString()
 }
 
 void DisplayVariable::setConstantStringArray(const ConstantString string_array[],
-                                             const uint8_t string_count)
+  const uint8_t string_count)
 {
   string_array_ = string_array;
   string_count_ = string_count;

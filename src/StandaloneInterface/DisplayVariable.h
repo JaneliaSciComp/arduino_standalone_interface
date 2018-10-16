@@ -34,7 +34,7 @@ public:
   long getValue();
   String getDisplayString();
   virtual void setConstantStringArray(const ConstantString string_array[],
-                                      const uint8_t string_count);
+    const uint8_t string_count);
   void trimDisplayWidth();
   void setBaseDec();
   void setBaseBin();

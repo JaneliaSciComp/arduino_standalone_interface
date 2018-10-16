@@ -75,8 +75,8 @@ CONSTANT_STRING(execute_standalone_callback_method_name,"executeStandaloneCallba
 CONSTANT_STRING(frame0_name,"dsp_var1 += int_var1");
 CONSTANT_STRING(frame1_name,"dsp_var1 -= int_var2");
 const ConstantString frame_name_array[] =
-  {
-    frame0_name,
-    frame1_name,
-  };
+{
+  frame0_name,
+  frame1_name,
+};
 }

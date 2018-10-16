@@ -18,16 +18,16 @@ uint8_t Server::frame_current_ = 0;
 Server::Callback Server::callbacks_[constants::FRAMES_COUNT_MAX];
 
 Server::Server(Configuration configuration) :
-  display_(configuration.display_serial),
-  encoder_(configuration.enc_b_pin,configuration.enc_a_pin),
-  enc_btn_pin_(configuration.enc_btn_pin),
-  enc_btn_int_(configuration.enc_btn_int),
-  btn_pin_(configuration.btn_pin),
-  btn_int_(configuration.btn_int),
-  switch_pin_(configuration.switch_pin),
-  switch_int_(configuration.switch_int),
-  lights_pin_(configuration.lights_pin),
-  update_period_(configuration.update_period)
+display_(configuration.display_serial),
+encoder_(configuration.enc_b_pin,configuration.enc_a_pin),
+enc_btn_pin_(configuration.enc_btn_pin),
+enc_btn_int_(configuration.enc_btn_int),
+btn_pin_(configuration.btn_pin),
+btn_int_(configuration.btn_int),
+switch_pin_(configuration.switch_pin),
+switch_int_(configuration.switch_int),
+lights_pin_(configuration.lights_pin),
+update_period_(configuration.update_period)
 {
   interactive_variable_index_ = -1;
   frame_var_ptr_ = NULL;

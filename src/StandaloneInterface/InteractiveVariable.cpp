@@ -126,7 +126,7 @@ long InteractiveVariable::wrapValue(long value)
 }
 
 void InteractiveVariable::setConstantStringArray(const ConstantString string_array[],
-                                                 const uint8_t string_count)
+  const uint8_t string_count)
 {
   DisplayVariable::setConstantStringArray(string_array,string_count);
   setRange(0,string_count-1);

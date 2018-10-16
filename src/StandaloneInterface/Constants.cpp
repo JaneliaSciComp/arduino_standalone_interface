@@ -19,14 +19,14 @@ CONSTANT_STRING(inc4,"10000");
 CONSTANT_STRING(inc5,"100000");
 CONSTANT_STRING(inc6,"1000000");
 const ConstantString increment_array[] =
-  {
-    inc0,
-    inc1,
-    inc2,
-    inc3,
-    inc4,
-    inc5,
-    inc6,
-  };
+{
+  inc0,
+  inc1,
+  inc2,
+  inc3,
+  inc4,
+  inc5,
+  inc6,
+};
 }
 }

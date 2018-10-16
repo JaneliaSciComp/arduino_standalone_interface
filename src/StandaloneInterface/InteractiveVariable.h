@@ -25,7 +25,7 @@ public:
   long getMax();
   virtual void setValue(long value);
   virtual void setConstantStringArray(const ConstantString string_array[],
-                                      const uint8_t string_count);
+    const uint8_t string_count);
   void attachUpdateCallback(Callback callback);
 private:
   long min_;
