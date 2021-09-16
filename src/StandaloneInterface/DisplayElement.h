@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro peterpolidoro@gmail.com
+// Peter Polidoro peter@polidoro.io
 // ----------------------------------------------------------------------------
 #ifndef _STANDALONE_DISPLAY_ELEMENT_H_
 #define _STANDALONE_DISPLAY_ELEMENT_H_

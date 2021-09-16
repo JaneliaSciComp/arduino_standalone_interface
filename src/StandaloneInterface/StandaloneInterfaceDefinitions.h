@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro peterpolidoro@gmail.com
+// Peter Polidoro peter@polidoro.io
 // ----------------------------------------------------------------------------
 #ifndef STANDALONE_INTERFACE_DEFINITIONS_H
 #define STANDALONE_INTERFACE_DEFINITIONS_H
